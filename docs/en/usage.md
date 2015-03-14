@@ -2,7 +2,7 @@
 
 ### Simplest
 
-简单的例子：
+Simplest example：
 
 ```js
 var container = document.getElementById('simplest');
@@ -40,7 +40,7 @@ var simplestComponent = React.renderComponent(
 
 ### waterfall
 
-实现一个流式布局变得非常容易
+The completion of a waterfall layout becomes very simple
 
 ```js
 var container = document.getElementById('waterfall');
@@ -93,4 +93,5 @@ var waterfallComponent = React.renderComponent(
 
 ### loader
 
-[点击查看例子](http://xudafeng.github.io/autoResponsive/demo/loader/)
+[example-link](http://xudafeng.github.io/autoResponsive/demo/loader/)
+

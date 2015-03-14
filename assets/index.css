@@ -40,10 +40,12 @@ a {
 header {
   background-color: #EBD9BA;
   overflow: hidden;
+  cursor: default;
 }
 
 article {
   color: #d0bbab;
+  min-height: 1000px;
 }
 #fork {
   position: fixed;
@@ -53,9 +55,6 @@ article {
 
 .item {
   transition-duration: 1s;
-}
-a:hover {
-  text-decoration: none;
 }
 h1 {
   font-family: "Roboto", sans-serif;
@@ -78,6 +77,13 @@ article p {
 header h1 em {
   color: #cd9d05;
   font-style: normal;
+}
+a:hover, a:focus {
+  color: #f9c725;
+  text-decoration: none;
+}
+a:active, a:hover {
+  outline: 0;
 }
 .page {
   width: 990px;
@@ -127,11 +133,23 @@ header h1 em {
   width: 100%;
 }
 
-#simplest {
-  background: #2B2B2B;
-  border: 1px solid #333;
-  border-color: hsla(0, 0%, 0%, 0.5);
-  border-radius: 5px;
+.rc-autoresponsive {
+}
+
+.btn-group {
+  margin-top: 20px;
+}
+
+.btn-group button,
+.btn-group button:hover {
+  background-color: #301711;
+  border-color: #796b1d;
+  color: #d0bbab;
+}
+
+.btn-group button:focus {
+  background-color: #301711;
+  color: #fff;
 }
 
 footer {
