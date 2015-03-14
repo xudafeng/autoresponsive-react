@@ -63,13 +63,34 @@ Type: String, Default: 'top'
 
 设置垂直渲染方向，以底部为参考值为 `top`
 
-
 ### animationType
 
-transition css2
+```
+Type: String, Default: 'auto'
+```
+
+设置动画类型，例如选择 `transition`，`css2`，或 `close`关闭效果
 
 ### transitionDuration
 
+```
+Type: String, Default: '1s'
+
+```
+设置动画持续时间，如`.8s`
+
 ### transitionTimingFunction
 
+```
+Type: String, Default: 'linear'
+
+```
+设置动画缓动类型，如`easeIn`
+
 ### transitionDelay
+
+```
+Type: String, Default: 0
+```
+设置动画延迟时间，如`1s`
+
