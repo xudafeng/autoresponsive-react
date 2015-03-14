@@ -15,8 +15,9 @@
 
 +function(global, React, Model, Markdown, undefined) {
 
-  function request(file, success) {
-    var api = './docs/zh/' + file + '.md';
+  function request(file, i18n, success) {
+
+    var api = './docs/' + (i18n || 'zh') + '/' + file + '.md';
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open('GET', api, true);
     xmlHttp.onreadystatechange = function(d) {
@@ -113,11 +114,11 @@
       this.init();
     },
     init: function() {
+      this.bind();
       this.renderLogo();
       this.renderMarkdownDoc();
-      this.renderExample();
     },
-    renderMarkdownDoc: function() {
+    renderMarkdownDoc: function(i18n) {
       var that = this;
       marked.setOptions({
         highlight: function(code) {
@@ -125,10 +126,13 @@
         }
       });
 
-      var requestList = ['option', 'event', 'usage'];
+      var requestList = ['usage', 'option', 'event'];
 
       requestList.forEach(function(name) {
-        request(name, function(data) {
+        var node = document.createElement('div');
+        node.id = name;
+        document.getElementById('page').appendChild(node);
+        request(name, i18n, function(data) {
           React.render(
             <MarkdownComponent>
             {data}
@@ -136,16 +140,22 @@
             document.getElementById(name)
           );
           if (name === 'usage') {
-            that.initSimplestExample();
+            that.emit('startInitExample');
           }
         });
+      });
+    },
+    bind: function() {
+      var that = this;
+      this.on('startInitExample', function() {
+        that.initSimplestExample();
+        that.initWaterfallExample();
       });
     },
     renderLogo: function() {
       React.render(<LogoComponent/>, document.getElementById('logo'));
     },
     initSimplestExample: function() {
-      var append = true;
       var style = {
         height: '100px',
         width: '100px',
@@ -158,7 +168,7 @@
         'line-height': '100px',
         'text-align': 'center',
         'font-weight': 'bold',
-        'text-shadow': '2px 2px 0px #ab9a3c',
+        'text-shadow': '1px 1px 0px #ab9a3c',
         'cursor': 'default'
       };
 
@@ -166,66 +176,178 @@
       var clientWidth = container.clientWidth;
       var arrayList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-      var render = function() {
-        React.renderComponent(
-          <AutoResponsive itemMargin={10} containerWidth={clientWidth} itemSelector='item'>
+      var SimplestComponent = React.createClass({
+        getInitialState: function() {
+          return {
+            arrayList: arrayList,
+            itemMargin: 10,
+            horizontalDirection: 'left',
+            verticalDirection: 'top',
+            containerHeight: 'auto'
+          }
+        },
+        render: function() {
+          return (
+            <AutoResponsive horizontalDirection={this.state.horizontalDirection}  verticalDirection={this.state.verticalDirection} itemMargin={this.state.itemMargin} containerWidth={clientWidth} containerHeight={this.state.containerHeight}  itemSelector='item'>
             {
-              arrayList.map(function(i) {
+              this.state.arrayList.map(function(i) {
                 return <div className='item' style={style}>{i}</div>;
               })
             }
-          </AutoResponsive>,
-          container
-        );
+            </AutoResponsive>
+          );
+        }
+      });
+
+      var simplestComponent = React.render(
+        <SimplestComponent/>,
+        container
+      );
+
+      var buttonListNode = document.createElement('div');
+      buttonListNode.id = 'buttonList';
+      container.parentNode.insertBefore(buttonListNode, container);
+
+      var appendClickHandle = function(e) {
+
+        if (arrayList.length === 99) {
+          return;
+        }
+        arrayList.push(arrayList.length);
+        simplestComponent.setState({
+          arrayList: arrayList
+        });
       }
 
-      render();
+      var removeClickHandle = function() {
+        arrayList.shift();
+        simplestComponent.setState({
+          arrayList: arrayList
+        });
+      }
 
+      var sortClickHandle = function() {
+        simplestComponent.setState({
+          arrayList: arrayList.reverse()
+        });
+      }
+
+      var marginClickHandle = function() {
+        simplestComponent.setState({
+          itemMargin: simplestComponent.state.itemMargin === 10 ? 20 : 10
+        });
+      }
+
+      var horizontalClickHandle = function() {
+        simplestComponent.setState({
+          horizontalDirection: simplestComponent.state.horizontalDirection === 'left' ? 'right' : 'left'
+        });
+      }
+
+      var verticalClickHandle = function() {
+        var verticalDirection,
+            containerHeight;
+
+        if (simplestComponent.state.verticalDirection === 'top') {
+          verticalDirection = 'bottom';
+          containerHeight = container.clientHeight;
+        } else {
+          verticalDirection = 'top';
+          containerHeight = 'auto';
+        }
+        simplestComponent.setState({
+          verticalDirection: verticalDirection,
+          containerHeight: containerHeight
+        });
+      }
+
+      var ButtonsComponent = React.createClass({
+        render: function() {
+          return (
+            <div className="btn-group">
+              <button type="button" onClick={marginClickHandle} className="btn btn-default">margin</button>
+              <button type="button" onClick={appendClickHandle} className="btn btn-default">append</button>
+              <button type="button" onClick={removeClickHandle} className="btn btn-default">remove</button>
+              <button type="button" onClick={sortClickHandle} className="btn btn-default">sort</button>
+              <button type="button" onClick={horizontalClickHandle} className="btn btn-default">horizontal</button>
+              <button type="button" onClick={verticalClickHandle} className="btn btn-default">vertical</button>
+            </div>
+          );
+        }
+      });
+
+      React.render(
+        <ButtonsComponent/>,
+        buttonListNode
+      );
     },
-    renderExample: function() {
-      return;
-      var style = {
-        background: 'red',
-        opacity: '0.2',
-        height: '100px',
-        width: '60px',
-        color: '#fff'
-        //right: '-999px',
-        //bottom: '-999px'
-      };
+    initWaterfallExample: function() {
+      var getItemStyle = function() {
+        var _style = {
+          width: '180px',
+          height: parseInt(Math.random() * 20 + 15) * 10 + 'px',
+          color: '#3a2d5b',
+          'border-radius': '5px',
+          'box-shadow': '0 1px 0 rgba(255,255,255,0.5) inset',
+          'background-color': '#5c439b',
+          'border-color': '#796b1d',
+          'font-size': '80px',
+          'line-height': '100px',
+          'text-align': 'center',
+          'font-weight': 'bold',
+          'text-shadow': '1px 1px 0px #816abe',
+          'cursor': 'default'
+        };
+        return _style;
+      }
+
+      var container = document.getElementById('waterfall');
+      var clientWidth = container.clientWidth;
+      var arrayList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+      var styleList = {};
+      arrayList.map(function(i) {
+        styleList[i] = getItemStyle();
+      });
 
       var clickHandle = function(e) {
-        console.log(e);
+        var nodes = e.target.parentNode.childNodes;
+        for (var i = 0; i < nodes.length; i ++) {
+          if (nodes[i] === e.target) {
+            styleList[i].width = styleList[i].width === '370px' ? '180px' : '370px';
+            waterfallComponent.setState({
+              styleList: styleList
+            });
+          }
+        }
       }
 
-      var onLayoutDidComplete = function(i) {
-        i.props.style.background = 'blue';
-      }
-
-      var resizeHandle = function() {
-        var container = document.getElementById('container');
-        var clientWidth = container.clientWidth;
-
-        React.render(
-          <AutoResponsive onLayoutDidComplete={onLayoutDidComplete}  horizontalDirection={''} itemMargin={10} containerWidth={clientWidth} itemSelector='item'>
+      var WaterfallComponent = React.createClass({
+        getInitialState: function() {
+          return {
+            styleList: styleList
+          }
+        },
+        render: function() {
+          return (
+            <AutoResponsive  itemMargin={10} containerWidth={clientWidth} itemSelector='item'>
             {
-              [1, 2, 3, 4,5,6,7,8,1, 3, 4,5,6,7,8,9,0].map(function(i) {
-                return <div className='item' onClick={clickHandle} style={style}>{i}</div>;
-              })
+              arrayList.map(function(i) {
+                return <div onClick={clickHandle} className='item' style={this.state.styleList[i]}>{i}</div>;
+              }, this)
             }
-          </AutoResponsive>,
-          container
-        );
-      }
-      resizeHandle();
+            </AutoResponsive>
+          );
+        }
+      });
 
-      global.addEventListener('resize', function() {
-        resizeHandle();
-      }, false);
-
+      var waterfallComponent = React.render(
+        <WaterfallComponent/>,
+        container
+      );
     }
   });
 
   global.controller = new Controller();
 
 }(this, React, Enough.Klass, marked);
+

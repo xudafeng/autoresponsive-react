@@ -13,4 +13,10 @@
 
 'use strict';
 
-module.exports = require('./lib');
+var AutoResponsive = require('./lib');
+
+if (typeof window === 'undefined') {
+  module.exports = AutoResponsive;
+} else {
+  window.AutoResponsive = AutoResponsive;
+}

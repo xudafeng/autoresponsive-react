@@ -2,43 +2,95 @@
 
 ### Simplest
 
-如下代码实现：
+简单的例子：
 
 ```js
-var style = {
-  background: 'red',
-  height: '100px',
-  width: '100px',
-  color: '#fff',
-  'border-radius': '5px'
-};
 var container = document.getElementById('simplest');
 var clientWidth = container.clientWidth;
+var arrayList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-React.render(
-  <AutoResponsive itemMargin={10} containerWidth={clientWidth} itemSelector='item'>
-    {
-      [1, 2, 3, 4,5,6,7,8,9,0].map(function(i) {
-        return <div className='item' style={style}>{i}</div>;
-      })
+var SimplestComponent = React.createClass({
+  getInitialState: function() {
+    return {
+      arrayList: arrayList,
+      itemMargin: 10,
+      horizontalDirection: 'left',
+      verticalDirection: 'top',
+      containerHeight: 'auto'
     }
-  </AutoResponsive>,
+  },
+  render: function() {
+    return (
+      <AutoResponsive horizontalDirection={this.state.horizontalDirection}  verticalDirection={this.state.verticalDirection} itemMargin={this.state.itemMargin} containerWidth={clientWidth} containerHeight={this.state.containerHeight}  itemSelector='item'>
+      {
+        this.state.arrayList.map(function(i) {
+          return <div className='item' style={style}>{i}</div>;
+        })
+      }
+      </AutoResponsive>
+    );
+  }
+});
+
+var simplestComponent = React.renderComponent(
+  <SimplestComponent/>,
   container
 );
 ```
 
-### append remove sort filter
+### waterfall
 
-### animation
+实现一个流式布局变得非常容易
 
-### direction
+```js
+var container = document.getElementById('waterfall');
+var clientWidth = container.clientWidth;
+var arrayList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var styleList = {};
+arrayList.map(function(i) {
+  styleList[i] = getItemStyle();
+});
 
-### resize
+var clickHandle = function(e) {
+  var nodes = e.target.parentNode.childNodes;
+  for (var i = 0; i < nodes.length; i ++) {
+    if (nodes[i] === e.target) {
+      styleList[i].width = styleList[i].width === '370px' ? '180px' : '370px';
+      waterfallComponent.setState({
+        styleList: styleList
+      });
+    }
+  }
+}
+
+var WaterfallComponent = React.createClass({
+  getInitialState: function() {
+    return {
+      styleList: styleList
+    }
+  },
+  render: function() {
+    return (
+      <AutoResponsive  itemMargin={10} containerWidth={clientWidth} itemSelector='item'>
+      {
+        arrayList.map(function(i) {
+          return <div onClick={clickHandle} className='item' style={this.state.styleList[i]}>{i}</div>;
+        }, this)
+      }
+      </AutoResponsive>
+    );
+  }
+});
+
+var waterfallComponent = React.renderComponent(
+  <WaterfallComponent/>,
+  container
+);
+
+```
 
 ### drag
 
-### event
+### loader
 
-### mobile media query
-
-### waterfall
+[点击查看例子](http://xudafeng.github.io/autoResponsive/demo/loader/)

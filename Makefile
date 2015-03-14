@@ -17,7 +17,7 @@ travis: install
 build:
 	@./node_modules/bower/bin/bower install
 static: build
-	@node ./node_modules/webpack/bin/webpack.js
+	@node ./node_modules/webpack/bin/webpack.js ./assets
 jshint:
 	@./node_modules/jshint/bin/jshint .
 server: install
