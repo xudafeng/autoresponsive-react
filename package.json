@@ -1,0 +1,41 @@
+{
+  "name": "autoresponsive-react",
+  "version": "1.0.0",
+  "description": "auto responsive grid layout library",
+  "keywords": [
+    "react",
+    "responsive",
+    "layout",
+    "layout component",
+    "autoresponsive",
+    "ui component",
+    "ui",
+    "component"
+  ],
+  "homepage": "http://github.com/xudafeng/autoresponsive-react",
+  "author": "xudafeng@126.com",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:xudafeng/autoresponsive-react.git"
+  },
+  "scripts": {
+    "jshint": "make jshint"
+  },
+  "dependencies": {
+  },
+  "precommit": [
+    "jshint"
+  ],
+  "devDependencies": {
+    "react": "~0.12.1",
+    "startserver": "*",
+    "mocha": "*",
+    "istanbul-harmony": "~0.3.0",
+    "should": "~4.0.4",
+    "jshint": "*",
+    "bower": "~1.3.12",
+    "webpack": "~1.7.2",
+    "jsx-loader": "^0.12.2"
+  },
+  "licenses": "MIT"
+}

@@ -1,0 +1,139 @@
+.hljs{display:block;overflow-x:auto;padding:.5em;background:#fdf6e3;color:#657b83;-webkit-text-size-adjust:none}.hljs-comment,.hljs-template_comment,.diff .hljs-header,.hljs-doctype,.hljs-pi,.lisp .hljs-string,.hljs-javadoc{color:#93a1a1}.hljs-keyword,.hljs-winutils,.method,.hljs-addition,.css .hljs-tag,.hljs-request,.hljs-status,.nginx .hljs-title{color:#859900}.hljs-number,.hljs-command,.hljs-string,.hljs-tag .hljs-value,.hljs-rules .hljs-value,.hljs-phpdoc,.hljs-dartdoc,.tex .hljs-formula,.hljs-regexp,.hljs-hexcolor,.hljs-link_url{color:#2aa198}.hljs-title,.hljs-localvars,.hljs-chunk,.hljs-decorator,.hljs-built_in,.hljs-identifier,.vhdl .hljs-literal,.hljs-id,.css .hljs-function{color:#268bd2}.hljs-attribute,.hljs-variable,.lisp .hljs-body,.smalltalk .hljs-number,.hljs-constant,.hljs-class .hljs-title,.hljs-parent,.hljs-type,.hljs-link_reference{color:#b58900}.hljs-preprocessor,.hljs-preprocessor .hljs-keyword,.hljs-pragma,.hljs-shebang,.hljs-symbol,.hljs-symbol .hljs-string,.diff .hljs-change,.hljs-special,.hljs-attr_selector,.hljs-subst,.hljs-cdata,.css .hljs-pseudo,.hljs-header{color:#cb4b16}.hljs-deletion,.hljs-important{color:#dc322f}.hljs-link_label{color:#6c71c4}.tex .hljs-formula{background:#eee8d5}
+.markdown pre{
+  background: #2B2B2B;
+  font-weight: bold;
+  color: #E6E1DC;
+  border: none;
+}
+code {
+  background: #2B2B2B;
+  color: #E6E1DC;
+}
+hr {
+  border-top: 1px dashed #412816;
+  margin-top: 4em;
+  margin-bottom: 4em;
+}
+/**
+ * doc
+ */
+html {
+  background-color: #301711;
+}
+body {
+  background: #301711;
+  color: #c5aa97;
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  line-height: 1;
+  position: relative;
+  opacity: 0.8;
+}
+a {
+  color: #facd3e;
+  text-decoration: none;
+  line-height: inherit;
+}
+header {
+  background-color: #EBD9BA;
+  overflow: hidden;
+}
+
+article {
+  color: #d0bbab;
+}
+#fork {
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.item {
+  transition-duration: 1s;
+}
+a:hover {
+  text-decoration: none;
+}
+h1 {
+  font-family: "Roboto", sans-serif;
+  font-size: 2.75em;
+  margin: 0;
+}
+header h1, header h2 {
+  color: #301711;
+  font-weight: 300;
+}
+article h2, article h3 {
+  font-weight: 300;
+}
+article h3 {
+  margin: 40px 0 20px 0;
+}
+article p {
+  margin-top: 20px;
+}
+header h1 em {
+  color: #cd9d05;
+  font-style: normal;
+}
+.page {
+  width: 990px;
+  margin: 0 auto;
+  position: relative;
+}
+.page .title {
+  padding: 20px 0 30px 0;
+}
+
+#logo {
+  width: 600px;
+  height: 600px;
+  position: absolute;
+  bottom: -272px;
+  right: -84px;
+  opacity: 0.8;
+}
+.description p {
+  font-size: 50px;
+  padding-top: 26px;
+  padding-right: 40px;
+  text-rendering: optimizeLegibility;
+  font-weight: normal;
+}
+.header {
+  height: 320px;
+}
+.header .title {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.header .first {
+  font-size: 150px;
+  font-weight: bold;
+  line-height: 150px;
+  display: block;
+  float: left;
+  padding-right: 50px;
+}
+.header .description {
+  position: absolute;
+  left: 0;
+  top: 120px;
+  width: 100%;
+}
+
+#simplest {
+  background: #2B2B2B;
+  border: 1px solid #333;
+  border-color: hsla(0, 0%, 0%, 0.5);
+  border-radius: 5px;
+}
+
+footer {
+  padding: 10px 0;
+}
