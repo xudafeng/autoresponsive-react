@@ -89,8 +89,8 @@ var waterfallComponent = React.renderComponent(
 
 ```
 
-### 拖拽
+### drag
 
-### 数据加载器
+### loader
 
 [点击查看例子](http://xudafeng.github.io/autoResponsive/demo/loader/)
