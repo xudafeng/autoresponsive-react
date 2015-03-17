@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>专辑loader + 跑马灯 demo</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="style.css">
+    <script src="http://a.tbcdn.cn/s/kissy/1.3.0/kissy-min.js?t=2013052920121022.js"></script>
+</head>
+<body>
+<h1>Demo - 专辑loader + 跑马灯 + 延迟加载</h1>
+<div style="border: 1px dashed #999;padding: 10px;text-align: center;">
+    <h2 style="color: #666;font-size: 12px;text-align: center;line-height: 20px;margin: 0;font-weight: bold;">demo control panel</h2>
+    <a href="?marquee=0" style="font-size: 12px;color: rgb(21, 181, 221);margin: 0 10px;">关闭跑马灯</a>
+    <a href="?marquee=1" style="font-size: 12px;color: rgb(21, 181, 221);margin: 0 10px;">打开跑马灯</a>
+</div>
+<div id="J_AlbumPanel" class="albumPanel fixedH">
+    <div class="aP-hd"><i></i>
+        <span>品牌女装</span>
+        <b><s>相关专辑</s></b></div>
+    <div class="aP-bd ks-autoResponsive-container j_Container hasAlbums">
+    </div>
+    <a class="aP-collapse j_APMore" href="javascript:;" hideFocus="true">展开更多专辑<i></i></a>
+</div>
+<script type="tpl" id="tpl">
+    <a href="#1" class="album {w}">
+        <img class="a-cont j_ACont" data-src="images/a.jpg"/>
+        <img class="a-cover" data-ks-lazyload="{src}"/>
+        <p class="a-mask">{idx}<i></i></p>
+        <p class="a-layer">
+            <span class="al-brand">{brand}</span>
+            <span class="al-title">{title}</span>
+            <span class="al-count">{count}件商品</span>
+        </p>
+        <p class="a-more j_ALMore"></p>
+    </a>
+</script>
+<script src="index.js"></script>
+</body>
+</html>

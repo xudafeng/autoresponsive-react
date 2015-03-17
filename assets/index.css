@@ -19,6 +19,7 @@ hr {
  */
 html {
   background-color: #301711;
+  overflow-x: hidden;
 }
 body {
   background: #301711;
@@ -51,6 +52,7 @@ article {
   position: fixed;
   top: 0;
   right: 0;
+  z-index: 9;
 }
 
 .item {
@@ -93,7 +95,16 @@ a:active, a:hover {
 .page .title {
   padding: 20px 0 30px 0;
 }
-
+.loading {
+  width: 100px;
+  height: 100px;
+  background: red;
+  position: absolute;
+  left: 50%;
+  margin-left: -50px;
+  top: 210px;
+  z-index: 9;
+}
 #logo {
   width: 600px;
   height: 600px;
