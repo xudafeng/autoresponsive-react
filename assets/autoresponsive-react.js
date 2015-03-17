@@ -197,6 +197,7 @@
 	  onLayoutDidComplete: noop
 	};
 
+
 	module.exports = AutoResponsive;
 
 
@@ -352,7 +353,7 @@
 
 	var Util = __webpack_require__(3);
 
-	var prefixes = ['-webkit-', '-moz-', '-ms-', '-o-', ''];
+	const prefixes = ['-webkit-', '-moz-', '-ms-', '-o-', ''];
 
 
 	  function AnimationManager(props, privateProps) {
