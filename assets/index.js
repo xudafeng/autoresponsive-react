@@ -199,7 +199,7 @@
         }
       });
 
-      var simplestComponent = React.renderComponent(
+      var simplestComponent = React.render(
         <SimplestComponent/>,
         container
       );
@@ -276,7 +276,7 @@
         }
       });
 
-      React.renderComponent(
+      React.render(
         <ButtonsComponent/>,
         buttonListNode
       );
@@ -340,7 +340,7 @@
         }
       });
 
-      var waterfallComponent = React.renderComponent(
+      var waterfallComponent = React.render(
         <WaterfallComponent/>,
         container
       );
@@ -350,3 +350,4 @@
   global.controller = new Controller();
 
 }(this, React, Enough.Klass, marked);
+

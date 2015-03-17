@@ -17,7 +17,7 @@ var path = require('path');
 
 var config = {
   entry: {
-    'autoresponsive-react': path.resolve('index.js')
+    'autoresponsive-react': path.resolve('index.js'),
   },
   output: {
     path: path.join(__dirname, 'assets'),
@@ -31,7 +31,7 @@ var config = {
     loaders: [
       {
         test: /\.js$/,
-        loader: 'jsx-loader'
+        loader: 'jsx-loader?harmony'
       }
     ]
   }

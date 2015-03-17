@@ -59,7 +59,13 @@
 
 	'use strict';
 
-	module.exports = __webpack_require__(1);
+	var AutoResponsive = __webpack_require__(1);
+
+	if (typeof window === 'undefined') {
+	  module.exports = AutoResponsive;
+	} else {
+	  window.AutoResponsive = AutoResponsive;
+	}
 
 
 /***/ },
@@ -105,11 +111,17 @@
 	  position: 'relative'
 	};
 
-	var AutoResponsive = React.createClass({displayName: "AutoResponsive",
-	  getDefaultProps: function() {
-	    return defaultConfigurationObject;
-	  },
-	  setPrivateProps: function() {
+	var ____Class0=React.Component;for(var ____Class0____Key in ____Class0){if(____Class0.hasOwnProperty(____Class0____Key)){AutoResponsive[____Class0____Key]=____Class0[____Class0____Key];}}var ____SuperProtoOf____Class0=____Class0===null?null:____Class0.prototype;AutoResponsive.prototype=Object.create(____SuperProtoOf____Class0);AutoResponsive.prototype.constructor=AutoResponsive;AutoResponsive.__superConstructor__=____Class0;
+	  function AutoResponsive(props) {
+	    ____Class0.call(this,props);
+	    this.state = {
+	      data: {
+	        children: []
+	      }
+	    };
+	  }
+
+	  Object.defineProperty(AutoResponsive.prototype,"setPrivateProps",{writable:true,configurable:true,value:function() {
 	    this.privateProps = {
 	      autoSetContainerHeight: false,
 	      containerHeight: 0,
@@ -131,21 +143,20 @@
 	        this.privateProps.containerStyle.height = this.props.containerHeight;
 	      }
 	    }
-	  },
-	  detect: function() {
-	  },
-	  initGridSortManager: function() {
+	  }});
+
+	  Object.defineProperty(AutoResponsive.prototype,"initGridSortManager",{writable:true,configurable:true,value:function() {
 	    this.sortInstance = new GridSortManager(this.props, this.privateProps);
-	  },
-	  selectorFilter: function() {
-	    console.log(123)
-	  },
-	  renderChildrenGrids: function() {
+	  }});
+
+	  Object.defineProperty(AutoResponsive.prototype,"renderChildrenGrids",{writable:true,configurable:true,value:function() {
 	    this.initGridSortManager();
 
 	    return React.Children.map(this.props.children, function(child, childIndex) {
+
 	      var itemWidth = parseInt(child.props.style.width) + this.props.itemMargin;
 	      var itemHeight = parseInt(child.props.style.height) + this.props.itemMargin;
+
 	      var calculatedPositionObject = this.sortInstance.getPosition(itemWidth, itemHeight);
 
 	      if (this.privateProps.autoSetContainerHeight) {
@@ -173,24 +184,23 @@
 	        style: Util.merge(child.props.style, calculatedStyle)
 	      });
 	    }, this);
-	  },
-	  render: function() {
+	  }});
+
+	  Object.defineProperty(AutoResponsive.prototype,"render",{writable:true,configurable:true,value:function() {
 	    var that = this;
 	    this.setPrivateProps();
-	    this.detect();//
 	    return (
 	      React.createElement("div", React.__spread({className: this.props.prefixClassName},  this.props, {style: this.privateProps.containerStyle}), 
 	      this.renderChildrenGrids()
 	      )
 	    );
-	  }
-	});
+	  }});
 
-	if (typeof window === 'undefined') {
-	  module.exports = AutoResponsive;
-	} else {
-	  window.AutoResponsive = AutoResponsive;
-	}
+
+
+	AutoResponsive.defaultProps = defaultConfigurationObject;
+
+	module.exports = AutoResponsive;
 
 
 /***/ },
@@ -260,18 +270,14 @@
 	var Util = __webpack_require__(3);
 	var LinkedList = __webpack_require__(6);
 
-	function GridSortManager(props, privateProps) {
-	  this.props = props;
-	  this.privateProps = privateProps;
-	  this.curQuery = null;
-	  this.init();
-	}
 
-	var proto = {
-	  init: function() {
-	    this.getColumn();
-	  },
-	  getColumn: function() {
+	  function GridSortManagere(props, privateProps) {
+	    this.props = props;
+	    this.privateProps = privateProps;
+	    this.init();
+	  }
+
+	  Object.defineProperty(GridSortManagere.prototype,"init",{writable:true,configurable:true,value:function() {
 	    var curQuery = new LinkedList({});
 	    var span = Math.ceil(this.props.containerWidth / this.props.gridWidth);
 
@@ -279,8 +285,9 @@
 	      curQuery.add(0);
 	    }
 	    this.curQuery = curQuery;
-	  },
-	  getPosition: function(width, height) {
+	  }});
+
+	  Object.defineProperty(GridSortManagere.prototype,"getPosition",{writable:true,configurable:true,value:function(width, height) {
 	    var num = Math.ceil(width / this.props.gridWidth);
 	    var cur = this.getCurrentPointer(num);
 
@@ -288,8 +295,9 @@
 	      this.curQuery.update(i, newH);
 	    }
 	    return [cur[0] * this.props.gridWidth, cur[1]];
-	  },
-	  getCurrentPointer: function(num) {
+	  }});
+
+	  Object.defineProperty(GridSortManagere.prototype,"getCurrentPointer",{writable:true,configurable:true,value:function(num) {
 	    var min = Infinity;
 	    var idx = 0;
 	    var len = this.curQuery.size();
@@ -320,12 +328,10 @@
 	      }
 	    }
 	    return [idx, min];
-	  }
-	};
+	  }});
 
-	Util.merge(GridSortManager.prototype, proto);
 
-	module.exports = GridSortManager;
+	module.exports = GridSortManagere;
 
 
 /***/ },
@@ -351,26 +357,26 @@
 
 	var prefixes = ['-webkit-', '-moz-', '-ms-', '-o-', ''];
 
-	function AnimationManager(props, privateProps) {
-	  this.props = props;
-	  this.privateProps = privateProps;
-	  this.style = null;
-	  this.type = null;
-	}
 
-	var proto = {
-	  init: function(style, positionObject, itemSize) {
+	  function AnimationManager(props, privateProps) {
+	    this.props = props;
+	    this.privateProps = privateProps;
+	  }
+
+	  Object.defineProperty(AnimationManager.prototype,"init",{writable:true,configurable:true,value:function(style, positionObject, itemSize) {
 	    this.style = style;
 	    this.positionObject = positionObject;
 	    this.itemSize = itemSize;
 	    return this.css3Animation();
-	  },
-	  css2Animation: function() {
+	  }});
+
+	  Object.defineProperty(AnimationManager.prototype,"css2Animation",{writable:true,configurable:true,value:function() {
 	    this.style[this.props.horizontalDirection] = this.positionObject[0] + 'px';
 	    this.style[this.props.verticalDirection] = this.positionObject[1] + 'px';
 	    return this.style;
-	  },
-	  css3Animation: function() {
+	  }});
+
+	  Object.defineProperty(AnimationManager.prototype,"css3Animation",{writable:true,configurable:true,value:function() {
 	    prefixes.map(function(prefix) {
 	      var x, y;
 
@@ -390,15 +396,14 @@
 	     // this.style[prefix + 'transition-duration'] = '3s';
 	    }, this);
 	    return this.style;
-	  },
-	  noneAnimation: function() {
+	  }});
+
+	  Object.defineProperty(AnimationManager.prototype,"noneAnimation",{writable:true,configurable:true,value:function() {
 	    this.style[this.props.horizontalDirection || 'left'] = this.positionObject[0] + 'px';
 	    this.style[this.props.verticalDirection || 'top'] = this.positionObject[1] + 'px';
 	    return this.style;
-	  }
-	};
+	  }});
 
-	Util.merge(AnimationManager.prototype, proto);
 
 	module.exports = AnimationManager;
 
@@ -424,23 +429,22 @@
 
 	var Util = __webpack_require__(3);
 
-	function LinkedList(cfg) {
-	  var that = this;
-	  that.length = 0;
-	  that.head = null;
-	  that.tail = null;
-	  that.type = cfg.type || true;
-	  that.query = [];
-	  that.init();
-	}
 
-	var proto = {
-	  init: function() {
-	  },
-	  add: function(value) {
-	    var that = this;
-	    if (that.type) {
-	      that.query.push(value);
+	  function LinkedList(cfg) {
+	    this.length = 0;
+	    this.head = null;
+	    this.tail = null;
+	    this.type = cfg.type || true;
+	    this.query = [];
+	    this.init();
+	  }
+
+	  Object.defineProperty(LinkedList.prototype,"init",{writable:true,configurable:true,value:function() {
+	  }});
+
+	  Object.defineProperty(LinkedList.prototype,"add",{writable:true,configurable:true,value:function(value) {
+	    if (this.type) {
+	      this.query.push(value);
 	      return;
 	    }
 	    var node = {
@@ -448,34 +452,33 @@
 	      next: null,
 	      prev: null
 	    };
-	    if (that.length === 0) {
-	      that.head = that.tail = node;
+	    if (this.length === 0) {
+	      this.head = this.tail = node;
 	    } else {
-	      that.tail.next = node;
-	      node.prev = that.tail;
-	      that.tail = node;
+	      this.tail.next = node;
+	      node.prev = this.tail;
+	      this.tail = node;
 	    }
-	    that.length++;
-	  },
-	  remove: function(index) {
-	    var that = this;
-	    if (index > that.length - 1 || index < 0) {
+	    this.length++;
+	  }});
+
+	  Object.defineProperty(LinkedList.prototype,"remove",{writable:true,configurable:true,value:function(index) {
+	    if (index > this.length - 1 || index < 0) {
 	      return null;
 	    }
-	    var node = that.head,
+	    var node = this.head,
 	        i = 0;
 	    if (index === 0) {
-	      that.head = node.next;
-	      if (that.head == null) {
-	        that.tail = null;
+	      this.head = node.next;
+	      if (this.head == null) {
+	        this.tail = null;
+	      } else {
+	        this.head.previous = null;
 	      }
-	      else {
-	        that.head.previous = null;
-	      }
-	    } else if (index === that.length - 1) {
-	      node = that.tail;
-	      that.tail = node.prev;
-	      that.tail.next = null;
+	    } else if (index === this.length - 1) {
+	      node = this.tail;
+	      this.tail = node.prev;
+	      this.tail.next = null;
 	    } else {
 	      while (i++ < index) {
 	        node = node.next;
@@ -483,41 +486,40 @@
 	      node.prev.next = node.next;
 	      node.next.prev = node.prev;
 	    }
-	    that.length--;
-	  },
-	  get: function(index) {
-	    var that = this;
-	    if (that.type) {
-	      return that.query[index];
+	    this.length--;
+	  }});
+
+	  Object.defineProperty(LinkedList.prototype,"get",{writable:true,configurable:true,value:function(index) {
+	    if (this.type) {
+	      return this.query[index];
 	    }
-	    return that.node(index).value;
-	  },
-	  node: function(index) {
-	    var that = this;
-	    if (index > that.length - 1 || index < 0) {
+	    return this.node(index).value;
+	  }});
+
+	  Object.defineProperty(LinkedList.prototype,"node",{writable:true,configurable:true,value:function(index) {
+	    if (index > this.length - 1 || index < 0) {
 	      return null;
 	    }
-	    var node = that.head,
+	    var node = this.head,
 	        i = 0;
 	    while (i++ < index) {
 	      node = node.next;
 	    }
 	    return node;
-	  },
-	  update: function(index, value) {
-	    var that = this;
-	    if (that.type) {
-	      that.query[index] = value;
+	  }});
+
+	  Object.defineProperty(LinkedList.prototype,"update",{writable:true,configurable:true,value:function(index, value) {
+	    if (this.type) {
+	      this.query[index] = value;
 	      return;
 	    }
-	    that.node(index).value = value;
-	  },
-	  size: function(){
-	    return this.query.length || this.length;
-	  }
-	};
+	    this.node(index).value = value;
+	  }});
 
-	Util.merge(LinkedList.prototype, proto);
+	  Object.defineProperty(LinkedList.prototype,"size",{writable:true,configurable:true,value:function(){
+	    return this.query.length || this.length;
+	  }});
+
 
 	module.exports = LinkedList;
 
