@@ -17,30 +17,31 @@
 
   function request(file, i18n, success) {
 
-    var api = './docs/' + (i18n || 'zh') + '/' + file + '.md';
-    var xmlHttp = new XMLHttpRequest();
+    let api = './docs/' + (i18n || 'zh') + '/' + file + '.md';
+    let xmlHttp = new XMLHttpRequest();
     xmlHttp.open('GET', api, true);
     xmlHttp.onreadystatechange = function(d) {
       if (xmlHttp.readyState == 4) {
-        var data = xmlHttp.responseText;
+        let data = xmlHttp.responseText;
         success(data);
       }
     };
     xmlHttp.send(null);
   }
 
-  var MarkdownComponent = React.createClass({
-    renderMarkdownContent: function() {
+  class MarkdownComponent extends React.Component {
+    renderMarkdownContent() {
       return marked(this.props.children);
-    },
-    render: function() {
+    }
+
+    render() {
       return (<div className='markdown' dangerouslySetInnerHTML={
         {
           __html: this.renderMarkdownContent()
         }
       }></div>);
     }
-  });
+  }
 
   var LogoComponent = React.createClass({
     mixins: [tweenState.Mixin],
@@ -108,7 +109,7 @@
     }
   });
 
-  var Controller = Model({
+  let Controller = Model({
     constructor: function() {
       this.init();
     },
@@ -118,17 +119,17 @@
       this.renderMarkdownDoc();
     },
     renderMarkdownDoc: function(i18n) {
-      var that = this;
+      let that = this;
       marked.setOptions({
         highlight: function(code) {
           return hljs.highlightAuto(code).value;
         }
       });
 
-      var requestList = ['usage', 'option', 'event'];
+      let requestList = ['usage', 'option', 'event'];
 
       requestList.forEach(function(name) {
-        var node = document.createElement('div');
+        let node = document.createElement('div');
         node.id = name;
         document.getElementById('page').appendChild(node);
         request(name, i18n, function(data) {
@@ -145,7 +146,7 @@
       });
     },
     bind: function() {
-      var that = this;
+      let that = this;
       this.on('startInitExample', function() {
         that.initSimplestExample();
         that.initWaterfallExample();
@@ -155,7 +156,7 @@
       React.render(<LogoComponent/>, document.getElementById('logo'));
     },
     initSimplestExample: function() {
-      var style = {
+      let style = {
         height: '100px',
         width: '100px',
         color: '#514713',
@@ -171,21 +172,22 @@
         'cursor': 'default'
       };
 
-      var container = document.getElementById('simplest');
-      var clientWidth = container.clientWidth;
-      var arrayList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+      let container = document.getElementById('simplest');
+      let clientWidth = container.clientWidth;
+      let arrayList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-      var SimplestComponent = React.createClass({
-        getInitialState: function() {
-          return {
+      class SimplestComponent extends React.Component {
+        constructor() {
+          this.state = {
             arrayList: arrayList,
             itemMargin: 10,
             horizontalDirection: 'left',
             verticalDirection: 'top',
             containerHeight: 'auto'
-          }
-        },
-        render: function() {
+          };
+        }
+
+        render() {
           return (
             <AutoResponsive horizontalDirection={this.state.horizontalDirection}  verticalDirection={this.state.verticalDirection} itemMargin={this.state.itemMargin} containerWidth={clientWidth} containerHeight={this.state.containerHeight}  itemSelector='item'>
             {
@@ -196,18 +198,18 @@
             </AutoResponsive>
           );
         }
-      });
+      }
 
-      var simplestComponent = React.render(
+      let simplestComponent = React.render(
         <SimplestComponent/>,
         container
       );
 
-      var buttonListNode = document.createElement('div');
+      let buttonListNode = document.createElement('div');
       buttonListNode.id = 'buttonList';
       container.parentNode.insertBefore(buttonListNode, container);
 
-      var appendClickHandle = function(e) {
+      let appendClickHandle = function(e) {
 
         if (arrayList.length === 99) {
           return;
@@ -218,33 +220,33 @@
         });
       }
 
-      var removeClickHandle = function() {
+      let removeClickHandle = function() {
         arrayList.shift();
         simplestComponent.setState({
           arrayList: arrayList
         });
       }
 
-      var sortClickHandle = function() {
+      let sortClickHandle = function() {
         simplestComponent.setState({
           arrayList: arrayList.reverse()
         });
       }
 
-      var marginClickHandle = function() {
+      let marginClickHandle = function() {
         simplestComponent.setState({
           itemMargin: simplestComponent.state.itemMargin === 10 ? 20 : 10
         });
       }
 
-      var horizontalClickHandle = function() {
+      let horizontalClickHandle = function() {
         simplestComponent.setState({
           horizontalDirection: simplestComponent.state.horizontalDirection === 'left' ? 'right' : 'left'
         });
       }
 
-      var verticalClickHandle = function() {
-        var verticalDirection,
+      let verticalClickHandle = function() {
+        let verticalDirection,
             containerHeight;
 
         if (simplestComponent.state.verticalDirection === 'top') {
@@ -260,7 +262,7 @@
         });
       }
 
-      var ButtonsComponent = React.createClass({
+      let ButtonsComponent = React.createClass({
         render: function() {
           return (
             <div className="btn-group">
@@ -281,8 +283,8 @@
       );
     },
     initWaterfallExample: function() {
-      var getItemStyle = function() {
-        var _style = {
+      let getItemStyle = function() {
+        let _style = {
           width: '180px',
           height: parseInt(Math.random() * 20 + 15) * 10 + 'px',
           color: '#3a2d5b',
@@ -300,17 +302,17 @@
         return _style;
       }
 
-      var container = document.getElementById('waterfall');
-      var clientWidth = container.clientWidth;
-      var arrayList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-      var styleList = {};
+      let container = document.getElementById('waterfall');
+      let clientWidth = container.clientWidth;
+      let arrayList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+      let styleList = {};
       arrayList.map(function(i) {
         styleList[i] = getItemStyle();
       });
 
-      var clickHandle = function(e) {
-        var nodes = e.target.parentNode.childNodes;
-        for (var i = 0; i < nodes.length; i ++) {
+      let clickHandle = function(e) {
+        let nodes = e.target.parentNode.childNodes;
+        for (let i = 0; i < nodes.length; i ++) {
           if (nodes[i] === e.target) {
             styleList[i].width = styleList[i].width === '370px' ? '180px' : '370px';
             waterfallComponent.setState({
@@ -320,13 +322,15 @@
         }
       }
 
-      var WaterfallComponent = React.createClass({
-        getInitialState: function() {
-          return {
+
+      class WaterfallComponent extends React.Component {
+        constructor() {
+          this.state = {
             styleList: styleList
-          }
-        },
-        render: function() {
+          };
+        }
+
+        render() {
           return (
             <AutoResponsive  itemMargin={10} containerWidth={clientWidth} itemSelector='item'>
             {
@@ -337,9 +341,9 @@
             </AutoResponsive>
           );
         }
-      });
+      }
 
-      var waterfallComponent = React.render(
+      let waterfallComponent = React.render(
         <WaterfallComponent/>,
         container
       );

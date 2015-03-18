@@ -15,8 +15,15 @@
 
 var AutoResponsive = require('./lib');
 
-if (typeof window === 'undefined') {
-  module.exports = AutoResponsive;
-} else {
+if (typeof window !== 'undefined') {
   window.AutoResponsive = AutoResponsive;
+} else if (typeof exports !== 'undefined') {
+  if (typeof module !== 'undefined' && module.exports) {
+    exports = module.exports = AutoResponsive;
+  }
+  exports.AutoResponsive = AutoResponsive;
+} else if (typeof define === 'function') {
+  define(function() {
+    return AutoResponsive;
+  });
 }

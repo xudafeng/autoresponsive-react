@@ -63,30 +63,31 @@
 
 	  function request(file, i18n, success) {
 
-	    var api = './docs/' + (i18n || 'zh') + '/' + file + '.md';
-	    var xmlHttp = new XMLHttpRequest();
+	    let api = './docs/' + (i18n || 'zh') + '/' + file + '.md';
+	    let xmlHttp = new XMLHttpRequest();
 	    xmlHttp.open('GET', api, true);
 	    xmlHttp.onreadystatechange = function(d) {
 	      if (xmlHttp.readyState == 4) {
-	        var data = xmlHttp.responseText;
+	        let data = xmlHttp.responseText;
 	        success(data);
 	      }
 	    };
 	    xmlHttp.send(null);
 	  }
 
-	  var MarkdownComponent = React.createClass({displayName: "MarkdownComponent",
-	    renderMarkdownContent: function() {
+	  var ____Class0=React.Component;for(var ____Class0____Key in ____Class0){if(____Class0.hasOwnProperty(____Class0____Key)){MarkdownComponent[____Class0____Key]=____Class0[____Class0____Key];}}var ____SuperProtoOf____Class0=____Class0===null?null:____Class0.prototype;MarkdownComponent.prototype=Object.create(____SuperProtoOf____Class0);MarkdownComponent.prototype.constructor=MarkdownComponent;MarkdownComponent.__superConstructor__=____Class0;function MarkdownComponent(){if(____Class0!==null){____Class0.apply(this,arguments);}}
+	    Object.defineProperty(MarkdownComponent.prototype,"renderMarkdownContent",{writable:true,configurable:true,value:function() {
 	      return marked(this.props.children);
-	    },
-	    render: function() {
+	    }});
+
+	    Object.defineProperty(MarkdownComponent.prototype,"render",{writable:true,configurable:true,value:function() {
 	      return (React.createElement("div", {className: "markdown", dangerouslySetInnerHTML: 
 	        {
 	          __html: this.renderMarkdownContent()
 	        }
 	      }));
-	    }
-	  });
+	    }});
+	  
 
 	  var LogoComponent = React.createClass({displayName: "LogoComponent",
 	    mixins: [tweenState.Mixin],
@@ -154,7 +155,7 @@
 	    }
 	  });
 
-	  var Controller = Model({
+	  let Controller = Model({
 	    constructor: function() {
 	      this.init();
 	    },
@@ -164,17 +165,17 @@
 	      this.renderMarkdownDoc();
 	    },
 	    renderMarkdownDoc: function(i18n) {
-	      var that = this;
+	      let that = this;
 	      marked.setOptions({
 	        highlight: function(code) {
 	          return hljs.highlightAuto(code).value;
 	        }
 	      });
 
-	      var requestList = ['usage', 'option', 'event'];
+	      let requestList = ['usage', 'option', 'event'];
 
 	      requestList.forEach(function(name) {
-	        var node = document.createElement('div');
+	        let node = document.createElement('div');
 	        node.id = name;
 	        document.getElementById('page').appendChild(node);
 	        request(name, i18n, function(data) {
@@ -191,7 +192,7 @@
 	      });
 	    },
 	    bind: function() {
-	      var that = this;
+	      let that = this;
 	      this.on('startInitExample', function() {
 	        that.initSimplestExample();
 	        that.initWaterfallExample();
@@ -201,7 +202,7 @@
 	      React.render(React.createElement(LogoComponent, null), document.getElementById('logo'));
 	    },
 	    initSimplestExample: function() {
-	      var style = {
+	      let style = {
 	        height: '100px',
 	        width: '100px',
 	        color: '#514713',
@@ -217,21 +218,22 @@
 	        'cursor': 'default'
 	      };
 
-	      var container = document.getElementById('simplest');
-	      var clientWidth = container.clientWidth;
-	      var arrayList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+	      let container = document.getElementById('simplest');
+	      let clientWidth = container.clientWidth;
+	      let arrayList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-	      var SimplestComponent = React.createClass({displayName: "SimplestComponent",
-	        getInitialState: function() {
-	          return {
+	      var ____Class1=React.Component;for(var ____Class1____Key in ____Class1){if(____Class1.hasOwnProperty(____Class1____Key)){SimplestComponent[____Class1____Key]=____Class1[____Class1____Key];}}var ____SuperProtoOf____Class1=____Class1===null?null:____Class1.prototype;SimplestComponent.prototype=Object.create(____SuperProtoOf____Class1);SimplestComponent.prototype.constructor=SimplestComponent;SimplestComponent.__superConstructor__=____Class1;
+	        function SimplestComponent() {
+	          this.state = {
 	            arrayList: arrayList,
 	            itemMargin: 10,
 	            horizontalDirection: 'left',
 	            verticalDirection: 'top',
 	            containerHeight: 'auto'
-	          }
-	        },
-	        render: function() {
+	          };
+	        }
+
+	        Object.defineProperty(SimplestComponent.prototype,"render",{writable:true,configurable:true,value:function() {
 	          return (
 	            React.createElement(AutoResponsive, {horizontalDirection: this.state.horizontalDirection, verticalDirection: this.state.verticalDirection, itemMargin: this.state.itemMargin, containerWidth: clientWidth, containerHeight: this.state.containerHeight, itemSelector: "item"}, 
 	            
@@ -241,19 +243,19 @@
 	            
 	            )
 	          );
-	        }
-	      });
+	        }});
+	      
 
-	      var simplestComponent = React.render(
+	      let simplestComponent = React.render(
 	        React.createElement(SimplestComponent, null),
 	        container
 	      );
 
-	      var buttonListNode = document.createElement('div');
+	      let buttonListNode = document.createElement('div');
 	      buttonListNode.id = 'buttonList';
 	      container.parentNode.insertBefore(buttonListNode, container);
 
-	      var appendClickHandle = function(e) {
+	      let appendClickHandle = function(e) {
 
 	        if (arrayList.length === 99) {
 	          return;
@@ -264,33 +266,33 @@
 	        });
 	      }
 
-	      var removeClickHandle = function() {
+	      let removeClickHandle = function() {
 	        arrayList.shift();
 	        simplestComponent.setState({
 	          arrayList: arrayList
 	        });
 	      }
 
-	      var sortClickHandle = function() {
+	      let sortClickHandle = function() {
 	        simplestComponent.setState({
 	          arrayList: arrayList.reverse()
 	        });
 	      }
 
-	      var marginClickHandle = function() {
+	      let marginClickHandle = function() {
 	        simplestComponent.setState({
 	          itemMargin: simplestComponent.state.itemMargin === 10 ? 20 : 10
 	        });
 	      }
 
-	      var horizontalClickHandle = function() {
+	      let horizontalClickHandle = function() {
 	        simplestComponent.setState({
 	          horizontalDirection: simplestComponent.state.horizontalDirection === 'left' ? 'right' : 'left'
 	        });
 	      }
 
-	      var verticalClickHandle = function() {
-	        var verticalDirection,
+	      let verticalClickHandle = function() {
+	        let verticalDirection,
 	            containerHeight;
 
 	        if (simplestComponent.state.verticalDirection === 'top') {
@@ -306,7 +308,7 @@
 	        });
 	      }
 
-	      var ButtonsComponent = React.createClass({displayName: "ButtonsComponent",
+	      let ButtonsComponent = React.createClass({displayName: "ButtonsComponent",
 	        render: function() {
 	          return (
 	            React.createElement("div", {className: "btn-group"}, 
@@ -327,8 +329,8 @@
 	      );
 	    },
 	    initWaterfallExample: function() {
-	      var getItemStyle = function() {
-	        var _style = {
+	      let getItemStyle = function() {
+	        let _style = {
 	          width: '180px',
 	          height: parseInt(Math.random() * 20 + 15) * 10 + 'px',
 	          color: '#3a2d5b',
@@ -346,17 +348,17 @@
 	        return _style;
 	      }
 
-	      var container = document.getElementById('waterfall');
-	      var clientWidth = container.clientWidth;
-	      var arrayList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-	      var styleList = {};
+	      let container = document.getElementById('waterfall');
+	      let clientWidth = container.clientWidth;
+	      let arrayList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+	      let styleList = {};
 	      arrayList.map(function(i) {
 	        styleList[i] = getItemStyle();
 	      });
 
-	      var clickHandle = function(e) {
-	        var nodes = e.target.parentNode.childNodes;
-	        for (var i = 0; i < nodes.length; i ++) {
+	      let clickHandle = function(e) {
+	        let nodes = e.target.parentNode.childNodes;
+	        for (let i = 0; i < nodes.length; i ++) {
 	          if (nodes[i] === e.target) {
 	            styleList[i].width = styleList[i].width === '370px' ? '180px' : '370px';
 	            waterfallComponent.setState({
@@ -366,13 +368,15 @@
 	        }
 	      }
 
-	      var WaterfallComponent = React.createClass({displayName: "WaterfallComponent",
-	        getInitialState: function() {
-	          return {
+
+	      var ____Class2=React.Component;for(var ____Class2____Key in ____Class2){if(____Class2.hasOwnProperty(____Class2____Key)){WaterfallComponent[____Class2____Key]=____Class2[____Class2____Key];}}var ____SuperProtoOf____Class2=____Class2===null?null:____Class2.prototype;WaterfallComponent.prototype=Object.create(____SuperProtoOf____Class2);WaterfallComponent.prototype.constructor=WaterfallComponent;WaterfallComponent.__superConstructor__=____Class2;
+	        function WaterfallComponent() {
+	          this.state = {
 	            styleList: styleList
-	          }
-	        },
-	        render: function() {
+	          };
+	        }
+
+	        Object.defineProperty(WaterfallComponent.prototype,"render",{writable:true,configurable:true,value:function() {
 	          return (
 	            React.createElement(AutoResponsive, {itemMargin: 10, containerWidth: clientWidth, itemSelector: "item"}, 
 	            
@@ -382,10 +386,10 @@
 	            
 	            )
 	          );
-	        }
-	      });
+	        }});
+	      
 
-	      var waterfallComponent = React.render(
+	      let waterfallComponent = React.render(
 	        React.createElement(WaterfallComponent, null),
 	        container
 	      );

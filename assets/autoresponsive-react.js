@@ -61,10 +61,17 @@
 
 	var AutoResponsive = __webpack_require__(1);
 
-	if (typeof window === 'undefined') {
-	  module.exports = AutoResponsive;
-	} else {
+	if (typeof window !== 'undefined') {
 	  window.AutoResponsive = AutoResponsive;
+	} else if (true) {
+	  if (typeof module !== 'undefined' && module.exports) {
+	    exports = module.exports = AutoResponsive;
+	  }
+	  exports.AutoResponsive = AutoResponsive;
+	} else if (typeof define === 'function') {
+	  define(function() {
+	    return AutoResponsive;
+	  });
 	}
 
 
@@ -87,20 +94,20 @@
 
 	'use strict';
 
-	var React = __webpack_require__(2);
-	var Util = __webpack_require__(3);
-	var GridSortManager = __webpack_require__(4);
-	var AnimationManager = __webpack_require__(5);
+	let React = __webpack_require__(2);
+	let Util = __webpack_require__(3);
+	let GridSortManager = __webpack_require__(4);
+	let AnimationManager = __webpack_require__(5);
 
-	var noop = function() {};
+	let noop = function() {};
 
-	var defaultContainerStyle = {
+	let defaultContainerStyle = {
 	  position: 'relative'
 	};
 
-	var ____Class0=React.Component;for(var ____Class0____Key in ____Class0){if(____Class0.hasOwnProperty(____Class0____Key)){AutoResponsive[____Class0____Key]=____Class0[____Class0____Key];}}var ____SuperProtoOf____Class0=____Class0===null?null:____Class0.prototype;AutoResponsive.prototype=Object.create(____SuperProtoOf____Class0);AutoResponsive.prototype.constructor=AutoResponsive;AutoResponsive.__superConstructor__=____Class0;
+	var ____Class3=React.Component;for(var ____Class3____Key in ____Class3){if(____Class3.hasOwnProperty(____Class3____Key)){AutoResponsive[____Class3____Key]=____Class3[____Class3____Key];}}var ____SuperProtoOf____Class3=____Class3===null?null:____Class3.prototype;AutoResponsive.prototype=Object.create(____SuperProtoOf____Class3);AutoResponsive.prototype.constructor=AutoResponsive;AutoResponsive.__superConstructor__=____Class3;
 	  function AutoResponsive(props) {
-	    ____Class0.call(this,props);
+	    ____Class3.call(this,props);
 	    this.state = {
 	      data: {
 	        children: []
@@ -141,10 +148,10 @@
 
 	    return React.Children.map(this.props.children, function(child, childIndex) {
 
-	      var itemWidth = parseInt(child.props.style.width) + this.props.itemMargin;
-	      var itemHeight = parseInt(child.props.style.height) + this.props.itemMargin;
+	      let itemWidth = parseInt(child.props.style.width) + this.props.itemMargin;
+	      let itemHeight = parseInt(child.props.style.height) + this.props.itemMargin;
 
-	      var calculatedPositionObject = this.sortInstance.getPosition(itemWidth, itemHeight);
+	      let calculatedPositionObject = this.sortInstance.getPosition(itemWidth, itemHeight);
 
 	      if (this.privateProps.autoSetContainerHeight) {
 
@@ -157,7 +164,7 @@
 	        }
 	      }
 
-	      var calculatedStyle = new AnimationManager(this.props, this.privateProps).init({
+	      let calculatedStyle = new AnimationManager(this.props, this.privateProps).init({
 	        position: 'absolute',
 	        overflow: 'hidden'
 	      }, calculatedPositionObject, {
@@ -174,7 +181,6 @@
 	  }});
 
 	  Object.defineProperty(AutoResponsive.prototype,"render",{writable:true,configurable:true,value:function() {
-	    var that = this;
 	    this.setPrivateProps();
 	    return (
 	      React.createElement("div", React.__spread({className: this.props.prefixClassName},  this.props, {style: this.privateProps.containerStyle}), 
@@ -196,7 +202,6 @@
 	  amimationType: 'transform',
 	  onLayoutDidComplete: noop
 	};
-
 
 	module.exports = AutoResponsive;
 
@@ -226,7 +231,7 @@
 
 	'use strict';
 
-	var Util = {
+	let Util = {
 	  merge: function(r, s) {
 	    this.each(s, function(v, k) {
 	      r[k] = v;
@@ -234,7 +239,7 @@
 	    return r;
 	  },
 	  each: function(obj, fn) {
-	    for (var i in obj) {
+	    for (let i in obj) {
 	      if (obj.hasOwnProperty(i)) {
 	        fn.call(this, obj[i], i);
 	      }
@@ -265,8 +270,8 @@
 
 	'use strict';
 
-	var Util = __webpack_require__(3);
-	var LinkedList = __webpack_require__(6);
+	let Util = __webpack_require__(3);
+	let LinkedList = __webpack_require__(6);
 
 
 	  function GridSortManagere(props, privateProps) {
@@ -276,35 +281,35 @@
 	  }
 
 	  Object.defineProperty(GridSortManagere.prototype,"init",{writable:true,configurable:true,value:function() {
-	    var curQuery = new LinkedList({});
-	    var span = Math.ceil(this.props.containerWidth / this.props.gridWidth);
+	    let curQuery = new LinkedList({});
+	    let span = Math.ceil(this.props.containerWidth / this.props.gridWidth);
 
-	    for (var i = 0; i < span; i++) {
+	    for (let i = 0; i < span; i++) {
 	      curQuery.add(0);
 	    }
 	    this.curQuery = curQuery;
 	  }});
 
 	  Object.defineProperty(GridSortManagere.prototype,"getPosition",{writable:true,configurable:true,value:function(width, height) {
-	    var num = Math.ceil(width / this.props.gridWidth);
-	    var cur = this.getCurrentPointer(num);
+	    let num = Math.ceil(width / this.props.gridWidth);
+	    let cur = this.getCurrentPointer(num);
 
-	    for (var i = cur[0], len = num + cur[0], newH = cur[1] + height; i < len; i++) {
+	    for (let i = cur[0], len = num + cur[0], newH = cur[1] + height; i < len; i++) {
 	      this.curQuery.update(i, newH);
 	    }
 	    return [cur[0] * this.props.gridWidth, cur[1]];
 	  }});
 
 	  Object.defineProperty(GridSortManagere.prototype,"getCurrentPointer",{writable:true,configurable:true,value:function(num) {
-	    var min = Infinity;
-	    var idx = 0;
-	    var len = this.curQuery.size();
+	    let min = Infinity;
+	    let idx = 0;
+	    let len = this.curQuery.size();
 
-	    for (var i = 0; i <= (len < num ? 0 : len - num); i++) {
-	      var max = -Infinity;
-	      var curValue;
+	    for (let i = 0; i <= (len < num ? 0 : len - num); i++) {
+	      let max = -Infinity;
+	      let curValue;
 
-	      for (var j = 0; j < num; j++) {
+	      for (let j = 0; j < num; j++) {
 	        curValue = this.curQuery.get(i + j);
 	        if (curValue >= min) {
 	          i += j + 1; // jump back
@@ -351,7 +356,7 @@
 
 	'use strict';
 
-	var Util = __webpack_require__(3);
+	let Util = __webpack_require__(3);
 
 	const prefixes = ['-webkit-', '-moz-', '-ms-', '-o-', ''];
 
@@ -376,7 +381,7 @@
 
 	  Object.defineProperty(AnimationManager.prototype,"css3Animation",{writable:true,configurable:true,value:function() {
 	    prefixes.map(function(prefix) {
-	      var x, y;
+	      let x, y;
 
 	      if (this.props.horizontalDirection === 'right') {
 	        x = this.props.containerWidth - this.itemSize.width - this.positionObject[0];
@@ -425,7 +430,7 @@
 
 	'use strict';
 
-	var Util = __webpack_require__(3);
+	let Util = __webpack_require__(3);
 
 
 	  function LinkedList(cfg) {
@@ -445,7 +450,7 @@
 	      this.query.push(value);
 	      return;
 	    }
-	    var node = {
+	    let node = {
 	      value: value,
 	      next: null,
 	      prev: null
@@ -464,7 +469,7 @@
 	    if (index > this.length - 1 || index < 0) {
 	      return null;
 	    }
-	    var node = this.head,
+	    let node = this.head,
 	        i = 0;
 	    if (index === 0) {
 	      this.head = node.next;
@@ -498,7 +503,7 @@
 	    if (index > this.length - 1 || index < 0) {
 	      return null;
 	    }
-	    var node = this.head,
+	    let node = this.head,
 	        i = 0;
 	    while (i++ < index) {
 	      node = node.next;
