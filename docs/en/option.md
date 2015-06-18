@@ -10,7 +10,7 @@ container total width
 ### containerHeight
 
 ```
-Type: String || Number, Default: 'auto'
+Type: String || Number, Default: null
 ```
 
 container total height
@@ -30,10 +30,10 @@ Type: String, Default: 'rc-autoresponsive'
 
 container node's class name
 
-### itemSelector
+### itemClassName
 
 ```
-Type: String, Default: 'rc-autoresponsive-item'
+Type: String, Default: 'item'
 ```
 
 item selector
@@ -61,18 +61,18 @@ Type: String, Default: 'top'
 
 vertical direction
 
-### animationType
+### closeAnimation
 
 ```
-Type: String, Default: 'auto'
+Type: Boolean, Default: false
 ```
 
-animation type `transition`,`css2`,or `close`
+close animation
 
 ### transitionDuration
 
 ```
-Type: String, Default: '1s'
+Type: Number, Default: 1
 
 ```
 transition duration, such as `.8s`
@@ -84,10 +84,3 @@ Type: String, Default: 'linear'
 
 ```
 transition timing function, such as `easeIn`
-
-### transitionDelay
-
-```
-Type: String, Default: 0
-```
-transition delay, such as `1s`

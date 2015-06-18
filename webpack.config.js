@@ -17,21 +17,28 @@ var path = require('path');
 
 var config = {
   entry: {
-    'autoresponsive-react': path.resolve('index.js'),
+    homepage: path.resolve('homepage'),
+    examples: path.resolve('examples')
   },
   output: {
     path: path.join(__dirname, 'assets'),
     filename: '[name].js'
   },
   externals: {
-    react: 'React',
-    'react/addons': 'React'
   },
   module: {
     loaders: [
       {
         test: /\.js$/,
         loader: 'jsx-loader?harmony'
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
       }
     ]
   }

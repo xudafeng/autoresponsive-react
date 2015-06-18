@@ -11,6 +11,20 @@
  *
  * ================================================================ */
 
-'use strict';
+let React = require('react');
 
-module.exports = require('./lib');
+class FooterComponent extends React.Component {
+  render() {
+    return (
+      <footer>
+        <hr/>
+        <div className="text-center">
+          <br/>
+          &copy;&nbsp;<a href="https://github.com/xudafeng">xdf</a> {new Date().getFullYear()}
+        </div>
+      </footer>
+    );
+  }
+}
+
+module.exports = FooterComponent;
