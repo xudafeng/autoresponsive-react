@@ -1,7 +1,0 @@
-.git/
-node_modules/
-coverage/
-build/
-assets/
-bower_components/
-lib/index.js

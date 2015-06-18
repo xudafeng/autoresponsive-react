@@ -1,0 +1,188 @@
+.hljs{display:block;overflow-x:auto;padding:.5em;background:#fdf6e3;color:#657b83;-webkit-text-size-adjust:none}.hljs-comment,.hljs-template_comment,.diff .hljs-header,.hljs-doctype,.hljs-pi,.lisp .hljs-string,.hljs-javadoc{color:#93a1a1}.hljs-keyword,.hljs-winutils,.method,.hljs-addition,.css .hljs-tag,.hljs-request,.hljs-status,.nginx .hljs-title{color:#859900}.hljs-number,.hljs-command,.hljs-string,.hljs-tag .hljs-value,.hljs-rules .hljs-value,.hljs-phpdoc,.hljs-dartdoc,.tex .hljs-formula,.hljs-regexp,.hljs-hexcolor,.hljs-link_url{color:#2aa198}.hljs-title,.hljs-localvars,.hljs-chunk,.hljs-decorator,.hljs-built_in,.hljs-identifier,.vhdl .hljs-literal,.hljs-id,.css .hljs-function{color:#268bd2}.hljs-attribute,.hljs-variable,.lisp .hljs-body,.smalltalk .hljs-number,.hljs-constant,.hljs-class .hljs-title,.hljs-parent,.hljs-type,.hljs-link_reference{color:#b58900}.hljs-preprocessor,.hljs-preprocessor .hljs-keyword,.hljs-pragma,.hljs-shebang,.hljs-symbol,.hljs-symbol .hljs-string,.diff .hljs-change,.hljs-special,.hljs-attr_selector,.hljs-subst,.hljs-cdata,.css .hljs-pseudo,.hljs-header{color:#cb4b16}.hljs-deletion,.hljs-important{color:#dc322f}.hljs-link_label{color:#6c71c4}.tex .hljs-formula{background:#eee8d5}
+.markdown pre{
+  background: #2B2B2B;
+  color: #E6E1DC;
+  border: none;
+  font-size: 18px;
+  line-height: 1.5em;
+}
+.markdown {
+  opacity: 0;
+  -webkit-transition: opacity .8s ease;
+  transition: opacity .8s ease;
+}
+.fadeIn {
+  opacity: 100!important;
+}
+code {
+  background: #2B2B2B;
+  color: #E6E1DC;
+}
+hr {
+  border-top: 1px dashed #412816;
+  margin-top: 4em;
+  margin-bottom: 4em;
+}
+h1, h2, h3 {
+  cursor: pointer;
+}
+h2 {
+  margin-top: 30px;
+  color: #FFCEA9;
+  font-size: 34px;
+}
+h3 {
+  font-size: 28px;
+}
+p {
+  font-size: 20px;
+}
+::-webkit-scrollbar {
+  width: 1px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ebd9ba;
+}
+/**
+ * doc
+ */
+html {
+  background-color: #301711;
+  overflow-x: hidden;
+}
+body {
+  background: #301711;
+  color: #c5aa97;
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  line-height: 1;
+  position: relative;
+  opacity: 0.8;
+}
+a {
+  color: #facd3e;
+  text-decoration: none;
+  line-height: inherit;
+}
+header {
+  background-color: #ebd9ba;
+  overflow: hidden;
+  cursor: default;
+}
+
+article {
+  color: #d0bbab;
+  min-height: 1000px;
+}
+h1 {
+  font-family: "Roboto", sans-serif;
+  font-size: 2.75em;
+  margin: 0;
+}
+header h1, header h2 {
+  color: #301711;
+  font-weight: 300;
+}
+article h2, article h3 {
+  font-weight: 300;
+}
+article h3 {
+  margin: 40px 0 20px 0;
+}
+article p {
+  margin-top: 20px;
+}
+header h1 em {
+  color: #cd9d05;
+  font-style: normal;
+}
+a:hover, a:focus {
+  color: #f9c725;
+  text-decoration: none;
+}
+a:active, a:hover {
+  outline: 0;
+}
+footer {
+  padding: 20px 0;
+}
+.loading {
+  font-size: 20px;
+  padding-top: 10px;
+}
+.header {
+  position: relative;
+  padding-bottom: 60px;
+}
+.header .title {
+  padding: 20px 0 30px 0;
+}
+.header .first {
+  font-size: 150px;
+  font-weight: bold;
+  line-height: 1.2em;
+  display: block;
+  float: left;
+  padding-right: 50px;
+}
+.header .logo {
+  width: 600px;
+  position: absolute;
+  bottom: -272px;
+  right: -84px;
+  opacity: 0.8;
+}
+@media only screen and (max-width: 500px) {
+  .header {
+    padding-bottom: 10px;
+  }
+  .header .logo {
+    display: none!important;
+  }
+  .header .first {
+    font-size: 100px;
+    padding: 0;
+    float: none;
+  }
+  .header .title {
+    font-size: 10px;
+    padding: 10px 0;
+  }
+  .header .description p {
+    padding: 0!important;
+    font-size: 40px;
+  }
+  .autoresponsive-react-ribbon {
+    display: none;
+  }
+}
+.header .description p {
+  font-size: 50px;
+  padding-top: 26px;
+  padding-right: 40px;
+  text-rendering: optimizeLegibility;
+  font-weight: normal;
+  line-height: 1.2em;
+}
+.btn-group {
+  margin-top: 20px;
+}
+.btn-group button,
+.btn-group button:hover {
+  background-color: #301711;
+  border-color: #796b1d;
+  color: #d0bbab;
+}
+.btn-group button:focus {
+  background-color: #301711;
+  color: #fff;
+}
+.rc-autoresponsive-container {
+  margin-top: 20px;
+}
+.rc-autoresponsive-container .item {
+  transition-duration: 1s;
+}

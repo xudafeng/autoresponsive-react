@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<title>sample-react</title>
+<link rel="stylesheet" href="index.css"/>
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../bower_components/react/react-with-addons.js"></script>
+<script src="../../bower_components/react/JSXTransformer.js"></script>
+<base target="_blank"/>
+</head>
+<body>
+<article>
+  <div class="content" data-foo="1"></div>
+  <div class="content" data-foo="2"></div>
+</article>
+<footer>
+</footer>
+<script type="text/jsx;harmony=true" src="index.js"></script>
+<script type="text/jsx;harmony=true">
+var container = $('.content')[1];
+React.render(<Component1 i18n="#i18n()" />, container);
+</script>
+</body>
+</html>

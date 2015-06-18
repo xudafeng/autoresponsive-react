@@ -1,8 +1,0 @@
-{
-  "name": "autoresponsive-react",
-  "devDependencies": {
-    "react": "0.13.1",
-    "bootstrap": "3.3.2",
-    "marked": "0.3.2"
-  }
-}
