@@ -1,3 +1,4 @@
 - doc
+- animation
 - kissy jquery
 - native
