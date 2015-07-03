@@ -81,7 +81,9 @@ class WaterfallSampleComponent extends React.Component {
     return {
       itemMargin: 10,
       containerWidth: this.state.containerWidth || this.props.containerWidth,
-      itemClassName: 'item'
+      itemClassName: 'item',
+      transitionDuration: '.5',
+      transitionTimingFunction: 'easeIn'
     };
   }
 

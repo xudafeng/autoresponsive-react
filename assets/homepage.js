@@ -19121,7 +19121,9 @@
 	      return {
 	        itemMargin: 10,
 	        containerWidth: this.state.containerWidth || this.props.containerWidth,
-	        itemClassName: 'item'
+	        itemClassName: 'item',
+	        transitionDuration: '.5',
+	        transitionTimingFunction: 'easeIn'
 	      };
 	    }
 	  }, {
@@ -19729,7 +19731,7 @@
 
 	module.exports = {
 		"name": "autoresponsive-react",
-		"version": "1.1.0",
+		"version": "1.1.1",
 		"description": "auto responsive grid layout library",
 		"keywords": [
 			"react",
@@ -19999,7 +20001,9 @@
 	        itemMargin: this.state.itemMargin,
 	        containerWidth: this.state.containerWidth || this.props.containerWidth,
 	        itemClassName: 'item',
-	        containerHeight: this.state.containerHeight
+	        containerHeight: this.state.containerHeight,
+	        transitionDuration: '.5',
+	        transitionTimingFunction: 'easeIn'
 	      };
 	    }
 	  }, {
