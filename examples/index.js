@@ -11,6 +11,9 @@
  *
  * ================================================================ */
 
-'use strict';
+let React = require('react');
+let AutoResponsive = require('..');
+let Util = require('./util');
+let WaterfallExampleComponent = require('./waterfall');
 
-module.exports = require('./lib');
+React.render(<WaterfallExampleComponent />, document.body);
