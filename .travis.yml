@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+  - "0.11"
+notifications:
+  email:
+  - xudafeng@126.com
+after_success: make travis
