@@ -5,13 +5,12 @@ Auto responsive grid layout library for [React](http://facebook.github.io/react/
 
 ## Examples
 
-Live demo: [xudafeng.github.io/autoresponsive-react](https://xudafeng.github.io/autoresponsive-react/)
+Live demo & docs: [xudafeng.github.io/autoresponsive-react](https://xudafeng.github.io/autoresponsive-react/)
 
-To build the examples locally, run:
+To build the examples local, please run:
 
 ```shell
 $ make install
-$ make build
 $ make server
 ```
 
@@ -20,8 +19,6 @@ $ make server
 ```shell
 $ npm install autoresponsive-react --save
 ```
-
-## Usage
 
 ## Contributing
 
