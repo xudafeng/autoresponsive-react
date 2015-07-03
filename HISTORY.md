@@ -1,3 +1,9 @@
-- doc
-- kissy jquery
-- native
+1.1.0  / 2015-07-03
+===================
+
+  * First Release
+
+0.1.0  / 2014-03-04
+===================
+
+  * First Commit
