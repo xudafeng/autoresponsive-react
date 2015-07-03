@@ -19122,7 +19122,7 @@
 	        itemMargin: 10,
 	        containerWidth: this.state.containerWidth || this.props.containerWidth,
 	        itemClassName: 'item',
-	        transitionDuration: '.5',
+	        transitionDuration: '.8',
 	        transitionTimingFunction: 'easeIn'
 	      };
 	    }
@@ -20002,7 +20002,7 @@
 	        containerWidth: this.state.containerWidth || this.props.containerWidth,
 	        itemClassName: 'item',
 	        containerHeight: this.state.containerHeight,
-	        transitionDuration: '.5',
+	        transitionDuration: '.8',
 	        transitionTimingFunction: 'easeIn'
 	      };
 	    }

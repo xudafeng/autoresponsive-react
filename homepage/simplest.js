@@ -123,7 +123,7 @@ class SimplestSampleComponent extends React.Component {
       containerWidth: this.state.containerWidth || this.props.containerWidth,
       itemClassName: 'item',
       containerHeight: this.state.containerHeight,
-      transitionDuration: '.5',
+      transitionDuration: '.8',
       transitionTimingFunction: 'easeIn'
     };
   }
