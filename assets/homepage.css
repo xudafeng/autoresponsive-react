@@ -178,6 +178,7 @@ footer {
   border-color: #796b1d;
   color: #d0bbab;
   outline: 0;
+  margin-bottom: 8px;
 }
 .btn-group button:hover,
 .btn-group button:focus,

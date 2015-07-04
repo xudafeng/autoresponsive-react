@@ -19053,7 +19053,7 @@
 	var styleList = {};
 	var getItemStyle = function getItemStyle() {
 	  return {
-	    width: 180,
+	    width: 150,
 	    height: parseInt(Math.random() * 20 + 15) * 10,
 	    color: '#3a2d5b',
 	    cursor: 'default',
@@ -19112,7 +19112,7 @@
 
 	      for (var i = 0; i < nodes.length; i++) {
 	        if (nodes[i] === e.target) {
-	          styleList[i].width = styleList[i].width === '370px' ? '180px' : '370px';
+	          styleList[i].width = styleList[i].width === '310px' ? '150px' : '310px';
 	          this.setState({
 	            styleList: styleList
 	          });
