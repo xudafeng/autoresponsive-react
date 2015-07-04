@@ -19735,7 +19735,7 @@
 
 	module.exports = {
 		"name": "autoresponsive-react",
-		"version": "1.1.1",
+		"version": "1.1.2",
 		"description": "auto responsive grid layout library",
 		"keywords": [
 			"react",
