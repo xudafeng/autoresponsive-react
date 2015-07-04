@@ -28,10 +28,10 @@ class HomePage extends React.Component {
       documentsList: [],
       locale: this.props.locale
     };
-    this.bindEventMap();
+    this.bindEventMapContext();
   }
 
-  bindEventMap() {
+  bindEventMapContext() {
     events.forEach(function(i) {
       this[i] = this[i].bind(this);
     }.bind(this));

@@ -43,13 +43,13 @@ arrayList.map(function(i) {
 class WaterfallSampleComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.bindEventMap();
+    this.bindEventMapContext();
     this.state = {
       styleList: styleList
     };
   }
 
-  bindEventMap() {
+  bindEventMapContext() {
     events.forEach(function(i) {
       this[i] = this[i].bind(this);
     }.bind(this));

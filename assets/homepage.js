@@ -86,14 +86,14 @@
 	      documentsList: [],
 	      locale: this.props.locale
 	    };
-	    this.bindEventMap();
+	    this.bindEventMapContext();
 	  }
 
 	  _inherits(HomePage, _React$Component);
 
 	  _createClass(HomePage, [{
-	    key: 'bindEventMap',
-	    value: function bindEventMap() {
+	    key: 'bindEventMapContext',
+	    value: function bindEventMapContext() {
 	      events.forEach((function (i) {
 	        this[i] = this[i].bind(this);
 	      }).bind(this));
@@ -19076,7 +19076,7 @@
 	    _classCallCheck(this, WaterfallSampleComponent);
 
 	    _get(Object.getPrototypeOf(WaterfallSampleComponent.prototype), 'constructor', this).call(this, props);
-	    this.bindEventMap();
+	    this.bindEventMapContext();
 	    this.state = {
 	      styleList: styleList
 	    };
@@ -19085,8 +19085,8 @@
 	  _inherits(WaterfallSampleComponent, _React$Component);
 
 	  _createClass(WaterfallSampleComponent, [{
-	    key: 'bindEventMap',
-	    value: function bindEventMap() {
+	    key: 'bindEventMapContext',
+	    value: function bindEventMapContext() {
 	      events.forEach((function (i) {
 	        this[i] = this[i].bind(this);
 	      }).bind(this));
