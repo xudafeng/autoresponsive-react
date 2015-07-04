@@ -229,16 +229,20 @@
 	    value: function renderI18n() {
 	      return React.createElement(
 	        'div',
-	        { className: 'btn-group pull-right i18n-buttons' },
+	        { className: 'i18n-buttons' },
 	        React.createElement(
-	          'button',
-	          { type: 'button', onClick: this.i18nClickHandler, className: this.getI18nButtonStyle('en') },
-	          'en'
-	        ),
-	        React.createElement(
-	          'button',
-	          { type: 'button', onClick: this.i18nClickHandler, className: this.getI18nButtonStyle('zh') },
-	          'zh'
+	          'div',
+	          { className: 'btn-group pull-right' },
+	          React.createElement(
+	            'button',
+	            { type: 'button', onClick: this.i18nClickHandler, className: this.getI18nButtonStyle('en') },
+	            'en'
+	          ),
+	          React.createElement(
+	            'button',
+	            { type: 'button', onClick: this.i18nClickHandler, className: this.getI18nButtonStyle('zh') },
+	            'zh'
+	          )
 	        )
 	      );
 	    }

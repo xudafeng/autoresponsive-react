@@ -151,9 +151,11 @@ class HomePage extends React.Component {
 
   renderI18n() {
     return (
-      <div className="btn-group pull-right i18n-buttons">
-        <button type="button" onClick={this.i18nClickHandler} className={this.getI18nButtonStyle('en')}>en</button>
-        <button type="button" onClick={this.i18nClickHandler} className={this.getI18nButtonStyle('zh')}>zh</button>
+      <div className="i18n-buttons">
+        <div className="btn-group pull-right">
+          <button type="button" onClick={this.i18nClickHandler} className={this.getI18nButtonStyle('en')}>en</button>
+          <button type="button" onClick={this.i18nClickHandler} className={this.getI18nButtonStyle('zh')}>zh</button>
+        </div>
       </div>
     );
   }
