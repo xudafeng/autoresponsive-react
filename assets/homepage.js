@@ -86,14 +86,14 @@
 	      documentsList: [],
 	      locale: this.props.locale
 	    };
-	    this.bindEventMap();
+	    this.bindEventMapContext();
 	  }
 
 	  _inherits(HomePage, _React$Component);
 
 	  _createClass(HomePage, [{
-	    key: 'bindEventMap',
-	    value: function bindEventMap() {
+	    key: 'bindEventMapContext',
+	    value: function bindEventMapContext() {
 	      events.forEach((function (i) {
 	        this[i] = this[i].bind(this);
 	      }).bind(this));
@@ -229,16 +229,20 @@
 	    value: function renderI18n() {
 	      return React.createElement(
 	        'div',
-	        { className: 'btn-group pull-right i18n-buttons' },
+	        { className: 'i18n-buttons' },
 	        React.createElement(
-	          'button',
-	          { type: 'button', onClick: this.i18nClickHandler, className: this.getI18nButtonStyle('en') },
-	          'en'
-	        ),
-	        React.createElement(
-	          'button',
-	          { type: 'button', onClick: this.i18nClickHandler, className: this.getI18nButtonStyle('zh') },
-	          'zh'
+	          'div',
+	          { className: 'btn-group pull-right' },
+	          React.createElement(
+	            'button',
+	            { type: 'button', onClick: this.i18nClickHandler, className: this.getI18nButtonStyle('en') },
+	            'en'
+	          ),
+	          React.createElement(
+	            'button',
+	            { type: 'button', onClick: this.i18nClickHandler, className: this.getI18nButtonStyle('zh') },
+	            'zh'
+	          )
 	        )
 	      );
 	    }
@@ -19049,7 +19053,7 @@
 	var styleList = {};
 	var getItemStyle = function getItemStyle() {
 	  return {
-	    width: 180,
+	    width: 150,
 	    height: parseInt(Math.random() * 20 + 15) * 10,
 	    color: '#3a2d5b',
 	    cursor: 'default',
@@ -19076,7 +19080,7 @@
 	    _classCallCheck(this, WaterfallSampleComponent);
 
 	    _get(Object.getPrototypeOf(WaterfallSampleComponent.prototype), 'constructor', this).call(this, props);
-	    this.bindEventMap();
+	    this.bindEventMapContext();
 	    this.state = {
 	      styleList: styleList
 	    };
@@ -19085,8 +19089,8 @@
 	  _inherits(WaterfallSampleComponent, _React$Component);
 
 	  _createClass(WaterfallSampleComponent, [{
-	    key: 'bindEventMap',
-	    value: function bindEventMap() {
+	    key: 'bindEventMapContext',
+	    value: function bindEventMapContext() {
 	      events.forEach((function (i) {
 	        this[i] = this[i].bind(this);
 	      }).bind(this));
@@ -19108,7 +19112,7 @@
 
 	      for (var i = 0; i < nodes.length; i++) {
 	        if (nodes[i] === e.target) {
-	          styleList[i].width = styleList[i].width === '370px' ? '180px' : '370px';
+	          styleList[i].width = styleList[i].width === '310px' ? '150px' : '310px';
 	          this.setState({
 	            styleList: styleList
 	          });
@@ -19121,7 +19125,9 @@
 	      return {
 	        itemMargin: 10,
 	        containerWidth: this.state.containerWidth || this.props.containerWidth,
-	        itemClassName: 'item'
+	        itemClassName: 'item',
+	        transitionDuration: '.8',
+	        transitionTimingFunction: 'easeIn'
 	      };
 	    }
 	  }, {
@@ -19729,7 +19735,7 @@
 
 	module.exports = {
 		"name": "autoresponsive-react",
-		"version": "1.1.0",
+		"version": "1.1.2",
 		"description": "auto responsive grid layout library",
 		"keywords": [
 			"react",
@@ -19999,7 +20005,9 @@
 	        itemMargin: this.state.itemMargin,
 	        containerWidth: this.state.containerWidth || this.props.containerWidth,
 	        itemClassName: 'item',
-	        containerHeight: this.state.containerHeight
+	        containerHeight: this.state.containerHeight,
+	        transitionDuration: '.8',
+	        transitionTimingFunction: 'easeIn'
 	      };
 	    }
 	  }, {

@@ -173,21 +173,24 @@ footer {
   font-weight: normal;
   line-height: 1.2em;
 }
-.btn-group {
-  margin-top: 20px;
-}
-.btn-group button,
-.btn-group button:hover {
-  background-color: #301711;
+.btn-group button {
+  background-color: transparent;
   border-color: #796b1d;
   color: #d0bbab;
-}
-.btn-group button:focus,
-.btn-group .focus{
-  background-color: #301711;
-  color: #fff;
   outline: 0;
+  margin-bottom: 8px;
+}
+.btn-group button:hover,
+.btn-group button:focus,
+.btn-group button:active,
+.btn-group .focus{
+  background-color: transparent!important;
+  color: #fff!important;
+  outline: 0!important;
 }
 .rc-autoresponsive-container {
   margin-top: 20px;
+}
+.i18n-buttons {
+  height: 40px;
 }

@@ -18,7 +18,7 @@ let arrayList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 let styleList = {};
 let getItemStyle = function() {
   return {
-    width: 180,
+    width: 150,
     height: parseInt(Math.random() * 20 + 15) * 10,
     color: '#3a2d5b',
     cursor: 'default',
@@ -43,13 +43,13 @@ arrayList.map(function(i) {
 class WaterfallSampleComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.bindEventMap();
+    this.bindEventMapContext();
     this.state = {
       styleList: styleList
     };
   }
 
-  bindEventMap() {
+  bindEventMapContext() {
     events.forEach(function(i) {
       this[i] = this[i].bind(this);
     }.bind(this));
@@ -69,7 +69,7 @@ class WaterfallSampleComponent extends React.Component {
 
     for (let i = 0; i < nodes.length; i++) {
       if (nodes[i] === e.target) {
-        styleList[i].width = styleList[i].width === '370px' ? '180px' : '370px';
+        styleList[i].width = styleList[i].width === '310px' ? '150px' : '310px';
         this.setState({
           styleList: styleList
         });
@@ -81,7 +81,9 @@ class WaterfallSampleComponent extends React.Component {
     return {
       itemMargin: 10,
       containerWidth: this.state.containerWidth || this.props.containerWidth,
-      itemClassName: 'item'
+      itemClassName: 'item',
+      transitionDuration: '.8',
+      transitionTimingFunction: 'easeIn'
     };
   }
 
