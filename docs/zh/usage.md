@@ -48,6 +48,8 @@ class WaterfallSampleComponent extends React.Component {
 
 ```
 
-### example
+## Examples
 
-[点击查看例子](./examples)
+[示例1](./examples)
+
+[示例2 - Native](https://github.com/xudafeng/autoresponsive_react_native_sample)
