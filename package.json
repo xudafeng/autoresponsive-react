@@ -11,6 +11,7 @@
     "ui",
     "component"
   ],
+  "main": "index.js",
   "homepage": "http://xudafeng.github.io/autoresponsive-react",
   "author": "xudafeng@126.com",
   "repository": {

@@ -18420,34 +18420,23 @@
 
 	'use strict';
 
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	exports.merge = merge;
-	exports.each = each;
-	exports.extend = extend;
-
-	function merge(r, s) {
+	exports.merge = function (r, s) {
 	  this.each(s, function (v, k) {
 	    r[k] = v;
 	  });
 	  return r;
-	}
+	};
 
-	;
-
-	function each(obj, fn) {
+	exports.each = function (obj, fn) {
 	  for (var i in obj) {
 	    if (obj.hasOwnProperty(i)) {
 	      fn.call(this, obj[i], i);
 	    }
 	  }
 	  return obj;
-	}
+	};
 
-	;
-
-	function extend() {
+	exports.extend = function () {
 	  var args = Array.prototype.slice.call(arguments);
 	  var object = args.shift();
 
@@ -18459,9 +18448,7 @@
 	    }
 	  }
 	  return object;
-	}
-
-	;
+	};
 
 /***/ },
 /* 160 */
