@@ -61,8 +61,8 @@
 
 	var React = __webpack_require__(1);
 	var AutoResponsive = __webpack_require__(157);
-	var Util = __webpack_require__(166);
-	var WaterfallExampleComponent = __webpack_require__(167);
+	var Util = __webpack_require__(165);
+	var WaterfallExampleComponent = __webpack_require__(166);
 
 	React.render(React.createElement(WaterfallExampleComponent, null), document.body);
 
@@ -18848,8 +18848,7 @@
 	module.exports = AnimationManager;
 
 /***/ },
-/* 165 */,
-/* 166 */
+/* 165 */
 /***/ function(module, exports) {
 
 	/* ================================================================
@@ -18953,7 +18952,7 @@
 	module.exports = Util;
 
 /***/ },
-/* 167 */
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* ================================================================
@@ -18983,7 +18982,7 @@
 
 	var React = __webpack_require__(1);
 	var AutoResponsive = __webpack_require__(157);
-	var Util = __webpack_require__(166);
+	var Util = __webpack_require__(165);
 
 	var arrayList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 	var styleList = {};
