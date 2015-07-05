@@ -61,8 +61,8 @@
 
 	var React = __webpack_require__(1);
 	var AutoResponsive = __webpack_require__(157);
-	var Util = __webpack_require__(163);
-	var WaterfallExampleComponent = __webpack_require__(164);
+	var Util = __webpack_require__(166);
+	var WaterfallExampleComponent = __webpack_require__(167);
 
 	React.render(React.createElement(WaterfallExampleComponent, null), document.body);
 
@@ -18254,9 +18254,12 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(1);
-	var Util = __webpack_require__(159);
-	var GridSort = __webpack_require__(160);
-	var AnimationManager = __webpack_require__(162);
+	var Common = __webpack_require__(159);
+
+	var Util = Common.Util;
+	var GridSort = Common.GridSort;
+
+	var AnimationManager = __webpack_require__(164);
 
 	var noop = function noop() {};
 
@@ -18400,13 +18403,16 @@
 	};
 
 	module.exports = AutoResponsive;
+	module.exports.Util = Util;
+	module.exports.GridSort = GridSort;
+	module.exports.AnimationManager = AnimationManager;
 
 /***/ },
 /* 159 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	/* ================================================================
-	 * autoresponsive-react by xdf(xudafeng[at]126.com)
+	 * autoresponsive-common by xdf(xudafeng[at]126.com)
 	 *
 	 * first created at : Mon Jun 02 2014 20:15:51 GMT+0800 (CST)
 	 *
@@ -18420,34 +18426,66 @@
 
 	'use strict';
 
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	exports.merge = merge;
-	exports.each = each;
-	exports.extend = extend;
+	module.exports = __webpack_require__(160);
 
-	function merge(r, s) {
+/***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* ================================================================
+	 * autoresponsive-common by xdf(xudafeng[at]126.com)
+	 *
+	 * first created at : Mon Jun 02 2014 20:15:51 GMT+0800 (CST)
+	 *
+	 * ================================================================
+	 * Copyright 2014 xdf
+	 *
+	 * Licensed under the MIT License
+	 * You may not use this file except in compliance with the License.
+	 *
+	 * ================================================================ */
+
+	'use strict';
+
+	module.exports.Util = __webpack_require__(161);
+	module.exports.GridSort = __webpack_require__(162);
+
+/***/ },
+/* 161 */
+/***/ function(module, exports) {
+
+	/* ================================================================
+	 * autoresponsive-common by xdf(xudafeng[at]126.com)
+	 *
+	 * first created at : Mon Jun 02 2014 20:15:51 GMT+0800 (CST)
+	 *
+	 * ================================================================
+	 * Copyright 2014 xdf
+	 *
+	 * Licensed under the MIT License
+	 * You may not use this file except in compliance with the License.
+	 *
+	 * ================================================================ */
+
+	'use strict';
+
+	exports.merge = function (r, s) {
 	  this.each(s, function (v, k) {
 	    r[k] = v;
 	  });
 	  return r;
-	}
+	};
 
-	;
-
-	function each(obj, fn) {
+	exports.each = function (obj, fn) {
 	  for (var i in obj) {
 	    if (obj.hasOwnProperty(i)) {
 	      fn.call(this, obj[i], i);
 	    }
 	  }
 	  return obj;
-	}
+	};
 
-	;
-
-	function extend() {
+	exports.extend = function () {
 	  var args = Array.prototype.slice.call(arguments);
 	  var object = args.shift();
 
@@ -18459,16 +18497,14 @@
 	    }
 	  }
 	  return object;
-	}
-
-	;
+	};
 
 /***/ },
-/* 160 */
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* ================================================================
-	 * autoresponsive-react by xdf(xudafeng[at]126.com)
+	 * autoresponsive-common by xdf(xudafeng[at]126.com)
 	 *
 	 * first created at : Mon Jun 02 2014 20:15:51 GMT+0800 (CST)
 	 *
@@ -18486,8 +18522,8 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-	var LinkedList = __webpack_require__(161);
-	var Util = __webpack_require__(159);
+	var LinkedList = __webpack_require__(163);
+	var Util = __webpack_require__(161);
 
 	var GridSort = (function () {
 	  function GridSort(options) {
@@ -18572,11 +18608,11 @@
 	module.exports = GridSort;
 
 /***/ },
-/* 161 */
+/* 163 */
 /***/ function(module, exports) {
 
 	/* ================================================================
-	 * autoresponsive-react by xdf(xudafeng[at]126.com)
+	 * autoresponsive-common by xdf(xudafeng[at]126.com)
 	 *
 	 * first created at : Mon Jun 02 2014 20:15:51 GMT+0800 (CST)
 	 *
@@ -18697,7 +18733,7 @@
 	module.exports = LinkedList;
 
 /***/ },
-/* 162 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* ================================================================
@@ -18719,7 +18755,9 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-	var Util = __webpack_require__(159);
+	var Common = __webpack_require__(159);
+
+	var Util = Common.Util;
 
 	function transitionEnd() {
 	  var el = document.createElement('pin');
@@ -18810,7 +18848,8 @@
 	module.exports = AnimationManager;
 
 /***/ },
-/* 163 */
+/* 165 */,
+/* 166 */
 /***/ function(module, exports) {
 
 	/* ================================================================
@@ -18914,7 +18953,7 @@
 	module.exports = Util;
 
 /***/ },
-/* 164 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* ================================================================
@@ -18944,7 +18983,7 @@
 
 	var React = __webpack_require__(1);
 	var AutoResponsive = __webpack_require__(157);
-	var Util = __webpack_require__(163);
+	var Util = __webpack_require__(166);
 
 	var arrayList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 	var styleList = {};
