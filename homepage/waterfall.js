@@ -19,7 +19,7 @@ let styleList = {};
 let getItemStyle = function() {
   return {
     width: 150,
-    height: parseInt(Math.random() * 20 + 15) * 10,
+    height: parseInt(Math.random() * 20 + 12) * 10,
     color: '#3a2d5b',
     cursor: 'default',
     borderRadius: 5,
