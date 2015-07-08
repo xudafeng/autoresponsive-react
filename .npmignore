@@ -1,6 +1,10 @@
 .travis.yml
 .drone.yml
 test/
+homepage/
+examples/
+docs/
+assets/
 Makefile
 .jshintrc
 .jshintignore
