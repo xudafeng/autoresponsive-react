@@ -44,16 +44,16 @@ arrayList.map(function(i) {
 class WaterfallExampleComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.bindEventMap();
+    this.bindEventMapContent();
     this.state = {
       styleList: styleList
     };
   }
 
-  bindEventMap() {
-    events.forEach(function(i) {
+  bindEventMapContent() {
+    events.forEach(i => {
       this[i] = this[i].bind(this);
-    }.bind(this));
+    });
   }
 
   componentWillMount() {
@@ -61,20 +61,20 @@ class WaterfallExampleComponent extends React.Component {
   }
 
   getData() {
-    Util.ajax('./data.json', function(d) {
+    Util.ajax('./data.json', d => {
       let data = JSON.parse(d).data;
       this.setState({
         data: data
       });
-    }.bind(this));
+    });
   }
 
   componentDidMount() {
-    window.addEventListener('resize', function() {
+    window.addEventListener('resize', () => {
       this.setState({
         containerWidth: React.findDOMNode(this.refs.container).clientWidth
       });
-    }.bind(this), false);
+    }, false);
   }
 
   getAutoResponsiveProps() {
@@ -97,10 +97,10 @@ class WaterfallExampleComponent extends React.Component {
       <div className="albumPanel">
         <AutoResponsive ref="container" {...this.getAutoResponsiveProps()}>
           {
-            this.state.data.map(function(i, index) {
+            this.state.data.map((i, index) => {
               let style = {
-                width: i.w === 'w1' ? '190' : '390',
-                height: i.w === 'w1' ? '240' : '490'
+                width: i.w === 'w1' ? 190 : 390,
+                height: i.w === 'w1' ? 240 : 490
               };
               return (
                 <a href="#" className={`${i.w} album item`} style={style}>
@@ -115,7 +115,7 @@ class WaterfallExampleComponent extends React.Component {
                   <p className="a-more j_ALMore"></p>
                 </a>
               );
-            }, this)
+            })
           }
         </AutoResponsive>
       </div>

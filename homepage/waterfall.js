@@ -50,17 +50,17 @@ class WaterfallSampleComponent extends React.Component {
   }
 
   bindEventMapContext() {
-    events.forEach(function(i) {
+    events.forEach(i => {
       this[i] = this[i].bind(this);
-    }.bind(this));
+    });
   }
 
   componentDidMount() {
-    window.addEventListener('resize', function() {
+    window.addEventListener('resize', () => {
       this.setState({
         containerWidth: React.findDOMNode(this.refs.container).clientWidth
       });
-    }.bind(this), false);
+    }, false);
   }
 
   clickItemHandle(e) {
@@ -91,9 +91,9 @@ class WaterfallSampleComponent extends React.Component {
     return (
       <AutoResponsive ref="container" {...this.getAutoResponsiveProps()}>
         {
-          arrayList.map(function(i) {
+          arrayList.map(i => {
             return <div key={i} onClick={this.clickItemHandle} className="item" style={this.state.styleList[i]}>{i}</div>;
-          }, this)
+          })
         }
       </AutoResponsive>
     );

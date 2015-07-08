@@ -19,9 +19,9 @@ class LayoutComponent extends React.Component {
   render() {
     return (
       <div>
-        <HeaderComponent/>
+        <HeaderComponent />
           {this.props.children}
-        <FooterComponent/>
+        <FooterComponent />
       </div>
     );
   }

@@ -18316,45 +18316,47 @@
 	  }, {
 	    key: 'renderChildren',
 	    value: function renderChildren() {
+	      var _this = this;
+
 	      return React.Children.map(this.props.children, function (child, childIndex) {
 
-	        if (! ~child.props.className.indexOf(this.props.itemClassName)) {
+	        if (! ~child.props.className.indexOf(_this.props.itemClassName)) {
 	          return;
 	        }
 
-	        var childWidth = parseInt(child.props.style.width) + this.props.itemMargin;
-	        var childHeight = parseInt(child.props.style.height) + this.props.itemMargin;
+	        var childWidth = parseInt(child.props.style.width) + _this.props.itemMargin;
+	        var childHeight = parseInt(child.props.style.height) + _this.props.itemMargin;
 
-	        var calculatedPosition = this.sortManager.getPosition(childWidth, childHeight, this.containerStyle.height);
+	        var calculatedPosition = _this.sortManager.getPosition(childWidth, childHeight, _this.containerStyle.height);
 
-	        if (!this.fixedContainerHeight) {
+	        if (!_this.fixedContainerHeight) {
 
-	          if (calculatedPosition[1] + childHeight > this.containerStyle.height) {
-	            this.containerStyle.height = calculatedPosition[1] + childHeight;
+	          if (calculatedPosition[1] + childHeight > _this.containerStyle.height) {
+	            _this.containerStyle.height = calculatedPosition[1] + childHeight;
 	          }
 	        }
 
-	        var calculatedStyle = this.animationManager.generate(Util.extend({}, this.props, {
+	        var calculatedStyle = _this.animationManager.generate(Util.extend({}, _this.props, {
 	          position: calculatedPosition,
 	          size: {
 	            width: childWidth,
 	            height: childHeight
 	          },
-	          containerHeight: this.containerStyle.height
+	          containerHeight: _this.containerStyle.height
 	        }));
 
-	        this.mixItemInlineStyle(calculatedStyle);
+	        _this.mixItemInlineStyle(calculatedStyle);
 
-	        this.props.onItemDidLayout.call(this, child);
+	        _this.props.onItemDidLayout.call(_this, child);
 
-	        if (childIndex + 1 === this.props.children.length) {
-	          this.props.onContainerDidLayout.call(this);
+	        if (childIndex + 1 === _this.props.children.length) {
+	          _this.props.onContainerDidLayout.call(_this);
 	        }
 
 	        return React.cloneElement(child, {
 	          style: Util.extend({}, child.props.style, calculatedStyle)
 	        });
-	      }, this);
+	      });
 	    }
 	  }, {
 	    key: 'mixItemInlineStyle',
@@ -18403,9 +18405,6 @@
 	};
 
 	module.exports = AutoResponsive;
-	module.exports.Util = Util;
-	module.exports.GridSort = GridSort;
-	module.exports.AnimationManager = AnimationManager;
 
 /***/ },
 /* 159 */
@@ -19015,7 +19014,7 @@
 	    _classCallCheck(this, WaterfallExampleComponent);
 
 	    _get(Object.getPrototypeOf(WaterfallExampleComponent.prototype), 'constructor', this).call(this, props);
-	    this.bindEventMap();
+	    this.bindEventMapContent();
 	    this.state = {
 	      styleList: styleList
 	    };
@@ -19024,11 +19023,13 @@
 	  _inherits(WaterfallExampleComponent, _React$Component);
 
 	  _createClass(WaterfallExampleComponent, [{
-	    key: 'bindEventMap',
-	    value: function bindEventMap() {
-	      events.forEach((function (i) {
-	        this[i] = this[i].bind(this);
-	      }).bind(this));
+	    key: 'bindEventMapContent',
+	    value: function bindEventMapContent() {
+	      var _this = this;
+
+	      events.forEach(function (i) {
+	        _this[i] = _this[i].bind(_this);
+	      });
 	    }
 	  }, {
 	    key: 'componentWillMount',
@@ -19038,21 +19039,25 @@
 	  }, {
 	    key: 'getData',
 	    value: function getData() {
-	      Util.ajax('./data.json', (function (d) {
+	      var _this2 = this;
+
+	      Util.ajax('./data.json', function (d) {
 	        var data = JSON.parse(d).data;
-	        this.setState({
+	        _this2.setState({
 	          data: data
 	        });
-	      }).bind(this));
+	      });
 	    }
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      window.addEventListener('resize', (function () {
-	        this.setState({
-	          containerWidth: React.findDOMNode(this.refs.container).clientWidth
+	      var _this3 = this;
+
+	      window.addEventListener('resize', function () {
+	        _this3.setState({
+	          containerWidth: React.findDOMNode(_this3.refs.container).clientWidth
 	        });
-	      }).bind(this), false);
+	      }, false);
 	    }
 	  }, {
 	    key: 'getAutoResponsiveProps',
@@ -19085,8 +19090,8 @@
 	          _extends({ ref: 'container' }, this.getAutoResponsiveProps()),
 	          this.state.data.map(function (i, index) {
 	            var style = {
-	              width: i.w === 'w1' ? '190' : '390',
-	              height: i.w === 'w1' ? '240' : '490'
+	              width: i.w === 'w1' ? 190 : 390,
+	              height: i.w === 'w1' ? 240 : 490
 	            };
 	            return React.createElement(
 	              'a',
@@ -19121,7 +19126,7 @@
 	              ),
 	              React.createElement('p', { className: 'a-more j_ALMore' })
 	            );
-	          }, this)
+	          })
 	        )
 	      );
 	    }
