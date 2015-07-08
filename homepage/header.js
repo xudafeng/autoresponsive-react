@@ -44,7 +44,7 @@ class HeaderComponent extends React.Component {
           <div className="description">
             <h1>
               <div className="first">Magic</div>
-              <p>Responsive Layout Libary For React</p>
+              <p>Responsive Layout Library For React</p>
             </h1>
           </div>
         </div>
