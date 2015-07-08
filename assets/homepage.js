@@ -94,9 +94,11 @@
 	  _createClass(HomePage, [{
 	    key: 'bindEventMapContext',
 	    value: function bindEventMapContext() {
-	      events.forEach((function (i) {
-	        this[i] = this[i].bind(this);
-	      }).bind(this));
+	      var _this = this;
+
+	      events.forEach(function (i) {
+	        _this[i] = _this[i].bind(_this);
+	      });
 	    }
 	  }, {
 	    key: 'componentWillMount',
@@ -119,16 +121,17 @@
 	  }, {
 	    key: 'getDocumentsData',
 	    value: function getDocumentsData() {
-	      var that = this;
+	      var _this2 = this;
+
 	      this.currentLocale = this.state.locale;
 	      var counter = documentsList.length;
 	      this.setState({
 	        loading: true
 	      });
 
-	      documentsList.forEach((function (name) {
-	        Util.ajax('./docs/' + this.currentLocale + '/' + name + '.md', (function (data) {
-	          var item = that.state.documentsList.slice(0);
+	      documentsList.forEach(function (name) {
+	        Util.ajax('./docs/' + _this2.currentLocale + '/' + name + '.md', function (data) {
+	          var item = _this2.state.documentsList.slice(0);
 
 	          if (item.length === documentsList.length) {
 	            item.shift();
@@ -139,18 +142,18 @@
 	            data: data
 	          });
 
-	          this.setState({
+	          _this2.setState({
 	            documentsList: item
 	          });
 
 	          if (counter === 1) {
-	            this.setState({
+	            _this2.setState({
 	              loading: false
 	            });
 	          }
 	          counter--;
-	        }).bind(this));
-	      }).bind(this));
+	        });
+	      });
 	    }
 	  }, {
 	    key: 'scrollToAnchor',
@@ -18522,45 +18525,47 @@
 	  }, {
 	    key: 'renderChildren',
 	    value: function renderChildren() {
+	      var _this = this;
+
 	      return React.Children.map(this.props.children, function (child, childIndex) {
 
-	        if (! ~child.props.className.indexOf(this.props.itemClassName)) {
+	        if (! ~child.props.className.indexOf(_this.props.itemClassName)) {
 	          return;
 	        }
 
-	        var childWidth = parseInt(child.props.style.width) + this.props.itemMargin;
-	        var childHeight = parseInt(child.props.style.height) + this.props.itemMargin;
+	        var childWidth = parseInt(child.props.style.width) + _this.props.itemMargin;
+	        var childHeight = parseInt(child.props.style.height) + _this.props.itemMargin;
 
-	        var calculatedPosition = this.sortManager.getPosition(childWidth, childHeight, this.containerStyle.height);
+	        var calculatedPosition = _this.sortManager.getPosition(childWidth, childHeight, _this.containerStyle.height);
 
-	        if (!this.fixedContainerHeight) {
+	        if (!_this.fixedContainerHeight) {
 
-	          if (calculatedPosition[1] + childHeight > this.containerStyle.height) {
-	            this.containerStyle.height = calculatedPosition[1] + childHeight;
+	          if (calculatedPosition[1] + childHeight > _this.containerStyle.height) {
+	            _this.containerStyle.height = calculatedPosition[1] + childHeight;
 	          }
 	        }
 
-	        var calculatedStyle = this.animationManager.generate(Util.extend({}, this.props, {
+	        var calculatedStyle = _this.animationManager.generate(Util.extend({}, _this.props, {
 	          position: calculatedPosition,
 	          size: {
 	            width: childWidth,
 	            height: childHeight
 	          },
-	          containerHeight: this.containerStyle.height
+	          containerHeight: _this.containerStyle.height
 	        }));
 
-	        this.mixItemInlineStyle(calculatedStyle);
+	        _this.mixItemInlineStyle(calculatedStyle);
 
-	        this.props.onItemDidLayout.call(this, child);
+	        _this.props.onItemDidLayout.call(_this, child);
 
-	        if (childIndex + 1 === this.props.children.length) {
-	          this.props.onContainerDidLayout.call(this);
+	        if (childIndex + 1 === _this.props.children.length) {
+	          _this.props.onContainerDidLayout.call(_this);
 	        }
 
 	        return React.cloneElement(child, {
 	          style: Util.extend({}, child.props.style, calculatedStyle)
 	        });
-	      }, this);
+	      });
 	    }
 	  }, {
 	    key: 'mixItemInlineStyle',
@@ -18609,9 +18614,6 @@
 	};
 
 	module.exports = AutoResponsive;
-	module.exports.Util = Util;
-	module.exports.GridSort = GridSort;
-	module.exports.AnimationManager = AnimationManager;
 
 /***/ },
 /* 159 */
@@ -19129,18 +19131,22 @@
 	  _createClass(WaterfallSampleComponent, [{
 	    key: 'bindEventMapContext',
 	    value: function bindEventMapContext() {
-	      events.forEach((function (i) {
-	        this[i] = this[i].bind(this);
-	      }).bind(this));
+	      var _this = this;
+
+	      events.forEach(function (i) {
+	        _this[i] = _this[i].bind(_this);
+	      });
 	    }
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      window.addEventListener('resize', (function () {
-	        this.setState({
-	          containerWidth: React.findDOMNode(this.refs.container).clientWidth
+	      var _this2 = this;
+
+	      window.addEventListener('resize', function () {
+	        _this2.setState({
+	          containerWidth: React.findDOMNode(_this2.refs.container).clientWidth
 	        });
-	      }).bind(this), false);
+	      }, false);
 	    }
 	  }, {
 	    key: 'clickItemHandle',
@@ -19171,16 +19177,18 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this3 = this;
+
 	      return React.createElement(
 	        AutoResponsive,
 	        _extends({ ref: 'container' }, this.getAutoResponsiveProps()),
 	        arrayList.map(function (i) {
 	          return React.createElement(
 	            'div',
-	            { key: i, onClick: this.clickItemHandle, className: 'item', style: this.state.styleList[i] },
+	            { key: i, onClick: _this3.clickItemHandle, className: 'item', style: _this3.state.styleList[i] },
 	            i
 	          );
-	        }, this)
+	        })
 	      );
 	    }
 	  }]);
@@ -19773,7 +19781,7 @@
 
 	module.exports = {
 		"name": "autoresponsive-react",
-		"version": "1.1.4",
+		"version": "1.1.6",
 		"description": "auto responsive grid layout library",
 		"keywords": [
 			"react",
@@ -19964,18 +19972,22 @@
 	  _createClass(SimplestSampleComponent, [{
 	    key: 'bindClickEventMap',
 	    value: function bindClickEventMap() {
-	      buttons.forEach((function (i) {
-	        this[i + 'ClickHandle'] = this[i + 'ClickHandle'].bind(this);
-	      }).bind(this));
+	      var _this = this;
+
+	      buttons.forEach(function (i) {
+	        _this[i + 'ClickHandle'] = _this[i + 'ClickHandle'].bind(_this);
+	      });
 	    }
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      window.addEventListener('resize', (function () {
-	        this.setState({
-	          containerWidth: React.findDOMNode(this.refs.container).clientWidth
+	      var _this2 = this;
+
+	      window.addEventListener('resize', function () {
+	        _this2.setState({
+	          containerWidth: React.findDOMNode(_this2.refs.container).clientWidth
 	        });
-	      }).bind(this), false);
+	      }, false);
 	    }
 	  }, {
 	    key: 'appendClickHandle',
@@ -20065,13 +20077,15 @@
 	  }, {
 	    key: 'renderButtons',
 	    value: function renderButtons() {
-	      return buttons.map((function (i) {
+	      var _this3 = this;
+
+	      return buttons.map(function (i) {
 	        return React.createElement(
 	          'button',
-	          { type: 'button', onClick: this[i + 'ClickHandle'], className: 'btn btn-default' },
+	          { type: 'button', onClick: _this3[i + 'ClickHandle'], className: 'btn btn-default' },
 	          i
 	        );
-	      }).bind(this));
+	      });
 	    }
 	  }, {
 	    key: 'render',
@@ -20145,26 +20159,30 @@
 	    this.state = {
 	      classNames: ['markdown']
 	    };
-	    this.bindEventMap();
+	    this.bindEventMapContext();
 	  }
 
 	  _inherits(MarkdownComponent, _React$Component);
 
 	  _createClass(MarkdownComponent, [{
-	    key: 'bindEventMap',
-	    value: function bindEventMap() {
-	      events.forEach((function (i) {
-	        this[i] = this[i].bind(this);
-	      }).bind(this));
+	    key: 'bindEventMapContext',
+	    value: function bindEventMapContext() {
+	      var _this = this;
+
+	      events.forEach(function (i) {
+	        _this[i] = _this[i].bind(_this);
+	      });
 	    }
 	  }, {
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      setTimeout((function () {
-	        this.setState({
+	      var _this2 = this;
+
+	      setTimeout(function () {
+	        _this2.setState({
 	          classNames: ['markdown', 'fadeIn']
 	        });
-	      }).bind(this), 0);
+	      }, 0);
 	    }
 	  }, {
 	    key: 'clickHandler',

@@ -30,21 +30,21 @@ class MarkdownComponent extends React.Component {
     this.state = {
       classNames: ['markdown']
     };
-    this.bindEventMap();
+    this.bindEventMapContext();
   }
 
-  bindEventMap() {
-    events.forEach(function(i) {
+  bindEventMapContext() {
+    events.forEach(i => {
       this[i] = this[i].bind(this);
-    }.bind(this));
+    });
   }
 
   componentWillMount() {
-    setTimeout(function() {
+    setTimeout(() => {
       this.setState({
         classNames: ['markdown', 'fadeIn']
       });
-    }.bind(this), 0);
+    }, 0);
   }
 
   clickHandler(e) {

@@ -32,9 +32,9 @@ class HomePage extends React.Component {
   }
 
   bindEventMapContext() {
-    events.forEach(function(i) {
+    events.forEach(i => {
       this[i] = this[i].bind(this);
-    }.bind(this));
+    });
   }
 
   componentWillMount() {
@@ -54,16 +54,15 @@ class HomePage extends React.Component {
   }
 
   getDocumentsData() {
-    let that = this;
     this.currentLocale = this.state.locale;
     let counter = documentsList.length;
     this.setState({
       loading: true
     });
 
-    documentsList.forEach(function(name) {
-      Util.ajax(`./docs/${this.currentLocale}/${name}.md`, function(data) {
-        let item = that.state.documentsList.slice(0);
+    documentsList.forEach(name => {
+      Util.ajax(`./docs/${this.currentLocale}/${name}.md`, data => {
+        let item = this.state.documentsList.slice(0);
 
         if (item.length === documentsList.length) {
           item.shift();
@@ -84,8 +83,8 @@ class HomePage extends React.Component {
           });
         }
         counter--;
-      }.bind(this));
-    }.bind(this));
+      });
+    });
   }
 
   scrollToAnchor() {
@@ -177,4 +176,4 @@ HomePage.defaultProps = {
   locale: Util.getUrlParams('locale') || 'en'
 };
 
-React.render(<HomePage/>, document.body);
+React.render(<HomePage />, document.body);

@@ -47,17 +47,17 @@ class SimplestSampleComponent extends React.Component {
   }
 
   bindClickEventMap() {
-    buttons.forEach(function(i) {
+    buttons.forEach(i => {
       this[`${i}ClickHandle`] = this[`${i}ClickHandle`].bind(this);
-    }.bind(this));
+    });
   }
 
   componentDidMount() {
-    window.addEventListener('resize', function() {
+    window.addEventListener('resize', () => {
       this.setState({
         containerWidth: React.findDOMNode(this.refs.container).clientWidth
       });
-    }.bind(this), false);
+    }, false);
   }
 
   appendClickHandle(e) {
@@ -135,9 +135,9 @@ class SimplestSampleComponent extends React.Component {
   }
 
   renderButtons() {
-    return buttons.map(function(i) {
+    return buttons.map(i => {
       return <button type="button" onClick={this[`${i}ClickHandle`]} className="btn btn-default">{i}</button>;
-    }.bind(this));
+    });
   }
 
   render() {
