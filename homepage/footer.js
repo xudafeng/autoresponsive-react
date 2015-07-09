@@ -16,12 +16,9 @@ let React = require('react');
 class FooterComponent extends React.Component {
   render() {
     return (
-      <footer>
+      <footer className="text-center">
         <hr/>
-        <div className="text-center">
-          <br/>
-          &copy;&nbsp;<a href="https://github.com/xudafeng">xdf</a> {new Date().getFullYear()}
-        </div>
+        &copy;&nbsp;<a href="https://github.com/xudafeng">xdf</a> {new Date().getFullYear()}
       </footer>
     );
   }

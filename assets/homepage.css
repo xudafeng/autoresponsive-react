@@ -164,6 +164,16 @@ footer {
   .autoresponsive-react-ribbon {
     display: none;
   }
+  .header .description {
+    position: static!important;
+  }
+  .github-btn {
+    top: 15px!important;
+    right: 0px!important;
+  }
+}
+.header .description {
+  position: relative;
 }
 .header .description p {
   font-size: 50px;
@@ -193,4 +203,13 @@ footer {
 }
 .i18n-buttons {
   height: 40px;
+}
+.github-btn {
+  overflow: hidden;
+  border: 0;
+  position: absolute;
+  top: 0;
+  right: 40px;
+  width: 100px;
+  height: 20px;
 }
