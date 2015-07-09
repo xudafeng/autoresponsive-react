@@ -175,6 +175,7 @@ footer {
 }
 .header .description {
   position: relative;
+  z-index: 99999;
 }
 .header .description p {
   font-size: 50px;
