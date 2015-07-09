@@ -46,6 +46,7 @@ class HeaderComponent extends React.Component {
               <div className="first">Magic</div>
               <p>Responsive Layout Library For React</p>
             </h1>
+            <iframe className="github-btn" src="https://ghbtns.com/github-btn.html?user=xudafeng&repo=autoresponsive-react&type=watch&count=true" title="Star on GitHub"></iframe>
           </div>
         </div>
         <ForkmeonComponent {...this.getForkmeonProps()}/>

@@ -19366,7 +19366,8 @@
 	                null,
 	                'Responsive Layout Library For React'
 	              )
-	            )
+	            ),
+	            React.createElement('iframe', { className: 'github-btn', src: 'https://ghbtns.com/github-btn.html?user=xudafeng&repo=autoresponsive-react&type=watch&count=true', title: 'Star on GitHub' })
 	          )
 	        ),
 	        React.createElement(ForkmeonComponent, this.getForkmeonProps())
@@ -19881,21 +19882,16 @@
 	    value: function render() {
 	      return React.createElement(
 	        "footer",
-	        null,
+	        { className: "text-center" },
 	        React.createElement("hr", null),
+	        "© ",
 	        React.createElement(
-	          "div",
-	          { className: "text-center" },
-	          React.createElement("br", null),
-	          "© ",
-	          React.createElement(
-	            "a",
-	            { href: "https://github.com/xudafeng" },
-	            "xdf"
-	          ),
-	          " ",
-	          new Date().getFullYear()
-	        )
+	          "a",
+	          { href: "https://github.com/xudafeng" },
+	          "xdf"
+	        ),
+	        " ",
+	        new Date().getFullYear()
 	      );
 	    }
 	  }]);
