@@ -168,6 +168,7 @@ footer {
     position: static!important;
   }
   .github-btn {
+    position: fixed!important;
     top: 15px!important;
     right: 0px!important;
   }
@@ -206,6 +207,7 @@ footer {
 }
 .github-btn {
   overflow: hidden;
+  z-index: 999;
   border: 0;
   position: absolute;
   top: 0;
