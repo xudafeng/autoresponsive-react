@@ -19014,26 +19014,28 @@
 	  }, {
 	    key: 'css3Animation',
 	    value: function css3Animation() {
+	      var _this = this;
+
 	      var style = {};
 
 	      prefixes.map(function (prefix) {
 	        var x = undefined,
 	            y = undefined;
 
-	        if (this.horizontalDirection === 'right') {
-	          x = this.containerWidth - this.size.width - this.position[0];
+	        if (_this.horizontalDirection === 'right') {
+	          x = _this.containerWidth - _this.size.width - _this.position[0];
 	        } else {
-	          x = this.position[0];
+	          x = _this.position[0];
 	        }
 
-	        if (this.verticalDirection === 'bottom') {
-	          y = this.containerHeight - this.size.height - this.position[1];
+	        if (_this.verticalDirection === 'bottom') {
+	          y = _this.containerHeight - _this.size.height - _this.position[1];
 	        } else {
-	          y = this.position[1];
+	          y = _this.position[1];
 	        }
 
 	        style[prefix + 'Transform'] = 'translate3d(' + x + 'px, ' + y + 'px, 0)';
-	      }, this);
+	      });
 
 	      this.mixAnimation(style);
 	      return style;
@@ -19041,11 +19043,13 @@
 	  }, {
 	    key: 'mixAnimation',
 	    value: function mixAnimation(style) {
+	      var _this2 = this;
+
 	      if (!this.closeAnimation) {
 	        prefixes.map(function (prefix) {
-	          style[prefix + 'TransitionDuration'] = this.transitionDuration + 's';
-	          style[prefix + 'TransitionTimingFunction'] = this.transitionTimingFunction;
-	        }, this);
+	          style[prefix + 'TransitionDuration'] = _this2.transitionDuration + 's';
+	          style[prefix + 'TransitionTimingFunction'] = _this2.transitionTimingFunction;
+	        });
 	      }
 	    }
 	  }]);
@@ -19360,7 +19364,7 @@
 	              React.createElement(
 	                'p',
 	                null,
-	                'Responsive Layout Libary For React'
+	                'Responsive Layout Library For React'
 	              )
 	            )
 	          )
