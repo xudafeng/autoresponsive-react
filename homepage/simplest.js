@@ -99,7 +99,6 @@ class SimplestSampleComponent extends React.Component {
   }
 
   verticalClickHandle() {
-    let verticalDirection;
 
     if (this.state.verticalDirection === 'top') {
       this.setState({

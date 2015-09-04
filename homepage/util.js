@@ -33,15 +33,16 @@ Util.ajax = function(url, successCallback, failCallback) {
 };
 
 Util.ready = function(callback) {
-  if (document.readyState !== 'loading'){
+  if (document.readyState !== 'loading') {
     callback();
   } else if (document.addEventListener) {
     document.addEventListener('DOMContentLoaded', callback);
   } else {
     document.attachEvent('onreadystatechange', function() {
 
-      if (document.readyState !== 'loading')
+      if (document.readyState !== 'loading') {
         callback();
+      }
     });
   }
 };
@@ -64,7 +65,7 @@ Util.on = function(el, eventName, handler) {
   if (el.addEventListener) {
     el.addEventListener(eventName, handler);
   } else {
-    el.attachEvent('on' + eventName, function(){
+    el.attachEvent('on' + eventName, function() {
       handler.call(el);
     });
   }
@@ -91,7 +92,7 @@ Util.width = function(el) {
   var width = el.offsetWidth;
   var style = el.currentStyle || getComputedStyle(el);
 
-  width += parseInt(style.marginLeft) + parseInt(style.marginRight);
+  width += parseInt(style.marginLeft, 10) + parseInt(style.marginRight, 10);
   return width;
 };
 
