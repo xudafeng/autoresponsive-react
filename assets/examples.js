@@ -18324,12 +18324,12 @@
 	          return;
 	        }
 
-	        var childWidth = parseInt(child.props.style.width) + _this.props.itemMargin;
-	        var childHeight = parseInt(child.props.style.height) + _this.props.itemMargin;
+	        var childWidth = parseInt(child.props.style.width, 10) + _this.props.itemMargin;
+	        var childHeight = parseInt(child.props.style.height, 10) + _this.props.itemMargin;
 
 	        var calculatedPosition = _this.sortManager.getPosition(childWidth, childHeight, _this.containerStyle.height);
 
-	        if (!_this.fixedContainerHeight) {
+	        if (!_this.fixedContainerHeight && _this.props.containerWidth) {
 
 	          if (calculatedPosition[1] + childHeight > _this.containerStyle.height) {
 	            _this.containerStyle.height = calculatedPosition[1] + childHeight;
@@ -18361,10 +18361,19 @@
 	  }, {
 	    key: 'mixItemInlineStyle',
 	    value: function mixItemInlineStyle(s) {
+	      var itemMargin = this.props.itemMargin;
 	      var style = {
-	        position: 'absolute',
-	        overflow: 'hidden'
+	        display: 'block',
+	        float: 'left',
+	        margin: '0 ' + itemMargin + 'px ' + itemMargin + 'px 0 '
 	      };
+
+	      if (this.props.containerWidth) {
+	        style = {
+	          position: 'absolute',
+	          overflow: 'hidden'
+	        };
+	      }
 	      Util.merge(s, style);
 	    }
 	  }, {
@@ -18389,7 +18398,7 @@
 	})(React.Component);
 
 	AutoResponsive.defaultProps = {
-	  containerWidth: 1024,
+	  containerWidth: null,
 	  containerHeight: null,
 	  gridWidth: 10,
 	  prefixClassName: 'rc-autoresponsive',
@@ -18755,17 +18764,21 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 	var Common = __webpack_require__(159);
+	var ExecutionEnvironment = __webpack_require__(51);
 
 	var Util = Common.Util;
 
 	function transitionEnd() {
-	  var el = document.createElement('pin');
 	  var transitionEndEventNames = {
 	    WebkitTransition: 'webkitTransitionEnd',
 	    MozTransition: 'transitionend',
 	    OTransition: 'oTransitionEnd otransitionend',
 	    transition: 'transitionend'
 	  };
+	  if (!ExecutionEnvironment.canUseDOM) {
+	    return transitionEndEventNames;
+	  }
+	  var el = document.createElement('pin');
 
 	  for (var _name in transitionEndEventNames) {
 	    if (el.style[_name] !== undefined) {

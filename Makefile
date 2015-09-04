@@ -17,14 +17,10 @@ travis: install
 		./node_modules/.bin/_mocha \
 		--report lcovonly \
 		-- -t 20000 -r should-http test/*.test.js
-pull:
-	@git pull origin ${git_version}
-push:
-	@git push origin ${git_version}
 lint:
 	@${npm_bin}/eslint lib homepage
 server: install
 	@${npm_bin}/startserver
-slide:
-	@${npm_bin}/startserver generate README.md
+build:
+	@${npm_bin}/babel lib/ --out-dir dist/
 .PHONY: test

@@ -20,7 +20,8 @@
   },
   "scripts": {
     "lint": "make lint",
-    "test": "make test"
+    "test": "make test",
+    "build": "make build"
   },
   "dependencies": {
     "autoresponsive-common": "~1.0.0"
@@ -29,21 +30,22 @@
     "lint"
   ],
   "devDependencies": {
-    "react": "~0.13.1",
-    "react-logo": "~1.0.4",
-    "forkmeon.github.io": "*",
-    "startserver": "*",
-    "startserver-webpack": "~1.0.1",
-    "mocha": "*",
-    "istanbul-harmony": "~0.3.0",
-    "should": "*",
-    "marked": "0.3.2",
-    "highlight.js": "~8.3.0",
-    "jsx-loader": "^0.12.2",
-    "json-loader": "^0.5.2",
+    "babel": "~5.8.23",
     "babel-core": "^5.x",
     "babel-loader": "^5.x",
-    "eslint-plugin-react": "~2.5.2"
+    "eslint-plugin-react": "~2.5.2",
+    "forkmeon.github.io": "*",
+    "highlight.js": "~8.3.0",
+    "istanbul-harmony": "~0.3.0",
+    "json-loader": "^0.5.2",
+    "jsx-loader": "^0.12.2",
+    "marked": "0.3.2",
+    "mocha": "*",
+    "react": "~0.13.1",
+    "react-logo": "~1.0.7",
+    "should": "*",
+    "startserver": "*",
+    "startserver-webpack": "~1.0.1"
   },
   "startserver": [
     {

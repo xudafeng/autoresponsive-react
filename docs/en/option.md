@@ -3,7 +3,7 @@
 ### containerWidth
 
 ```
-Type: Number, Default: 1024
+Type: Number, Default: null
 ```
 container total width
 
