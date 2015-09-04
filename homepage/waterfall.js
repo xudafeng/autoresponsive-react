@@ -19,7 +19,7 @@ let styleList = {};
 let getItemStyle = function() {
   return {
     width: 150,
-    height: parseInt(Math.random() * 20 + 12) * 10,
+    height: parseInt(Math.random() * 20 + 12, 10) * 10,
     color: '#3a2d5b',
     cursor: 'default',
     borderRadius: 5,
@@ -32,7 +32,7 @@ let getItemStyle = function() {
     fontWeight: 'bold',
     textShadow: '1px 1px 0px #816abe'
   };
-}
+};
 
 const events = ['clickItemHandle'];
 
@@ -64,7 +64,6 @@ class WaterfallSampleComponent extends React.Component {
   }
 
   clickItemHandle(e) {
-    let target = e.target;
     let nodes = e.target.parentNode.childNodes;
 
     for (let i = 0; i < nodes.length; i++) {

@@ -3,7 +3,7 @@
 ### containerWidth
 
 ```
-Type: Number, Default: 1024
+Type: Number, Default: null
 ```
 容器总体宽度
 

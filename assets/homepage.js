@@ -18533,12 +18533,12 @@
 	          return;
 	        }
 
-	        var childWidth = parseInt(child.props.style.width) + _this.props.itemMargin;
-	        var childHeight = parseInt(child.props.style.height) + _this.props.itemMargin;
+	        var childWidth = parseInt(child.props.style.width, 10) + _this.props.itemMargin;
+	        var childHeight = parseInt(child.props.style.height, 10) + _this.props.itemMargin;
 
 	        var calculatedPosition = _this.sortManager.getPosition(childWidth, childHeight, _this.containerStyle.height);
 
-	        if (!_this.fixedContainerHeight) {
+	        if (!_this.fixedContainerHeight && _this.props.containerWidth) {
 
 	          if (calculatedPosition[1] + childHeight > _this.containerStyle.height) {
 	            _this.containerStyle.height = calculatedPosition[1] + childHeight;
@@ -18570,10 +18570,19 @@
 	  }, {
 	    key: 'mixItemInlineStyle',
 	    value: function mixItemInlineStyle(s) {
+	      var itemMargin = this.props.itemMargin;
 	      var style = {
-	        position: 'absolute',
-	        overflow: 'hidden'
+	        display: 'block',
+	        float: 'left',
+	        margin: '0 ' + itemMargin + 'px ' + itemMargin + 'px 0 '
 	      };
+
+	      if (this.props.containerWidth) {
+	        style = {
+	          position: 'absolute',
+	          overflow: 'hidden'
+	        };
+	      }
 	      Util.merge(s, style);
 	    }
 	  }, {
@@ -18598,7 +18607,7 @@
 	})(React.Component);
 
 	AutoResponsive.defaultProps = {
-	  containerWidth: 1024,
+	  containerWidth: null,
 	  containerHeight: null,
 	  gridWidth: 10,
 	  prefixClassName: 'rc-autoresponsive',
@@ -18964,17 +18973,21 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 	var Common = __webpack_require__(159);
+	var ExecutionEnvironment = __webpack_require__(51);
 
 	var Util = Common.Util;
 
 	function transitionEnd() {
-	  var el = document.createElement('pin');
 	  var transitionEndEventNames = {
 	    WebkitTransition: 'webkitTransitionEnd',
 	    MozTransition: 'transitionend',
 	    OTransition: 'oTransitionEnd otransitionend',
 	    transition: 'transitionend'
 	  };
+	  if (!ExecutionEnvironment.canUseDOM) {
+	    return transitionEndEventNames;
+	  }
+	  var el = document.createElement('pin');
 
 	  for (var _name in transitionEndEventNames) {
 	    if (el.style[_name] !== undefined) {
@@ -19098,7 +19111,7 @@
 	var getItemStyle = function getItemStyle() {
 	  return {
 	    width: 150,
-	    height: parseInt(Math.random() * 20 + 12) * 10,
+	    height: parseInt(Math.random() * 20 + 12, 10) * 10,
 	    color: '#3a2d5b',
 	    cursor: 'default',
 	    borderRadius: 5,
@@ -19155,7 +19168,6 @@
 	  }, {
 	    key: 'clickItemHandle',
 	    value: function clickItemHandle(e) {
-	      var target = e.target;
 	      var nodes = e.target.parentNode.childNodes;
 
 	      for (var i = 0; i < nodes.length; i++) {
@@ -19468,11 +19480,17 @@
 	  _createClass(ReactLogo, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
+	      var _this = this;
+
 	      if (this.props.animation) {
-	        animate((function () {
-	          this.tweenLoop();
-	        }).bind(this));
+	        animate(function () {
+	          _this.tweenLoop();
+	        });
 	      }
+
+	      Object.keys(data).map(function (ref) {
+	        _this[ref] = React.findDOMNode(_this.refs[ref]);
+	      });
 	    }
 	  }, {
 	    key: 'getPathTotalLength',
@@ -19496,14 +19514,14 @@
 	  }, {
 	    key: 'getTransforms',
 	    value: function getTransforms() {
-	      var state = this.state;
-	      var refs = this.refs;
+	      var _this2 = this;
 
-	      if (!refs.path1) {
+	      if (!this.refs.path1) {
 	        return [];
 	      }
+
 	      return Object.keys(data).map(function (ref) {
-	        var pos = React.findDOMNode(refs[ref]).getPointAtLength(state.length);
+	        var pos = _this2[ref].getPointAtLength(_this2.state.length);
 	        return 'translate(' + pos.x + 'px, ' + pos.y + 'px)';
 	      });
 	    }
@@ -19512,6 +19530,7 @@
 	    value: function render() {
 	      var props = this.props;
 	      var transforms = this.getTransforms();
+
 	      return React.createElement(
 	        'div',
 	        { className: props.prefixClassName + '-svg' },
@@ -19806,7 +19825,8 @@
 		},
 		"scripts": {
 			"lint": "make lint",
-			"test": "make test"
+			"test": "make test",
+			"build": "make build"
 		},
 		"dependencies": {
 			"autoresponsive-common": "~1.0.0"
@@ -19815,21 +19835,22 @@
 			"lint"
 		],
 		"devDependencies": {
-			"react": "~0.13.1",
-			"react-logo": "~1.0.4",
-			"forkmeon.github.io": "*",
-			"startserver": "*",
-			"startserver-webpack": "~1.0.1",
-			"mocha": "*",
-			"istanbul-harmony": "~0.3.0",
-			"should": "*",
-			"marked": "0.3.2",
-			"highlight.js": "~8.3.0",
-			"jsx-loader": "^0.12.2",
-			"json-loader": "^0.5.2",
+			"babel": "~5.8.23",
 			"babel-core": "^5.x",
 			"babel-loader": "^5.x",
-			"eslint-plugin-react": "~2.5.2"
+			"eslint-plugin-react": "~2.5.2",
+			"forkmeon.github.io": "*",
+			"highlight.js": "~8.3.0",
+			"istanbul-harmony": "~0.3.0",
+			"json-loader": "^0.5.2",
+			"jsx-loader": "^0.12.2",
+			"marked": "0.3.2",
+			"mocha": "*",
+			"react": "~0.13.1",
+			"react-logo": "~1.0.7",
+			"should": "*",
+			"startserver": "*",
+			"startserver-webpack": "~1.0.1"
 		},
 		"startserver": [
 			{
@@ -20035,7 +20056,6 @@
 	  }, {
 	    key: 'verticalClickHandle',
 	    value: function verticalClickHandle() {
-	      var verticalDirection = undefined;
 
 	      if (this.state.verticalDirection === 'top') {
 	        this.setState({
@@ -28121,7 +28141,9 @@
 	  } else {
 	    document.attachEvent('onreadystatechange', function () {
 
-	      if (document.readyState !== 'loading') callback();
+	      if (document.readyState !== 'loading') {
+	        callback();
+	      }
 	    });
 	  }
 	};
@@ -28171,7 +28193,7 @@
 	  var width = el.offsetWidth;
 	  var style = el.currentStyle || getComputedStyle(el);
 
-	  width += parseInt(style.marginLeft) + parseInt(style.marginRight);
+	  width += parseInt(style.marginLeft, 10) + parseInt(style.marginRight, 10);
 	  return width;
 	};
 
