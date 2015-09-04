@@ -19835,6 +19835,7 @@
 			"lint"
 		],
 		"devDependencies": {
+			"babel": "~5.8.23",
 			"babel-core": "^5.x",
 			"babel-loader": "^5.x",
 			"eslint-plugin-react": "~2.5.2",
