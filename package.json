@@ -24,7 +24,8 @@
     "build": "make build"
   },
   "dependencies": {
-    "autoresponsive-common": "~1.0.0"
+    "autoresponsive-common": "~1.0.0",
+    "exenv": "^1.2.0"
   },
   "precommit": [
     "lint"
