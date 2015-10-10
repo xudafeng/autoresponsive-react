@@ -1,6 +1,6 @@
 {
   "name": "autoresponsive-react",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "auto responsive grid layout library",
   "keywords": [
     "react",
@@ -11,7 +11,7 @@
     "ui",
     "component"
   ],
-  "main": "index.js",
+  "main": "dist/index.js",
   "homepage": "http://xudafeng.github.io/autoresponsive-react",
   "author": "xudafeng@126.com",
   "repository": {
@@ -38,6 +38,7 @@
     "forkmeon.github.io": "*",
     "highlight.js": "~8.3.0",
     "istanbul-harmony": "~0.3.0",
+    "jsdom": "6.5.1",
     "json-loader": "^0.5.2",
     "jsx-loader": "^0.12.2",
     "marked": "0.3.2",

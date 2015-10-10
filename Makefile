@@ -8,10 +8,7 @@ clean:
 	@rm -rf build
 test: install
 	@node --harmony \
-		${npm_bin}/istanbul cover ${npm_bin}/_mocha \
-		-- \
-		--timeout 10000 \
-		--require co-mocha
+		${npm_bin}/istanbul cover ${npm_bin}/_mocha
 travis: install
 	@NODE_ENV=test ${npm_bin}/istanbul cover \
 		./node_modules/.bin/_mocha \

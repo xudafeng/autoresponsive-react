@@ -18320,7 +18320,7 @@
 
 	      return React.Children.map(this.props.children, function (child, childIndex) {
 
-	        if (! ~child.props.className.indexOf(_this.props.itemClassName)) {
+	        if (child.props.className && _this.props.itemClassName && ! ~child.props.className.indexOf(_this.props.itemClassName)) {
 	          return;
 	        }
 
