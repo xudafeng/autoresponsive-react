@@ -1,5 +1,13 @@
 git_version = $$(git branch 2>/dev/null | sed -e '/^[^*]/d'-e's/* \(.*\)/\1/')
 npm_bin= $$(npm bin)
+REQUIRED = --require should
+TESTS = test
+
+BIN = iojs
+
+ifeq ($(findstring io.js, $(shell which node)),)
+	BIN = node
+endif
 
 all: test
 install:
@@ -7,18 +15,13 @@ install:
 clean:
 	@rm -rf build
 test: install
-	@node --harmony \
-		${npm_bin}/istanbul cover ${npm_bin}/_mocha \
-		-- \
-		--timeout 10000 \
-		--require co-mocha
+	@NODE_ENV=test $(BIN) $(FLAGS) \
+		${npm_bin}/istanbul cover ${npm_bin}/_mocha
 travis: install
-	@NODE_ENV=test ${npm_bin}/istanbul cover \
-		./node_modules/.bin/_mocha \
-		--report lcovonly \
-		-- -t 20000 -r should-http test/*.test.js
+	@NODE_ENV=test $(BIN) $(FLAGS) \
+		${npm_bin}/istanbul cover	${npm_bin}/_mocha --report lcovonly
 lint:
-	@${npm_bin}/eslint lib homepage
+	@${npm_bin}/eslint lib homepage test
 server: install
 	@${npm_bin}/startserver
 build:

@@ -48,8 +48,8 @@ class MarkdownComponent extends React.Component {
   }
 
   clickHandler(e) {
-    var target = e.target;
-    var nodeName = target.nodeName;
+    let target = e.target;
+    let nodeName = target.nodeName;
 
     if (nodeName !== 'H2' && nodeName !== 'H3') {
       return;
