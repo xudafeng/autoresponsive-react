@@ -61,8 +61,8 @@
 
 	var React = __webpack_require__(1);
 	var AutoResponsive = __webpack_require__(157);
-	var Util = __webpack_require__(165);
-	var WaterfallExampleComponent = __webpack_require__(166);
+	var Util = __webpack_require__(166);
+	var WaterfallExampleComponent = __webpack_require__(167);
 
 	React.render(React.createElement(WaterfallExampleComponent, null), document.body);
 
@@ -18320,7 +18320,7 @@
 
 	      return React.Children.map(this.props.children, function (child, childIndex) {
 
-	        if (! ~child.props.className.indexOf(_this.props.itemClassName)) {
+	        if (child.props.className && _this.props.itemClassName && ! ~child.props.className.indexOf(_this.props.itemClassName)) {
 	          return;
 	        }
 
@@ -18764,7 +18764,7 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 	var Common = __webpack_require__(159);
-	var ExecutionEnvironment = __webpack_require__(51);
+	var ExecutionEnvironment = __webpack_require__(165);
 
 	var Util = Common.Util;
 
@@ -18865,6 +18865,46 @@
 
 /***/ },
 /* 165 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2015 Jed Watson.
+	  Based on code that is Copyright 2013-2015, Facebook, Inc.
+	  All rights reserved.
+	*/
+
+	'use strict';
+
+	(function () {
+		'use strict';
+
+		var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+
+		var ExecutionEnvironment = {
+
+			canUseDOM: canUseDOM,
+
+			canUseWorkers: typeof Worker !== 'undefined',
+
+			canUseEventListeners: canUseDOM && !!(window.addEventListener || window.attachEvent),
+
+			canUseViewport: canUseDOM && !!window.screen
+
+		};
+
+		if (true) {
+			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return ExecutionEnvironment;
+			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else if (typeof module !== 'undefined' && module.exports) {
+			module.exports = ExecutionEnvironment;
+		} else {
+			window.ExecutionEnvironment = ExecutionEnvironment;
+		}
+	})();
+
+/***/ },
+/* 166 */
 /***/ function(module, exports) {
 
 	/* ================================================================
@@ -18968,7 +19008,7 @@
 	module.exports = Util;
 
 /***/ },
-/* 166 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* ================================================================
@@ -18998,7 +19038,7 @@
 
 	var React = __webpack_require__(1);
 	var AutoResponsive = __webpack_require__(157);
-	var Util = __webpack_require__(165);
+	var Util = __webpack_require__(166);
 
 	var arrayList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 	var styleList = {};

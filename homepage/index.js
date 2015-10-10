@@ -111,7 +111,7 @@ class HomePage extends React.Component {
   }
 
   getLoadingClass() {
-    var arr = ['loading'];
+    let arr = ['loading'];
 
     if (!this.state.loading) {
       arr.push('fadeOut');
@@ -134,7 +134,7 @@ class HomePage extends React.Component {
   }
 
   getI18nButtonStyle(locale) {
-    var arr = ['btn', 'btn-default'];
+    let arr = ['btn', 'btn-default'];
 
     if (locale === this.state.locale) {
       arr.push('focus');
