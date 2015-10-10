@@ -13,8 +13,8 @@
 
 'use strict';
 
-var React = require('react/addons');
-var TestUtils = React.addons.TestUtils;
+const React = require('react/addons');
+const TestUtils = React.addons.TestUtils;
 
 function render(node) {
   return TestUtils.renderIntoDocument(node);
@@ -28,6 +28,21 @@ function tryWithClass(root, cls) {
   return TestUtils.scryRenderedDOMComponentsWithClass(root, cls);
 }
 
-exports.render = render;
-exports.findWithClass = findWithClass;
-exports.tryWithClass = tryWithClass;
+function renderer() {
+  return TestUtils.createRenderer();
+}
+
+module.exports = TestUtils;
+module.exports.render = render;
+module.exports.findWithClass = findWithClass;
+module.exports.tryWithClass = tryWithClass;
+module.exports.renderer = TestUtils.createRenderer;
+
+if (typeof document === 'undefined') {
+  const jsdom = require('jsdom').jsdom;
+  global.document = jsdom('<!doctype html><html><body></body></html>');
+  global.window = document.parentWindow;
+  global.navigator = {
+    userAgent: ''
+  };
+}
