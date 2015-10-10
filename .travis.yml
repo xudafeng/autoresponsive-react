@@ -1,7 +1,7 @@
 language: node_js
 sudo: false
 node_js:
-  - "iojs-v4"
+  - "4.1.2"
 notifications:
   email:
   - xudafeng@126.com
