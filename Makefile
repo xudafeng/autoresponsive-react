@@ -21,7 +21,7 @@ travis: install
 	@NODE_ENV=test $(BIN) $(FLAGS) \
 		${npm_bin}/istanbul cover	${npm_bin}/_mocha --report lcovonly
 lint:
-	@${npm_bin}/eslint lib homepage
+	@${npm_bin}/eslint lib homepage test
 server: install
 	@${npm_bin}/startserver
 build:
