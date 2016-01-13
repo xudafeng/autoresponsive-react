@@ -15,7 +15,7 @@ Type: Any || Number, Default: null
 
 容器总体高度，推荐使用默认配置，也可固定值
 
-### columnWidth
+### gridWidth
 
 ```
 Type: Number, Default: 10

@@ -15,12 +15,12 @@ Type: String || Number, Default: null
 
 container total height
 
-### columnWidth
+### gridWidth
 
 ```
 Type: Number, Default: 10
 ```
-column width
+minimum single column width
 
 ### prefixClassName
 
