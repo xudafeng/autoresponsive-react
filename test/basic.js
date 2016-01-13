@@ -60,7 +60,7 @@ describe('AutoResponsive Test Suite - Basic', function() {
   it('render children', function() {
 
     const children = component.props.children;
-    children.should.be.a.Object;
+    children.should.be.an.Object();
 
     const child = children['.0'];
     child.type.should.equal('p');
@@ -70,7 +70,6 @@ describe('AutoResponsive Test Suite - Basic', function() {
     style.height.should.equal(itemStyle.height);
     style.Transform.should.equal('translate3d(0px, 0px, 0)');
     style.position.should.equal('absolute');
-    style.overflow.should.equal('hidden');
   });
 
 });
