@@ -1,3 +1,8 @@
+## 1.1.10  / 2016-01-14
+
+ * Remove `overflow: hidden`
+ * Fix docs
+
 ## 1.1.8  / 2015-10-02
 
  * Add test case
