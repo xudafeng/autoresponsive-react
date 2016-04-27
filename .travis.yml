@@ -1,9 +1,13 @@
 language: node_js
 sudo: false
 node_js:
-  - "4.1.2"
-notifications:
-  email:
-  - xudafeng@126.com
+  - "4"
+addons:
+  apt:
+    packages:
+      - xvfb
+install:
+  - export DISPLAY=':99.0'
+  - Xvfb :99 -screen 0 1366x768x24 > /dev/null 2>&1 &
 script: make travis
 after_script: "npm install coveralls@2 && cat ./coverage/lcov.info | coveralls"

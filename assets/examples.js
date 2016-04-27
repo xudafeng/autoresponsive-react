@@ -18895,6 +18895,7 @@
 	  Based on code that is Copyright 2013-2015, Facebook, Inc.
 	  All rights reserved.
 	*/
+	/* global define */
 
 	'use strict';
 
