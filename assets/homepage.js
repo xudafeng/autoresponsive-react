@@ -19104,6 +19104,7 @@
 	  Based on code that is Copyright 2013-2015, Facebook, Inc.
 	  All rights reserved.
 	*/
+	/* global define */
 
 	'use strict';
 
@@ -19728,7 +19729,7 @@
 
 	module.exports = {
 		"name": "autoresponsive-react",
-		"version": "1.1.9",
+		"version": "1.1.10",
 		"description": "auto responsive grid layout library",
 		"keywords": [
 			"react",
@@ -19769,13 +19770,15 @@
 			"jsdom": "6.5.1",
 			"json-loader": "^0.5.2",
 			"jsx-loader": "^0.12.2",
+			"macaca-client": "^1.0.20",
 			"marked": "0.3.2",
 			"mocha": "*",
 			"react": "~0.13.1",
 			"react-logo": "~1.0.7",
 			"should": "*",
 			"startserver": "*",
-			"startserver-webpack": "~1.0.1"
+			"startserver-webpack": "~1.0.1",
+			"webdriver-client": "^1.0.9"
 		},
 		"startserver": [
 			{
