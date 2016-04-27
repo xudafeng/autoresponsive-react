@@ -10,7 +10,7 @@ test: install
 	@NODE_ENV=test $(BIN) $(FLAGS) \
 		${npm_bin}/istanbul cover	${npm_bin}/_mocha --report lcovonly
 travis: test server
-	@${npm_bin}/macaca run
+	@${npm_bin}/macaca run --no-window
 lint:
 	@${npm_bin}/eslint lib homepage test
 server: install

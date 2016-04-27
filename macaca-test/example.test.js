@@ -22,7 +22,7 @@ describe('macaca desktop sample', function() {
   this.timeout(5 * 60 * 1000);
 
   const driver = wd.initPromiseChain();
-  const initialURL = 'http://localhost:4567';
+  const initialURL = 'http://localhost:4567/examples';
 
   before(() => {
     return driver
@@ -36,7 +36,7 @@ describe('macaca desktop sample', function() {
       .sleep(3000);
   });
 
-  it('#0 should resize', function() {
+  it('#1 should resize', function() {
     return driver
       .setWindowSize(800, 800)
       .sleep(3000);
