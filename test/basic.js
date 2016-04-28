@@ -13,9 +13,10 @@
 
 'use strict';
 
-const React = require('react/addons');
-const utils = require('./utils');
 const AutoResponsive = require('..');
+const React = require('react/addons');
+
+const utils = require('./utils');
 
 describe('AutoResponsive Test Suite - Basic', function() {
 
