@@ -433,6 +433,9 @@
 	var queueIndex = -1;
 
 	function cleanUpNextTick() {
+	    if (!draining || !currentQueue) {
+	        return;
+	    }
 	    draining = false;
 	    if (currentQueue.length) {
 	        queue = currentQueue.concat(queue);
@@ -19770,7 +19773,8 @@
 			"jsdom": "6.5.1",
 			"json-loader": "^0.5.2",
 			"jsx-loader": "^0.12.2",
-			"macaca-client": "^1.0.20",
+			"macaca-cli": "^1.0.20",
+			"macaca-electron": "^1.0.7",
 			"marked": "0.3.2",
 			"mocha": "*",
 			"react": "~0.13.1",
