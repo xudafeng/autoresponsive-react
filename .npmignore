@@ -10,3 +10,5 @@ Makefile
 .jshintignore
 coverage/
 *.html
+*.sw*
+*.un~
