@@ -42,8 +42,8 @@ describe('macaca desktop sample', function() {
       .sleep(3000);
   });
 
-  after((done) => {
+  after(() => {
     return driver
-      .quit(done);
+      .quit();
   });
 });
