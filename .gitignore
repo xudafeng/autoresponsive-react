@@ -6,5 +6,6 @@ Thumbs.db
 coverage/
 .project
 build/
+assets/*.js
 *.sw*
 *.un~
