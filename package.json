@@ -19,9 +19,9 @@
     "url": "https://github.com/xudafeng/autoresponsive-react.git"
   },
   "scripts": {
-    "lint": "make lint",
+    "lint": "eslint lib homepage test",
     "test": "make test",
-    "build": "make build"
+    "build": "babel lib/ --out-dir dist/"
   },
   "dependencies": {
     "autoresponsive-common": "~1.0.1",
