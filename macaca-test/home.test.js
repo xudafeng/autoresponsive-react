@@ -13,20 +13,24 @@
 
 'use strict';
 
-var wd = require('webdriver-client')({
-  platformName: 'desktop',
-  browserName: 'electron'
-});
+const wd = require('macaca-wd');
 
 describe('macaca desktop sample', function() {
   this.timeout(5 * 60 * 1000);
 
-  const driver = wd.initPromiseChain();
+  var driver = wd.promiseChainRemote({
+    host: 'localhost',
+    port: process.env.MACACA_SERVER_PORT || 3456
+  });
+
   const initialURL = 'http://localhost:4567';
 
   before(() => {
     return driver
-      .initDriver()
+      .init({
+        platformName: 'desktop',
+        browserName: 'electron' 
+      })
       .setWindowSize(1280, 800);
   });
 
