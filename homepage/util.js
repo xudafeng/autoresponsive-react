@@ -11,6 +11,8 @@
  *
  * ================================================================ */
 
+'use strict';
+
 let Util = {};
 
 Util.ajax = function(url, successCallback, failCallback) {
@@ -19,7 +21,6 @@ Util.ajax = function(url, successCallback, failCallback) {
 
   request.onreadystatechange = function() {
     if (this.readyState === 4) {
-
       if (this.status >= 200 && this.status < 400) {
         successCallback(this.responseText);
       } else {
@@ -39,7 +40,6 @@ Util.ready = function(callback) {
     document.addEventListener('DOMContentLoaded', callback);
   } else {
     document.attachEvent('onreadystatechange', function() {
-
       if (document.readyState !== 'loading') {
         callback();
       }
@@ -53,7 +53,6 @@ Util.mixin = function(dest) {
   for (var i = 0; i < sources.length; i++) {
     var src = sources[i];
     for (var key in src) {
-
       if (!dest[key]) {
         dest[key] = src[key];
       }

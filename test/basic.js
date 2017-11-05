@@ -19,7 +19,6 @@ const React = require('react/addons');
 const utils = require('./utils');
 
 describe('AutoResponsive Test Suite - Basic', function() {
-
   const renderer = utils.renderer();
 
   const props = {
@@ -52,14 +51,12 @@ describe('AutoResponsive Test Suite - Basic', function() {
   });
 
   it('render container style', function() {
-
     const style = component.props.style;
     style.position.should.be.equal('relative');
     style.height.should.be.equal(Math.ceil(tempString.length / (props.containerWidth / itemStyle.width)) * itemStyle.height);
   });
 
   it('render children', function() {
-
     const children = component.props.children;
     children.should.be.an.Object();
 
@@ -72,5 +69,4 @@ describe('AutoResponsive Test Suite - Basic', function() {
     style.Transform.should.equal('translate3d(0px, 0px, 0)');
     style.position.should.equal('absolute');
   });
-
 });

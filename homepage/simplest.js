@@ -99,7 +99,6 @@ class SimplestSampleComponent extends React.Component {
   }
 
   verticalClickHandle() {
-
     if (this.state.verticalDirection === 'top') {
       this.setState({
         verticalDirection: 'bottom',
@@ -111,7 +110,6 @@ class SimplestSampleComponent extends React.Component {
         containerHeight: null
       });
     }
-
   }
 
   getAutoResponsiveProps() {

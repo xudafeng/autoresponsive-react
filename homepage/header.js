@@ -19,7 +19,6 @@ let pkg = require('../package');
 const noop = function() {};
 
 class HeaderComponent extends React.Component {
-
   getForkmeonProps() {
     return {
       classPrefix: pkg.name,

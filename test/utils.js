@@ -28,10 +28,6 @@ function tryWithClass(root, cls) {
   return TestUtils.scryRenderedDOMComponentsWithClass(root, cls);
 }
 
-function renderer() {
-  return TestUtils.createRenderer();
-}
-
 module.exports = TestUtils;
 module.exports.render = render;
 module.exports.findWithClass = findWithClass;
