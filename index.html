@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-<title>An Auto Responsive Grid Layout Library | autoresponsive-react</title>
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-<link rel="stylesheet" href="//npmcdn.com/autoresponsive-react@latest/assets/base.css"/>
-<link rel="stylesheet" href="//npmcdn.com/autoresponsive-react@latest/assets/homepage.css"/>
-<base target="_blank"/>
-</head>
-<body>
-<script src="//npmcdn.com/autoresponsive-react@latest/assets/homepage.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>An Auto Responsive Grid Layout Library | autoresponsive-react</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <base target="_blank"/>
+  </head>
+  <body>
+    <script>
+      var isOnline = !!~location.host.indexOf('github');
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = (isOnline ? '//unpkg.com/autoresponsive-react@latest' : '.') + '/assets/homepage.js';
+      var link1 = document.createElement('link');
+      link1.rel = 'stylesheet';
+      link1.type = 'text/css';
+      link1.href = (isOnline ? '//unpkg.com/autoresponsive-react@latest' : '.') + '/assets/base.css';
+      var link2 = document.createElement('link');
+      link2.rel = 'stylesheet';
+      link2.type = 'text/css';
+      link2.href = (isOnline ? '//unpkg.com/autoresponsive-react@latest' : '.') + '/assets/homepage.css';
+      var head = document.getElementsByTagName('head')[0];
+      head.appendChild(link1);
+      head.appendChild(link2);
+      head.appendChild(script);
+    </script>
+  </body>
 </html>
