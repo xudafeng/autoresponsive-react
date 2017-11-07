@@ -1,5 +1,5 @@
 let React = require('react');
-let AutoResponsive = require('..');
+let AutoResponsive = require('../lib');
 let Util = require('./util');
 let WaterfallExampleComponent = require('./waterfall');
 
