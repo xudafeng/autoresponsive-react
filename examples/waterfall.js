@@ -2,45 +2,11 @@ let React = require('react');
 let AutoResponsive = require('../lib');
 let Util = require('./util');
 
-let arrayList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-let styleList = {};
-let getItemStyle = function() {
-  return {
-    width: 180,
-    height: parseInt(Math.random() * 20 + 15) * 10,
-    color: '#3a2d5b',
-    cursor: 'default',
-    borderRadius: 5,
-    boxShadow: '0 1px 0 rgba(255,255,255,0.5) inset',
-    backgroundColor: '#5c439b',
-    borderColor: '#796b1d',
-    fontSize: '80px',
-    lineHeight: '100px',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    textShadow: '1px 1px 0px #816abe'
-  };
-}
-
-const events = [];
-
-arrayList.map(function(i) {
-  styleList[i] = getItemStyle();
-});
-
 class WaterfallExampleComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.bindEventMapContent();
     this.state = {
-      styleList: styleList
     };
-  }
-
-  bindEventMapContent() {
-    events.forEach(i => {
-      this[i] = this[i].bind(this);
-    });
   }
 
   componentWillMount() {
