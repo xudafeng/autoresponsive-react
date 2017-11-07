@@ -1,5 +1,6 @@
 # autoresponsive-react
-----------------------
+
+---
 
 Auto responsive grid layout library for [React](http://facebook.github.io/react/index.html).
 
@@ -23,15 +24,15 @@ Live demo & docs: [xudafeng.github.io/autoresponsive-react](https://xudafeng.git
 
 To build the examples local, please run:
 
-```shell
+``` bash
 $ make install
 $ make server
 ```
 
 ## Installation
 
-```shell
-$ npm install autoresponsive-react --save
+``` bash
+$ npm install autoresponsive-react --save-dev
 ```
 
 ## Contributing
@@ -40,4 +41,4 @@ See our [CONTRIBUTING.md](./CONTRIBUTING.md) for information on how to contribut
 
 ## License
 
-MIT Licensed. Copyright (c) xdf 2015.
+MIT Licensed.

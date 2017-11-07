@@ -1,19 +1,7 @@
-/* ================================================================
- * autoresponsive-react by xdf(xudafeng[at]126.com)
- *
- * first created at : Mon Jun 02 2014 20:15:51 GMT+0800 (CST)
- *
- * ================================================================
- * Copyright 2014 xdf
- *
- * Licensed under the MIT License
- * You may not use this file except in compliance with the License.
- *
- * ================================================================ */
-
 let React = require('react');
 let LogoComponent = require('react-logo');
 let ForkmeonComponent = require('forkmeon.github.io');
+
 let pkg = require('../package');
 
 const noop = function() {};
@@ -45,7 +33,10 @@ class HeaderComponent extends React.Component {
               <div className="first">Magic</div>
               <p>Responsive Layout Library For React</p>
             </h1>
-            <iframe className="github-btn" src="https://ghbtns.com/github-btn.html?user=xudafeng&repo=autoresponsive-react&type=watch&count=true" title="Star on GitHub"></iframe>
+            <iframe className="github-btn" src={`//ghbtns.com/github-btn.html?user=xudafeng&repo=${pkg.name}&type=watch&count=true`} title="Star on GitHub"></iframe>
+            <a href={`//www.npmjs.com/${pkg.name}`}>
+              <span className="version">v{ pkg.version }</span>
+            </a>
           </div>
         </div>
         <ForkmeonComponent {...this.getForkmeonProps()}/>

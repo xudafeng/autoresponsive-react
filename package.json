@@ -1,6 +1,6 @@
 {
   "name": "autoresponsive-react",
-  "version": "1.1.11",
+  "version": "1.1.12",
   "description": "auto responsive grid layout library",
   "keywords": [
     "react",
@@ -12,34 +12,35 @@
     "component"
   ],
   "main": "dist/index.js",
-  "homepage": "http://xudafeng.github.io/autoresponsive-react",
-  "author": "xudafeng@126.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/xudafeng/autoresponsive-react.git"
   },
   "scripts": {
+    "dev": "webpack-dev-server",
     "lint": "eslint lib homepage test",
     "test": "make test",
-    "build": "babel lib/ --out-dir dist/"
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "compile": "babel lib/ --out-dir dist/",
+    "prepublish": "npm run compile && npm run build"
   },
-  "dependencies": {
-    "autoresponsive-common": "~1.0.1",
-    "exenv": "^1.2.0"
-  },
+  "dependencies": {},
   "precommit": [
     "lint"
   ],
   "devDependencies": {
+    "autoresponsive-common": "^1.0.1",
     "babel": "~5.8.23",
     "babel-core": "^5.x",
     "babel-loader": "^5.x",
+    "cross-env": "^5.1.1",
     "eslint": "^4.10.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-mocha": "^4.11.0",
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-react": "^7.4.0",
+    "exenv": "^1.2.0",
     "forkmeon.github.io": "*",
     "highlight.js": "~8.3.0",
     "istanbul-harmony": "~0.3.0",
@@ -54,13 +55,8 @@
     "react": "~0.13.1",
     "react-logo": "~1.0.7",
     "should": "*",
-    "startserver": "*",
-    "startserver-webpack": "~1.0.1"
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.7.1"
   },
-  "startserver": [
-    {
-      "startserver-webpack": "*"
-    }
-  ],
   "licenses": "MIT"
 }

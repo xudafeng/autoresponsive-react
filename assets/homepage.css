@@ -185,6 +185,9 @@ footer {
   font-weight: normal;
   line-height: 1.2em;
 }
+.header .version {
+  color: #333;
+}
 .btn-group button {
   background-color: transparent;
   border-color: #796b1d;

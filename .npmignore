@@ -1,5 +1,4 @@
 .travis.yml
-.drone.yml
 test/
 homepage/
 examples/
