@@ -1,5 +1,7 @@
-## Contributing to autoresponsive-react
+# Contributing to autoresponsive-react
+
+---
 
 - Fork the project, make a change, and send a pull request;
-- Have a look at code style now before starting;
+- Have a look at code style now before starting and make sure lint (`$ npm run lint`) pass;
 - Make sure the tests case (`$ make test`) pass before sending a pull request;
