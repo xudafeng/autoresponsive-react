@@ -1,6 +1,12 @@
 let React = require('react');
-let AutoResponsive = require('../lib');
+let ForkmeonComponent = require('forkmeon.github.io');
+
 let Util = require('./util');
+let AutoResponsive = require('../lib');
+
+const pkg = require('../package');
+
+const noop = () => {};
 
 class WaterfallExampleComponent extends React.Component {
   constructor(props) {
@@ -20,6 +26,17 @@ class WaterfallExampleComponent extends React.Component {
         data: data
       });
     });
+  }
+
+  getForkmeonProps() {
+    return {
+      classPrefix: pkg.name,
+      fixed: true,
+      text: 'Fork me on Github',
+      linkUrl: pkg.repository.url,
+      onDemoUpdateDid: noop,
+      flat: true
+    };
   }
 
   componentDidMount() {
@@ -71,6 +88,7 @@ class WaterfallExampleComponent extends React.Component {
             })
           }
         </AutoResponsive>
+        <ForkmeonComponent {...this.getForkmeonProps()}/>
       </div>
     );
   }
