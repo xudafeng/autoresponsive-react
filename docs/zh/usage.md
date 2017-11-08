@@ -50,6 +50,9 @@ class WaterfallSampleComponent extends React.Component {
 
 ## Examples
 
-[示例1](./examples)
+- [示例1](./examples)
 
-[示例2 - Native](https://github.com/xudafeng/autoresponsive_react_native_sample)
+## Related Edition
+
+- [ReactNative 版本](//github.com/xudafeng/autoresponsive_react_native_sample)
+- [Vue 版本](//github.com/xudafeng/autoresponsive-vue)
