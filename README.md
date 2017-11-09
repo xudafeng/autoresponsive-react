@@ -32,7 +32,7 @@ $ make server
 ## Installation
 
 ``` bash
-$ npm install autoresponsive-react --save-dev
+$ npm i autoresponsive-react --save-dev
 ```
 
 ## Related Edition
