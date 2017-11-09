@@ -35,6 +35,11 @@ $ make server
 $ npm install autoresponsive-react --save-dev
 ```
 
+## Related Edition
+
+- [ReactNative Edition](//github.com/xudafeng/autoresponsive_react_native_sample)
+- [Vue Edition](//github.com/xudafeng/autoresponsive-vue)
+
 ## Contributing
 
 See our [CONTRIBUTING.md](./CONTRIBUTING.md) for information on how to contribute.

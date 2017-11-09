@@ -11,6 +11,9 @@
   -webkit-transition: opacity .8s ease;
   transition: opacity .8s ease;
 }
+.markdown li {
+  margin: 10px 0;
+}
 .fadeIn {
   opacity: 100!important;
 }
@@ -30,7 +33,7 @@ h1, h2, h3 {
   cursor: pointer;
 }
 h2 {
-  margin-top: 30px;
+  margin: 30px 0;
   color: #FFCEA9;
   font-size: 34px;
 }
