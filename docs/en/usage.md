@@ -4,7 +4,7 @@
 
 Simplest example：
 
-```js
+``` javascript
 class SimplestSampleComponent extends React.Component {
 
   ...
@@ -28,7 +28,7 @@ class SimplestSampleComponent extends React.Component {
 
 The completion of a waterfall layout becomes very simple
 
-```js
+``` javascript
 
 class WaterfallSampleComponent extends React.Component {
 
@@ -55,5 +55,5 @@ class WaterfallSampleComponent extends React.Component {
 
 ## Related Edition
 
-- [ReactNative Edition](//github.com/xudafeng/autoresponsive_react_native_sample)
+- [ReactNative Edition](//github.com/xudafeng/autoresponsive-react-native)
 - [Vue Edition](//github.com/xudafeng/autoresponsive-vue)

@@ -4,7 +4,7 @@
 
 简单的例子：
 
-```js
+``` javascript
 class SimplestSampleComponent extends React.Component {
 
   ...
@@ -28,7 +28,7 @@ class SimplestSampleComponent extends React.Component {
 
 实现一个流式布局变得非常容易
 
-```js
+``` javascript
 class WaterfallSampleComponent extends React.Component {
 
   ...
@@ -54,5 +54,5 @@ class WaterfallSampleComponent extends React.Component {
 
 ## Related Edition
 
-- [ReactNative 版本](//github.com/xudafeng/autoresponsive_react_native_sample)
+- [ReactNative 版本](//github.com/xudafeng/autoresponsive-react-native)
 - [Vue 版本](//github.com/xudafeng/autoresponsive-vue)
