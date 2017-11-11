@@ -25,7 +25,7 @@
     "prepublish": "npm run compile && npm run build"
   },
   "dependencies": {
-    "autoresponsive-common": "^1.0.1",
+    "autoresponsive-core": "^1.0.0",
     "exenv": "^1.2.0"
   },
   "precommit": [

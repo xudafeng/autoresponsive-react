@@ -3,7 +3,7 @@ let LayoutComponnet = require('./layout');
 let SimplestSampleComponent = require('./simplest');
 let WaterfallSampleComponent = require('./waterfall');
 let MarkdownComponent = require('./markdown');
-let Util = require('./util');
+let Utils = require('./utils');
 
 const documentsList = ['usage', 'option', 'event'];
 const events = ['i18nClickHandler'];
@@ -48,7 +48,7 @@ class HomePage extends React.Component {
     });
 
     documentsList.forEach(name => {
-      Util.ajax(`./docs/${this.currentLocale}/${name}.md`, data => {
+      Utils.ajax(`./docs/${this.currentLocale}/${name}.md`, data => {
         let item = this.state.documentsList.slice(0);
 
         if (item.length === documentsList.length) {
@@ -90,7 +90,7 @@ class HomePage extends React.Component {
 
     let waterfallElem = document.getElementById('waterfall');
     let commonProps = {
-      containerWidth: Util.width(simplestElem)
+      containerWidth: Utils.width(simplestElem)
     };
 
     React.render(<SimplestSampleComponent {...commonProps} />, simplestElem);
@@ -160,7 +160,7 @@ class HomePage extends React.Component {
 }
 
 HomePage.defaultProps = {
-  locale: Util.getUrlParams('locale') || 'en'
+  locale: Utils.getUrlParams('locale') || 'en'
 };
 
 React.render(<HomePage />, document.body);

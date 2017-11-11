@@ -18,43 +18,6 @@ Util.ajax = function(url, successCallback, failCallback) {
   request = null;
 };
 
-Util.ready = function(callback) {
-  if (document.readyState !== 'loading') {
-    callback();
-  } else if (document.addEventListener) {
-    document.addEventListener('DOMContentLoaded', callback);
-  } else {
-    document.attachEvent('onreadystatechange', function() {
-      if (document.readyState !== 'loading') {
-        callback();
-      }
-    });
-  }
-};
-
-Util.mixin = function(dest) {
-  var sources = Array.prototype.slice.call(arguments, 1);
-
-  for (var i = 0; i < sources.length; i++) {
-    var src = sources[i];
-    for (var key in src) {
-      if (!dest[key]) {
-        dest[key] = src[key];
-      }
-    }
-  }
-};
-
-Util.on = function(el, eventName, handler) {
-  if (el.addEventListener) {
-    el.addEventListener(eventName, handler);
-  } else {
-    el.attachEvent('on' + eventName, function() {
-      handler.call(el);
-    });
-  }
-};
-
 Util.getUrlParams = function(k) {
   var params = {};
   var url = location.href;

@@ -1,7 +1,7 @@
 let React = require('react');
 let ForkmeonComponent = require('forkmeon.github.io');
 
-let Util = require('./util');
+let Utils = require('../homepage/utils');
 let AutoResponsive = require('../lib');
 
 const pkg = require('../package');
@@ -20,7 +20,7 @@ class WaterfallExampleComponent extends React.Component {
   }
 
   getData() {
-    Util.ajax('./data.json', d => {
+    Utils.ajax('./data.json', d => {
       let data = JSON.parse(d).data;
       this.setState({
         data: data
