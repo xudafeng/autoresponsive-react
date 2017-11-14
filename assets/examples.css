@@ -13,17 +13,6 @@
   margin: auto;
   margin-top: 5px;
   padding-bottom: 60px;
-  _zoom: 1;
-}
-.albumPanel .aP-hd i,
-.albumPanel .aP-hd b,
-.albumPanel .album .a-mask i,
-.albumPanel .album .a-more,
-.albumPanel .aP-collapse i,
-.albumPanel .aP-expand i,
-.albumPanel .aP-expand.absolute {
-  background: url(http://img01.taobaocdn.com/tps/i1/T1yONIFapgXXaw9EUt-1000-274.png) no-repeat -9999px -9999px;
-  _background-image: url(http://img02.taobaocdn.com/tps/i2/T1XhBKFoReXXaw9EUt-1000-274.png);
 }
 .albumPanel .aP-hd {
   text-align: left;
@@ -288,13 +277,10 @@
   zoom: 0.5;
   -moz-transform: scale(0.5);
   margin-left: -86px;
-  margin-left: -43px\9;
   margin-top: -86px;
-  margin-top: -43px\9;
 }
 .albumPanel .aP-expand,
 .albumPanel .aP-collapse {
-  background-image: url(about:blank);
   display: block;
   left: 0;
   bottom: 0;
@@ -306,7 +292,6 @@
   text-decoration: none;
   outline: none;
   background-color: rgba(255, 255, 255, 0.7);
-  background: url(about:blank) transparent\0;
   -webkit-transition: background-color .2s ease-in 0s, color .2s ease-in 0s;
   -moz-transition: background-color .2s ease-in 0s, color .2s ease-in 0s;
   -ms-transition: background-color .2s ease-in 0s, color .2s ease-in 0s;
@@ -327,7 +312,6 @@
   color: white;
   text-decoration: none;
   background-color: rgba(0, 0, 0, 0.5);
-  background: url(about:blank) transparent\0;
 }
 .albumPanel .aP-collapse {
   position: absolute;
