@@ -8,7 +8,7 @@ let getItemStyle = function() {
     width: 150,
     height: parseInt(Math.random() * 20 + 12, 10) * 10,
     color: '#3a2d5b',
-    cursor: 'default',
+    cursor: 'pointer',
     borderRadius: 5,
     boxShadow: '0 1px 0 rgba(255,255,255,0.5) inset',
     backgroundColor: '#5c439b',
