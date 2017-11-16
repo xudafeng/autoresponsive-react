@@ -51,7 +51,7 @@ class WaterfallSampleComponent extends React.Component {
 
 ## Examples
 
-- [Sample1](./examples)
+- [Common Usage Sample](./examples)
 
 ## Related Edition
 
