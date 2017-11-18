@@ -51,7 +51,7 @@
     "macaca-cli": "^2.0.12",
     "macaca-electron": "^1.1.17",
     "macaca-wd": "^1.0.16",
-    "marked": "0.3.2",
+    "marked": "^0.3.4",
     "mocha": "*",
     "react": "~0.13.1",
     "react-logo": "~1.0.7",
