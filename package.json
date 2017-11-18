@@ -1,6 +1,6 @@
 {
   "name": "autoresponsive-react",
-  "version": "1.1.21",
+  "version": "1.1.22",
   "description": "auto responsive grid layout library",
   "keywords": [
     "react",
@@ -20,12 +20,12 @@
     "dev": "webpack-dev-server",
     "lint": "eslint lib homepage test",
     "test": "make test",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "build": "cross-env NODE_ENV=production webpack -p --progress --hide-modules",
     "compile": "babel lib/ --out-dir dist/",
     "prepublish": "npm run compile && npm run build"
   },
   "dependencies": {
-    "autoresponsive-core": "^1.0.0",
+    "autoresponsive-core": "^1.0.1",
     "exenv": "^1.2.0"
   },
   "precommit": [
