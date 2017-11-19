@@ -17,7 +17,8 @@ let getItemStyle = function() {
     lineHeight: '100px',
     textAlign: 'center',
     fontWeight: 'bold',
-    textShadow: '1px 1px 0px #816abe'
+    textShadow: '1px 1px 0px #816abe',
+    userSelect: 'none'
   };
 };
 

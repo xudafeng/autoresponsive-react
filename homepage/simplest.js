@@ -14,7 +14,8 @@ let style = {
   lineHeight: '100px',
   textAlign: 'center',
   fontWeight: 'bold',
-  textShadow: '1px 1px 0px #ab9a3c'
+  textShadow: '1px 1px 0px #ab9a3c',
+  userSelect: 'none'
 };
 
 const buttons = ['margin', 'append', 'remove', 'sort', 'horizontal', 'vertical'];
