@@ -24,14 +24,14 @@ Live demo & docs: [xudafeng.github.io/autoresponsive-react](https://xudafeng.git
 
 To build the examples local, please run:
 
-``` bash
+```bash
 $ make install
 $ make server
 ```
 
 ## Installation
 
-``` bash
+```bash
 $ npm i autoresponsive-react --save-dev
 ```
 
