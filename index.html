@@ -8,24 +8,25 @@
     <base target="_blank"/>
   </head>
   <body>
-    <script src="//unpkg.com/react@0.13.3/dist/react.min.js"></script>
-    <script>
-      var isOnline = !!~location.host.indexOf('github');
-      var script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = (isOnline ? '//unpkg.com/autoresponsive-react@latest' : '.') + '/assets/homepage.js';
-      var link1 = document.createElement('link');
-      link1.rel = 'stylesheet';
-      link1.type = 'text/css';
-      link1.href = (isOnline ? '//unpkg.com/autoresponsive-react@latest' : '.') + '/assets/base.css';
-      var link2 = document.createElement('link');
-      link2.rel = 'stylesheet';
-      link2.type = 'text/css';
-      link2.href = (isOnline ? '//unpkg.com/autoresponsive-react@latest' : '.') + '/assets/homepage.css';
-      var head = document.getElementsByTagName('head')[0];
-      head.appendChild(link1);
-      head.appendChild(link2);
-      head.appendChild(script);
-    </script>
+    <div id="app">
+      <script>
+        var isOnline = !!~location.host.indexOf('github');
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = (isOnline ? '//unpkg.com/autoresponsive-react@latest' : '.') + '/assets/homepage.js';
+        var link1 = document.createElement('link');
+        link1.rel = 'stylesheet';
+        link1.type = 'text/css';
+        link1.href = (isOnline ? '//unpkg.com/autoresponsive-react@latest' : '.') + '/assets/base.css';
+        var link2 = document.createElement('link');
+        link2.rel = 'stylesheet';
+        link2.type = 'text/css';
+        link2.href = (isOnline ? '//unpkg.com/autoresponsive-react@latest' : '.') + '/assets/homepage.css';
+        var head = document.getElementsByTagName('head')[0];
+        head.appendChild(link1);
+        head.appendChild(link2);
+        head.appendChild(script);
+      </script>
+    </div>
   </body>
 </html>

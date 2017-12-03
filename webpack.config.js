@@ -12,9 +12,6 @@ var config = {
     publicPath: '/assets/',
     filename: '[name].js'
   },
-  externals: {
-    react: 'window.React'
-  },
   module: {
     loaders: [
       {

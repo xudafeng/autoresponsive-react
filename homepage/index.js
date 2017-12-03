@@ -1,12 +1,21 @@
 let React = require('react');
+let ReactDOM = require('react-dom');
+
+let Utils = require('./utils');
 let LayoutComponnet = require('./layout');
+let MarkdownComponent = require('./markdown');
 let SimplestSampleComponent = require('./simplest');
 let WaterfallSampleComponent = require('./waterfall');
-let MarkdownComponent = require('./markdown');
-let Utils = require('./utils');
 
-const documentsList = ['usage', 'option', 'event'];
-const events = ['i18nClickHandler'];
+const documentsList = [
+  'usage',
+  'option',
+  'event'
+];
+
+const events = [
+  'i18nClickHandler'
+];
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -93,8 +102,8 @@ class HomePage extends React.Component {
       containerWidth: Utils.width(simplestElem)
     };
 
-    React.render(<SimplestSampleComponent {...commonProps} />, simplestElem);
-    React.render(<WaterfallSampleComponent {...commonProps} />, waterfallElem);
+    ReactDOM.render(<SimplestSampleComponent {...commonProps} />, simplestElem);
+    ReactDOM.render(<WaterfallSampleComponent {...commonProps} />, waterfallElem);
   }
 
   getLoadingClass() {
@@ -115,8 +124,8 @@ class HomePage extends React.Component {
   }
 
   renderMarkdown() {
-    return this.state.documentsList.map(function(d) {
-      return <MarkdownComponent ref={d.name}>{d.data}</MarkdownComponent>;
+    return this.state.documentsList.map(function(d, i) {
+      return <MarkdownComponent key={i} ref={d.name}>{d.data}</MarkdownComponent>;
     });
   }
 
@@ -163,4 +172,4 @@ HomePage.defaultProps = {
   locale: Utils.getUrlParams('locale') || 'en'
 };
 
-React.render(<HomePage />, document.body);
+ReactDOM.render(<HomePage />, document.querySelector('#app'));

@@ -1,4 +1,5 @@
 let React = require('react');
+let ReactDOM = require('react-dom');
 let ForkmeonComponent = require('forkmeon.github.io');
 
 let Utils = require('../homepage/utils');
@@ -42,7 +43,7 @@ class WaterfallExampleComponent extends React.Component {
   componentDidMount() {
     window.addEventListener('resize', () => {
       this.setState({
-        containerWidth: React.findDOMNode(this.refs.container).clientWidth
+        containerWidth: ReactDOM.findDOMNode(this.refs.container).clientWidth
       });
     }, false);
   }
@@ -73,7 +74,7 @@ class WaterfallExampleComponent extends React.Component {
                 height: i.w === 'w1' ? 240 : 490
               };
               return (
-                <a href="#" className={`${i.w} album item`} style={style}>
+                <a key={index} href="#" className={`${i.w} album item`} style={style}>
                   <img className="a-cont j_ACont" src="images/a.jpg"/>
                   <img className="a-cover" src={i.src}/>
                   <p className="a-mask">{index}<i></i></p>

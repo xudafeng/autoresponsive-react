@@ -1,4 +1,6 @@
 let React = require('react');
+let ReactDOM = require('react-dom');
+
 let AutoResponsive = require('../lib');
 
 let style = {
@@ -43,7 +45,7 @@ class SimplestSampleComponent extends React.Component {
   componentDidMount() {
     window.addEventListener('resize', () => {
       this.setState({
-        containerWidth: React.findDOMNode(this.refs.container).clientWidth
+        containerWidth: ReactDOM.findDOMNode(this.refs.container).clientWidth
       });
     }, false);
   }
@@ -90,7 +92,7 @@ class SimplestSampleComponent extends React.Component {
     if (this.state.verticalDirection === 'top') {
       this.setState({
         verticalDirection: 'bottom',
-        containerHeight: React.findDOMNode(this.refs.container).clientHeight
+        containerHeight: ReactDOM.findDOMNode(this.refs.container).clientHeight
       });
     } else {
       this.setState({
@@ -115,13 +117,17 @@ class SimplestSampleComponent extends React.Component {
 
   renderItems() {
     return this.state.arrayList.map(function(i) {
-      return <div className="item" key={i} style={style}>{i}</div>;
+      return (
+        <div className="item" key={i} style={style}>
+          {i}
+        </div>
+      );
     });
   }
 
   renderButtons() {
     return buttons.map(i => {
-      return <button type="button" onClick={this[`${i}ClickHandle`]} className="btn btn-default">{i}</button>;
+      return <button type="button" key={i} onClick={this[`${i}ClickHandle`]} className="btn btn-default">{i}</button>;
     });
   }
 
