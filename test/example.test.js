@@ -31,6 +31,6 @@ describe('test/example.test.js', () => {
     return driver
       .get(`${BASE_URL}/examples`)
       .setWindowSize(800, 600)
-      .sleep(1000);
+      .sleep(2000);
   });
 });

@@ -40,7 +40,7 @@ describe('test/homepage.test.js', () => {
     const elementRect = `document.querySelector('${elementGroup}').getClientRects()`;
     const height = `${elementRect}[0].y || ${elementRect}[0].top`;
     return driver
-      .sleep(500)
+      .sleep(1500)
       .execute(`window.scrollTo(0, ${height})`)
       .elementsByCss(elementButton)
       .then(list => {
