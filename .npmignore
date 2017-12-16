@@ -3,10 +3,10 @@ test/
 homepage/
 examples/
 docs/
-Makefile
-.jshintrc
-.jshintignore
 coverage/
+reports/
+screenshots/
+.ready
 *.html
 *.sw*
 *.un~
