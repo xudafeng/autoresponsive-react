@@ -1,6 +1,6 @@
 {
   "name": "autoresponsive-react",
-  "version": "1.1.24",
+  "version": "1.1.25",
   "description": "auto responsive grid layout library",
   "keywords": [
     "react",
@@ -11,7 +11,7 @@
     "ui",
     "component"
   ],
-  "main": "dist/index.js",
+  "main": "dist/autoresponsive-react.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/xudafeng/autoresponsive-react.git"
