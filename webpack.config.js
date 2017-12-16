@@ -3,6 +3,8 @@
 const fs = require('fs');
 const path = require('path');
 
+const pkg = require('./package');
+
 const isProduction = process.env.NODE_ENV === 'production';
 
 class WebpackAfterAllPlugin {
@@ -17,12 +19,13 @@ class WebpackAfterAllPlugin {
 
 const config = {
   entry: {
+    [pkg.name]: path.join(__dirname, 'src'),
     homepage: path.resolve('homepage'),
     examples: path.resolve('examples')
   },
   output: {
-    path: path.join(__dirname, 'assets'),
-    publicPath: '/assets/',
+    path: path.join(__dirname, 'dist'),
+    publicPath: '/dist',
     filename: '[name].js'
   },
   module: {

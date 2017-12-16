@@ -1,7 +1,7 @@
 let React = require('react');
 let ReactDOM = require('react-dom');
 
-let AutoResponsive = require('../lib');
+let AutoResponsive = require('../src');
 
 let style = {
   height: 100,

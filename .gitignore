@@ -9,6 +9,5 @@ screenshots/
 .ready
 build/
 dist/
-assets/*.js
 *.sw*
 *.un~

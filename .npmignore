@@ -7,6 +7,5 @@ coverage/
 reports/
 screenshots/
 .ready
-*.html
 *.sw*
 *.un~

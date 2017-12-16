@@ -2,8 +2,8 @@ let React = require('react');
 let ReactDOM = require('react-dom');
 let ForkmeonComponent = require('forkmeon.github.io');
 
+let AutoResponsive = require('../src');
 let Utils = require('../homepage/utils');
-let AutoResponsive = require('../lib');
 
 const pkg = require('../package');
 
