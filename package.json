@@ -20,8 +20,7 @@
     "dev": "webpack-dev-server",
     "lint": "eslint --fix lib examples homepage test",
     "build": "cross-env NODE_ENV=production webpack -p --progress --hide-modules",
-    "compile": "babel lib/ --out-dir dist/",
-    "prepublish": "npm run compile && npm run build",
+    "prepublish": "npm run build",
     "serve": "npm run dev &",
     "test": "macaca run -d ./test --verbose --reporter macaca-reporter",
     "ci": "npm run serve && npm run test"
@@ -34,6 +33,7 @@
     "lint"
   ],
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.17.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -47,6 +47,7 @@
     "eslint-loader": "^1.9.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-mocha": "^4.11.0",
+    "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-react": "^7.4.0",
     "eslint-plugin-standard": "^3.0.1",

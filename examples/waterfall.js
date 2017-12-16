@@ -59,7 +59,6 @@ class WaterfallExampleComponent extends React.Component {
   }
 
   render() {
-
     if (!this.state.data) {
       return <div>loading...</div>;
     }
