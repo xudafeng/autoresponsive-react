@@ -4,6 +4,16 @@ const path = require('path');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
+class WebpackAfterAllPlugin {
+  apply (compiler) {
+    compiler.plugin('done', (compilation) => {
+      setTimeout(() => {
+        fs.writeFileSync(path.join(__dirname, '.ready'), '')
+      }, 1000)
+    })
+  }
+}
+
 const config = {
   entry: {
     homepage: path.resolve('homepage'),
@@ -36,7 +46,10 @@ const config = {
         exclude: /node_modules/
       }
     ]
-  }
+  },
+  plugins: [
+    new WebpackAfterAllPlugin()
+  ]
 };
 
 module.exports = config;
