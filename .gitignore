@@ -4,9 +4,10 @@ npm-debug.log
 .idea/*
 Thumbs.db
 coverage/
-.project
+reports/
+screenshots/
+.ready
 build/
 dist/
-assets/*.js
 *.sw*
 *.un~
