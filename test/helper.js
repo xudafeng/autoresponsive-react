@@ -12,41 +12,48 @@ import wd from 'macaca-wd';
 import {
   appendToContext
 } from 'macaca-reporter';
-import istanbul from 'macaca-istanbul';
+import Coverage from 'macaca-coverage';
 
-const collector = new istanbul.Collector();
+const {
+  collector,
+  Reporter
+} = Coverage({
+  runtime: 'web'
+});
 
 const cwd = process.cwd();
 
 wd.addPromiseChainMethod('initWindow', function (options = {}) {
-  const handle = () => {
-    return this
-      .init(Object.assign({
-        platformName: 'desktop',
-        browserName: 'electron',
-        deviceScaleFactor: 2
-      }, options))
-      .setWindowSize(options.width, options.height);
-  };
+  return this
+    .init(Object.assign({
+      platformName: 'desktop',
+      browserName: 'electron',
+      deviceScaleFactor: 2
+    }, options))
+    .setWindowSize(options.width, options.height);
+});
 
-  if (platform.isOSX) {
-    return handle();
-  } else {
-    const readyFile = path.join(cwd, '.ready');
-    return new Promise(resolve => {
-      const timeout = (port) => {
-        setTimeout(() => {
-          if (isExistedFile(readyFile)) {
-            resolve(handle());
-          } else {
-            console.log('waiting for you');
-            timeout(port);
-          }
-        }, 2000);
-      };
-      timeout(8080);
-    });
-  }
+wd.addPromiseChainMethod('getUrl', function (url) {
+  return new Promise(resolve => {
+    const handle = () => {
+      setTimeout(() => {
+        this
+          .get(url)
+          .sleep(1000)
+          .execute('return location.href')
+          .then(href => {
+            if (!!~href.indexOf(url)) {
+              setTimeout(() => {
+                resolve();
+              }, 10 * 1000);
+            } else {
+              handle();
+            }
+          });
+      }, 3000);
+    };
+    handle();
+  });
 });
 
 wd.addPromiseChainMethod('saveScreenshots', function (context) {
@@ -64,7 +71,7 @@ wd.addPromiseChainMethod('saveScreenshots', function (context) {
 wd.addPromiseChainMethod('coverage', function (context) {
   const coverageHtml = path.join(cwd, 'coverage', 'index.html');
   return this
-    .execute('return window.__macaca_coverage__')
+    .execute('return window.__coverage__')
     .then(__coverage__ => {
       if (!__coverage__) {
         return this
@@ -73,7 +80,7 @@ wd.addPromiseChainMethod('coverage', function (context) {
             console.log(`>> coverage failed: ${url}`);
           });
       }
-      const reporter = new istanbul.Reporter();
+      const reporter = new Reporter();
       collector.add(__coverage__);
       reporter.addAll([
         'html',
@@ -117,4 +124,4 @@ export const driver = wd.promiseChainRemote({
 
 const webpackDevServerPort = 8080;
 
-export const BASE_URL = `http://127.0.0.1:${webpackDevServerPort}/`;
+export const BASE_URL = `http://127.0.0.1:${webpackDevServerPort}`;
