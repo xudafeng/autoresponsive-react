@@ -17,26 +17,6 @@ class WebpackAfterAllPlugin {
   }
 }
 
-const loaders = [{
-  test: /\.js?/,
-  loader: 'babel-loader',
-  query: {
-    presets: ['react', 'env', 'stage-2']
-  }
-}];
-
-if (!isProduction) {
-  loaders.push({
-    test: /\.js?$/,
-    exclude: /node_modules/,
-    loader: 'istanbul-instrumenter-loader',
-    query: {
-      esModules: true,
-      coverageVariable: '__macaca_coverage__'
-    }
-  });
-}
-
 const config = {
   entry: {
     [pkg.name]: path.join(__dirname, 'src'),
@@ -49,13 +29,27 @@ const config = {
     filename: '[name].js'
   },
   module: {
-    loaders: loaders.concat([
+    loaders: [
       {
+        test: /\.js?/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['react', 'env', 'stage-2']
+        }
+      }, isProduction ? {} : {
+        test: /\.js?$/,
+        exclude: /node_modules/,
+        loader: 'istanbul-instrumenter-loader',
+        query: {
+          esModules: true,
+          coverageVariable: '__macaca_coverage__'
+        }
+      }, {
         test: /\.json$/,
         loader: 'json-loader',
         exclude: /node_modules/
       }
-    ])
+    ]
   },
   plugins: [
     new WebpackAfterAllPlugin()
