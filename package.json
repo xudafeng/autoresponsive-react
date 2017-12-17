@@ -23,7 +23,7 @@
     "prepublish": "npm run build",
     "serve": "npm run dev &",
     "test": "macaca run -d ./test --verbose --reporter macaca-reporter",
-    "ci": "npm run serve && npm run test"
+    "ci": "npm run lint && npm run serve && npm run test"
   },
   "dependencies": {
     "autoresponsive-core": "^1.0.1",
