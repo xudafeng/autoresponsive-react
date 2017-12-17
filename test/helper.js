@@ -12,9 +12,14 @@ import wd from 'macaca-wd';
 import {
   appendToContext
 } from 'macaca-reporter';
-import istanbul from 'macaca-istanbul';
+import Coverage from 'macaca-coverage';
 
-const collector = new istanbul.Collector();
+const {
+  collector,
+  Reporter,
+} = Coverage({
+  runtime: 'web'
+});
 
 const cwd = process.cwd();
 
@@ -73,7 +78,7 @@ wd.addPromiseChainMethod('coverage', function (context) {
             console.log(`>> coverage failed: ${url}`);
           });
       }
-      const reporter = new istanbul.Reporter();
+      const reporter = Reporter();
       collector.add(__coverage__);
       reporter.addAll([
         'html',
