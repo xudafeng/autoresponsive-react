@@ -78,7 +78,7 @@ wd.addPromiseChainMethod('coverage', function (context) {
             console.log(`>> coverage failed: ${url}`);
           });
       }
-      const reporter = Reporter();
+      const reporter = new Reporter();
       collector.add(__coverage__);
       reporter.addAll([
         'html',
