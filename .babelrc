@@ -1,4 +1,14 @@
 {
-  "presets": ["env", "stage-2"],
-  "comments": false
+  presets: [
+    'env',
+    'stage-2'
+  ],
+  comments: false,
+  env: {
+    test: {
+      plugins: [
+        'istanbul'
+      ]
+    }
+  }
 }

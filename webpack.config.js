@@ -36,14 +36,6 @@ const config = {
         query: {
           presets: ['react', 'env', 'stage-2']
         }
-      }, isProduction ? {} : {
-        test: /\.js?$/,
-        exclude: /node_modules/,
-        loader: 'istanbul-instrumenter-loader',
-        query: {
-          esModules: true,
-          coverageVariable: '__macaca_coverage__'
-        }
       }, {
         test: /\.json$/,
         loader: 'json-loader',

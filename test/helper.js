@@ -69,7 +69,7 @@ wd.addPromiseChainMethod('saveScreenshots', function (context) {
 wd.addPromiseChainMethod('coverage', function (context) {
   const coverageHtml = path.join(cwd, 'coverage', 'index.html');
   return this
-    .execute('return window.__macaca_coverage__')
+    .execute('return window.__coverage__')
     .then(__coverage__ => {
       if (!__coverage__) {
         return this
