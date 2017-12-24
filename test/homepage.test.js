@@ -81,9 +81,18 @@ describe('test/homepage.test.js', () => {
 
     it('i18n should be ok', () => {
       return driver
+        .get(`${BASE_URL}?locale=zh_CN#examples`)
+        .elementByCss('div.i18n-buttons > div > button:nth-child(2)')
+        .click()
+        .sleep(500)
         .elementByCss('div.i18n-buttons > div > button:nth-child(2)')
         .click()
         .sleep(500);
+    });
+
+    it('resize should be ok', () => {
+      return driver
+        .setWindowSize(800, 600);
     });
   });
 });
