@@ -6,7 +6,6 @@ Thumbs.db
 coverage/
 reports/
 screenshots/
-.ready
 build/
 dist/
 *.sw*
