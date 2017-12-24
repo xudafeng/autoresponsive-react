@@ -6,6 +6,5 @@ docs/
 coverage/
 reports/
 screenshots/
-.ready
 *.sw*
 *.un~
