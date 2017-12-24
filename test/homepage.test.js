@@ -33,21 +33,21 @@ describe('test/homepage.test.js', () => {
 
     it('page render should be ok', () => {
       return driver
-        .get(`${BASE_URL}`)
-        .sleep(5000);
+        .get(BASE_URL);
     });
 
     it('panel should be ok', () => {
       const elementGroup = `#simplest .btn-group`;
-      const elementButton = `${elementGroup} button`;
+      const elementButton = `${elementGroup} > button`;
       const elementRect = `document.querySelector('${elementGroup}').getClientRects()`;
       const height = `${elementRect}[0].y || ${elementRect}[0].top`;
       return driver
+        .sleep(1500)
         .execute(`window.scrollTo(0, ${height})`)
         .elementsByCss(elementButton)
         .then(list => {
           const queue = list.map((item, key) => `${elementButton}:nth-child(${key + 1})`);
-          return Promise.reduce([null].concat(queue), (i, selector) => {
+          return Promise.reduce(queue, (i, selector) => {
             return driver
               .elementByCss(selector)
               .click()
@@ -83,15 +83,7 @@ describe('test/homepage.test.js', () => {
       return driver
         .elementByCss('div.i18n-buttons > div > button:nth-child(2)')
         .click()
-        .sleep(500)
-        .elementByCss('div.i18n-buttons > div > button:nth-child(2)')
-        .click()
         .sleep(500);
-    });
-
-    it('resize should be ok', () => {
-      return driver
-        .setWindowSize(800, 600);
     });
   });
 });
