@@ -34,7 +34,7 @@ describe('test/homepage.test.js', () => {
     it('page render should be ok', () => {
       return driver
         .get(`${BASE_URL}?locale=zh`)
-        .sleep(1500);
+        .sleep(2000);
     });
 
     it('panel should be ok', () => {
