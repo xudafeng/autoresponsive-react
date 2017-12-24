@@ -34,7 +34,7 @@ describe('test/homepage.test.js', () => {
     it('page render should be ok', () => {
       return driver
         .get(`${BASE_URL}`)
-        .sleep(2000);
+        .sleep(5000);
     });
 
     it('panel should be ok', () => {
