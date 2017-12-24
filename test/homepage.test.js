@@ -33,7 +33,7 @@ describe('test/homepage.test.js', () => {
 
     it('page render should be ok', () => {
       return driver
-        .get(BASE_URL)
+        .get(`${BASE_URL}`)
         .sleep(1500);
     });
 
@@ -81,7 +81,7 @@ describe('test/homepage.test.js', () => {
 
     it('i18n should be ok', () => {
       return driver
-        .get(`${BASE_URL}?locale=zh_CN#examples`)
+        .get(`${BASE_URL}?locale=zh`)
         .sleep(1500)
         .elementByCss('div.i18n-buttons > div > button:nth-child(2)')
         .click()
