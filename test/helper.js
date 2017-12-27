@@ -34,26 +34,30 @@ wd.addPromiseChainMethod('initWindow', function (options = {}) {
 });
 
 wd.addPromiseChainMethod('getUrl', function (url) {
-  return new Promise(resolve => {
-    const handle = () => {
-      setTimeout(() => {
-        this
-          .get(url)
-          .sleep(1000)
-          .execute('return location.href')
-          .then(href => {
-            if (!!~href.indexOf(url)) {
-              setTimeout(() => {
-                resolve();
-              }, 10 * 1000);
-            } else {
-              handle();
-            }
-          });
-      }, 3000);
-    };
-    handle();
-  });
+  return this
+    .get(url)
+    .execute('return location.protocol')
+    .then(protocol => {
+      if (protocol !== 'http:') {
+        return new Promise(resolve => {
+          const handle = () => {
+            setTimeout(() => {
+              this
+                .get(url)
+                .execute('return location.protocol')
+                .then(protocol => {
+                  if (protocol === 'http:') {
+                    resolve();
+                  } else {
+                    handle();
+                  }
+                });
+            }, 1000);
+          };
+          handle();
+        });
+      }
+    });
 });
 
 wd.addPromiseChainMethod('saveScreenshots', function (context) {
