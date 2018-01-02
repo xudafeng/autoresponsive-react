@@ -1,15 +1,13 @@
-let React = require('react');
-let ReactDOM = require('react-dom');
-let ForkmeonComponent = require('forkmeon.github.io');
-
-let AutoResponsive = require('../src');
-let Utils = require('../homepage/utils');
-
-const pkg = require('../package');
-
-const noop = () => {};
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ForkmeonComponent from 'forkmeon.github.io';
 
 import './index.less';
+import pkg from '../package';
+import AutoResponsive from '../src';
+import Utils from '../homepage/utils';
+
+const noop = () => {};
 
 class WaterfallExampleComponent extends React.Component {
   constructor(props) {

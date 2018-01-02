@@ -1,13 +1,12 @@
-let React = require('react');
-let ReactDOM = require('react-dom');
-
-let Utils = require('./utils');
-let LayoutComponnet = require('./layout');
-let MarkdownComponent = require('./markdown');
-let SimplestSampleComponent = require('./simplest');
-let WaterfallSampleComponent = require('./waterfall');
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 import './index.less';
+import Utils from './utils';
+import LayoutComponnet from './layout';
+import MarkdownComponent from './markdown';
+import SimplestSampleComponent from './simplest';
+import WaterfallSampleComponent from './waterfall';
 
 const documentsList = [
   'usage',
