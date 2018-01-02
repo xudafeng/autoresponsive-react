@@ -1,5 +1,6 @@
 .travis.yml
 test/
+assets/
 homepage/
 examples/
 docs/
