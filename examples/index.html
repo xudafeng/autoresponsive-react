@@ -14,17 +14,12 @@
         var script = document.createElement('script');
         script.type = 'text/javascript';
         script.src = (isOnline ? '//unpkg.com/autoresponsive-react@latest' : '') + '/dist/examples.js';
-        var link1 = document.createElement('link');
-        link1.rel = 'stylesheet';
-        link1.type = 'text/css';
-        link1.href = (isOnline ? '//unpkg.com/autoresponsive-react@latest' : '') + '/assets/base.css';
-        var link2 = document.createElement('link');
-        link2.rel = 'stylesheet';
-        link2.type = 'text/css';
-        link2.href = (isOnline ? '//unpkg.com/autoresponsive-react@latest' : '') + '/assets/examples.css';
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = (isOnline ? '//unpkg.com/autoresponsive-react@latest' : '') + '/assets/base.css';
         var head = document.getElementsByTagName('head')[0];
-        head.appendChild(link1);
-        head.appendChild(link2);
+        head.appendChild(link);
         head.appendChild(script);
       </script>
     </div>

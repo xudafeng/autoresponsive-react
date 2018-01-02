@@ -7,6 +7,8 @@ let MarkdownComponent = require('./markdown');
 let SimplestSampleComponent = require('./simplest');
 let WaterfallSampleComponent = require('./waterfall');
 
+import './index.less';
+
 const documentsList = [
   'usage',
   'option',
