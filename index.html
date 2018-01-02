@@ -14,12 +14,7 @@
         var script = document.createElement('script');
         script.type = 'text/javascript';
         script.src = (isOnline ? '//unpkg.com/autoresponsive-react@latest' : '.') + '/dist/homepage.js';
-        var link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = (isOnline ? '//unpkg.com/autoresponsive-react@latest' : '.') + '/assets/base.css';
         var head = document.getElementsByTagName('head')[0];
-        head.appendChild(link);
         head.appendChild(script);
       </script>
     </div>
