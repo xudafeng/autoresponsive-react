@@ -9,6 +9,8 @@ const pkg = require('../package');
 
 const noop = () => {};
 
+import './index.less';
+
 class WaterfallExampleComponent extends React.Component {
   constructor(props) {
     super(props);

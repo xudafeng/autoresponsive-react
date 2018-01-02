@@ -1,6 +1,6 @@
 {
   "name": "autoresponsive-react",
-  "version": "1.1.28",
+  "version": "1.1.29",
   "description": "auto responsive grid layout library",
   "keywords": [
     "react",
@@ -44,6 +44,7 @@
     "babel-preset-stage-2": "^6.22.0",
     "bluebird": "^3.5.1",
     "cross-env": "^5.1.1",
+    "css-loader": "^0.28.7",
     "eslint": "^4.10.0",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-loader": "^1.9.0",
@@ -57,6 +58,8 @@
     "highlight.js": "~8.3.0",
     "json-loader": "^0.5.2",
     "jsx-loader": "^0.13.2",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
     "macaca-cli": "^2.0.12",
     "macaca-coverage": "^1.0.0",
     "macaca-electron": "^1.1.17",
@@ -66,6 +69,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-logo": "^1.0.15",
+    "style-loader": "^0.19.1",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.7",
     "xutil": "^1.0.9"
