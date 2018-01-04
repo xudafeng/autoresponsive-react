@@ -21,7 +21,7 @@
     "dev:test": "cross-env NODE_ENV=test webpack-dev-server",
     "lint": "eslint --fix lib examples homepage test",
     "compile": "babel src/ --out-dir dist/ -D",
-    "build": "cross-env NODE_ENV=production webpack -p --progress --hide-modules && npm run compile",
+    "build": "cross-env NODE_ENV=production webpack -p && npm run compile",
     "prepublish": "npm run build",
     "serve": "npm run dev:test &",
     "test": "macaca run -d ./test --reporter macaca-reporter",
