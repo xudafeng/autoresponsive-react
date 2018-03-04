@@ -1,9 +1,13 @@
 'use strict';
 
 import {
+  webpackHelper
+} from 'macaca-wd';
+
+const {
   driver,
   BASE_URL
-} from './helper';
+} = webpackHelper;
 
 describe('test/example.test.js', () => {
   describe('page func testing', () => {

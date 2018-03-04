@@ -3,9 +3,13 @@
 import Promise from 'bluebird';
 
 import {
+  webpackHelper
+} from 'macaca-wd';
+
+const {
   driver,
   BASE_URL
-} from './helper';
+} = webpackHelper;
 
 describe('test/homepage.test.js', () => {
   describe('page func testing', () => {
