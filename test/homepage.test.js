@@ -22,6 +22,11 @@ describe('test/homepage.test.js', () => {
         });
     });
 
+    beforeEach(() => {
+      return driver
+        .getUrl(BASE_URL);
+    });
+
     afterEach(function () {
       return driver
         .coverage()
@@ -32,11 +37,6 @@ describe('test/homepage.test.js', () => {
       return driver
         .openReporter(true)
         .quit();
-    });
-
-    it('page render should be ok', () => {
-      return driver
-        .getUrl(BASE_URL);
     });
 
     it('panel should be ok', () => {
@@ -84,18 +84,31 @@ describe('test/homepage.test.js', () => {
 
     it('i18n should be ok', () => {
       return driver
-        .get(`${BASE_URL}?locale=zh`)
         .elementByCss('div.i18n-buttons > div > button:nth-child(2)')
         .click()
-        .sleep(500)
-        .elementByCss('div.i18n-buttons > div > button:nth-child(2)')
+        .sleep(1000)
+        .elementByCss('div.i18n-buttons > div > button:nth-child(1)')
         .click()
+        .getUrl(`${BASE_URL}?locale=zh`)
         .sleep(500);
     });
 
     it('resize should be ok', () => {
       return driver
         .setWindowSize(800, 600);
+    });
+
+    it('hash should be ok', () => {
+      return driver
+        .elementById('examples')
+        .click()
+        .sleep(500);
+    });
+
+    it('hash redirect should be ok', () => {
+      return driver
+        .getUrl(`${BASE_URL}/#usage`)
+        .sleep(1000);
     });
   });
 });

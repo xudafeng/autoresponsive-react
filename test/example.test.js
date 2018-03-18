@@ -20,6 +20,11 @@ describe('test/example.test.js', () => {
         });
     });
 
+    beforeEach(() => {
+      return driver
+        .getUrl(`${BASE_URL}/examples`);
+    });
+
     afterEach(function () {
       return driver
         .coverage()
@@ -32,9 +37,8 @@ describe('test/example.test.js', () => {
         .quit();
     });
 
-    it('page render should be ok', () => {
+    it('page resize should be ok', () => {
       return driver
-        .getUrl(`${BASE_URL}/examples`)
         .setWindowSize(800, 600)
         .sleep(1000);
     });
