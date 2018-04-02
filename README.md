@@ -18,6 +18,12 @@ Auto responsive grid layout library for [React](http://facebook.github.io/react/
 [node-image]: https://img.shields.io/badge/node.js-%3E=8-green.svg?style=flat-square
 [node-url]: http://nodejs.org/download/
 
+![](//ww4.sinaimg.cn/large/6d308bd9gw1ettap20q1cg20b80dc7pv.gif)
+
+![](//ww4.sinaimg.cn/mw690/6d308bd9gw1ettap4hkvxg20a209de2d.gif)
+
+![](//ww1.sinaimg.cn/mw690/6d308bd9gw1ettap705b7g207g0dckah.gif)
+
 ## Examples
 
 Live demo & docs: [xudafeng.github.io/autoresponsive-react](https://xudafeng.github.io/autoresponsive-react/)
@@ -52,7 +58,7 @@ See our [CONTRIBUTING.md](./CONTRIBUTING.md) for information on how to contribut
 | :---: |
 
 
-This project follows the git-contributor [spec](https://github.com/xudafeng/git-contributor.git), auto upated at `Sun Mar 25 2018 16:14:38 GMT+0800`.
+This project follows the git-contributor [spec](https://github.com/xudafeng/git-contributor.git), auto upated at `Sun Mar 25 2018 16:17:15 GMT+0800`.
 
 <!-- GITCONTRIBUTOR_END -->
 
