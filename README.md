@@ -18,11 +18,11 @@ Auto responsive grid layout library for [React](http://facebook.github.io/react/
 [node-image]: https://img.shields.io/badge/node.js-%3E=8-green.svg?style=flat-square
 [node-url]: http://nodejs.org/download/
 
-![](//ww4.sinaimg.cn/large/6d308bd9gw1ettap20q1cg20b80dc7pv.gif)
+![](./screenshot/1.gif)
 
-![](//ww4.sinaimg.cn/mw690/6d308bd9gw1ettap4hkvxg20a209de2d.gif)
+![](./screenshot/2.gif)
 
-![](//ww1.sinaimg.cn/mw690/6d308bd9gw1ettap705b7g207g0dckah.gif)
+![](./screenshot/3.gif)
 
 ## Examples
 
