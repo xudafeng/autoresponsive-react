@@ -37,7 +37,12 @@ class AnimationManager {
   css2Animation() {
     var style = {};
     style[this.horizontalDirection] = `${this.position[0]}px`;
-    style[this.verticalDirection] = `${this.position[1]}px`;
+
+    if (this.verticalDirection === 'bottom') {
+      style[this.verticalDirection] = `${this.position[1] + this.itemMargin}px`
+    } else {
+      style[this.verticalDirection] = `${this.position[1]}px` ;
+    }
 
     this.mixAnimation(style);
     return style;

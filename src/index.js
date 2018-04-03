@@ -75,7 +75,8 @@ class AutoResponsive extends React.Component {
           width: childWidth,
           height: childHeight
         },
-        containerHeight: this.containerStyle.height
+        containerHeight: this.containerStyle.height,
+        itemMargin: this.props.itemMargin
       });
 
       let calculatedStyle = this.animationManager.generate(options);
