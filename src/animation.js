@@ -55,7 +55,7 @@ class AnimationManager {
       let x, y;
 
       if (this.horizontalDirection === 'right') {
-        x = this.containerWidth - this.size.width - this.position[0];
+        x = this.containerWidth - this.size.width - this.position[0] + this.itemMargin;
       } else {
         x = this.position[0];
       }
