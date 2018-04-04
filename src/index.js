@@ -61,7 +61,7 @@ class AutoResponsive extends React.Component {
       let childWidth = parseInt(child.props.style.width, 10) + this.props.itemMargin;
       let childHeight = parseInt(child.props.style.height, 10) + this.props.itemMargin;
 
-      let calculatedPosition = this.sortManager.getPosition(childWidth, childHeight, this.containerStyle.height);
+      let calculatedPosition = this.sortManager.getPosition(childWidth, childHeight);
 
       if (!this.fixedContainerHeight && this.props.containerWidth) {
         if (calculatedPosition[1] + childHeight > this.containerStyle.height) {
@@ -75,7 +75,8 @@ class AutoResponsive extends React.Component {
           width: childWidth,
           height: childHeight
         },
-        containerHeight: this.containerStyle.height
+        containerHeight: this.containerStyle.height,
+        itemMargin: this.props.itemMargin
       });
 
       let calculatedStyle = this.animationManager.generate(options);
