@@ -54,11 +54,11 @@ See our [CONTRIBUTING.md](./CONTRIBUTING.md) for information on how to contribut
 
 ## Contributors
 
-|[<img src="https://avatars1.githubusercontent.com/u/1011681?v=4" width="100px;"/><br/><sub><b>xudafeng</b></sub>](https://github.com/xudafeng)<br/>
-| :---: |
+|[<img src="https://avatars1.githubusercontent.com/u/1011681?v=4" width="100px;"/><br/><sub><b>xudafeng</b></sub>](https://github.com/xudafeng)<br/>|[<img src="https://avatars0.githubusercontent.com/u/1002461?v=4" width="100px;"/><br/><sub><b>montogeek</b></sub>](https://github.com/montogeek)<br/>
+| :---: | :---: |
 
 
-This project follows the git-contributor [spec](https://github.com/xudafeng/git-contributor.git), auto upated at `Sun Mar 25 2018 16:17:15 GMT+0800`.
+This project follows the git-contributor [spec](https://github.com/xudafeng/git-contributor), auto upated at `Wed Apr 04 2018 13:59:46 GMT+0800`.
 
 <!-- GITCONTRIBUTOR_END -->
 
