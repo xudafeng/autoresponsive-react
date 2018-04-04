@@ -37,7 +37,11 @@ class AnimationManager {
   css2Animation() {
     var style = {};
     style[this.horizontalDirection] = `${this.position[0]}px`;
-    style[this.verticalDirection] = `${this.position[1]}px`;
+    if (this.verticalDirection === 'bottom') {
+      style[this.verticalDirection] = `${this.position[1] + this.itemMargin}px`;
+    } else {
+      style[this.verticalDirection] = `${this.position[1]}px`;
+    }
 
     this.mixAnimation(style);
     return style;
@@ -50,7 +54,7 @@ class AnimationManager {
       let x, y;
 
       if (this.horizontalDirection === 'right') {
-        x = this.containerWidth - this.size.width - this.position[0];
+        x = this.containerWidth - this.size.width - this.position[0] + this.itemMargin;
       } else {
         x = this.position[0];
       }
