@@ -8,6 +8,7 @@ Auto responsive grid layout library for [React](http://facebook.github.io/react/
 [![build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 [![node version][node-image]][node-url]
+[![npm download][download-image]][download-url]
 
 [npm-image]: http://img.shields.io/npm/v/autoresponsive-react.svg?style=flat-square
 [npm-url]: http://npmjs.org/package/autoresponsive-react
@@ -17,6 +18,8 @@ Auto responsive grid layout library for [React](http://facebook.github.io/react/
 [coveralls-url]: https://coveralls.io/r/xudafeng/autoresponsive-react?branch=master
 [node-image]: https://img.shields.io/badge/node.js-%3E=8-green.svg?style=flat-square
 [node-url]: http://nodejs.org/download/
+[download-image]: https://img.shields.io/npm/dm/autoresponsive-react.svg?style=flat-square
+[download-url]: https://npmjs.org/package/autoresponsive-react
 
 ![](./screenshot/1.gif)
 
