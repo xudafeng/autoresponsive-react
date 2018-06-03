@@ -4,8 +4,6 @@ const path = require('path');
 
 const pkg = require('./package');
 
-const isProduction = process.env.NODE_ENV === 'production';
-
 const config = {
   entry: {
     homepage: path.resolve('homepage'),
@@ -17,18 +15,29 @@ const config = {
     filename: '[name].js'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js?/,
-        loader: 'babel-loader',
+        use: 'babel-loader',
         exclude: /node_modules/
       }, {
         test: /\.json$/,
-        loader: 'json-loader',
+        use: 'json-loader',
+        type: 'javascript/auto',
         exclude: /node_modules/
       }, {
         test:/\.less$/,
-        loader: 'style-loader!css-loader!less-loader'
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'less-loader'
+          }
+        ]
       }
     ]
   }
