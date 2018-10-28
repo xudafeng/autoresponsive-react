@@ -21,6 +21,18 @@ Auto responsive grid layout library for [React](http://facebook.github.io/react/
 [download-image]: https://img.shields.io/npm/dm/autoresponsive-react.svg?style=flat-square
 [download-url]: https://npmjs.org/package/autoresponsive-react
 
+<!-- GITCONTRIBUTOR_START -->
+
+## Contributors
+
+|[<img src="https://avatars1.githubusercontent.com/u/1011681?v=4" width="100px;"/><br/><sub><b>xudafeng</b></sub>](https://github.com/xudafeng)<br/>|[<img src="https://avatars2.githubusercontent.com/u/1877738?v=4" width="100px;"/><br/><sub><b>HillLiu</b></sub>](https://github.com/HillLiu)<br/>|[<img src="https://avatars2.githubusercontent.com/u/8263298?v=4" width="100px;"/><br/><sub><b>conorhastings</b></sub>](https://github.com/conorhastings)<br/>|[<img src="https://avatars0.githubusercontent.com/u/1002461?v=4" width="100px;"/><br/><sub><b>montogeek</b></sub>](https://github.com/montogeek)<br/>|[<img src="https://avatars0.githubusercontent.com/u/3760840?v=4" width="100px;"/><br/><sub><b>rayshan</b></sub>](https://github.com/rayshan)<br/>|[<img src="https://avatars1.githubusercontent.com/u/29188938?v=4" width="100px;"/><br/><sub><b>catchonme</b></sub>](https://github.com/catchonme)<br/>
+| :---: | :---: | :---: | :---: | :---: | :---: |
+
+
+This project follows the git-contributor [spec](https://github.com/xudafeng/git-contributor), auto upated at `Sat Apr 21 2018 11:33:26 GMT+0800`.
+
+<!-- GITCONTRIBUTOR_END -->
+
 ![](./screenshot/1.gif)
 
 ![](./screenshot/2.gif)
@@ -52,18 +64,6 @@ $ npm i autoresponsive-react --save-dev
 ## Contributing
 
 See our [CONTRIBUTING.md](./CONTRIBUTING.md) for information on how to contribute.
-
-<!-- GITCONTRIBUTOR_START -->
-
-## Contributors
-
-|[<img src="https://avatars1.githubusercontent.com/u/1011681?v=4" width="100px;"/><br/><sub><b>xudafeng</b></sub>](https://github.com/xudafeng)<br/>|[<img src="https://avatars2.githubusercontent.com/u/1877738?v=4" width="100px;"/><br/><sub><b>HillLiu</b></sub>](https://github.com/HillLiu)<br/>|[<img src="https://avatars2.githubusercontent.com/u/8263298?v=4" width="100px;"/><br/><sub><b>conorhastings</b></sub>](https://github.com/conorhastings)<br/>|[<img src="https://avatars0.githubusercontent.com/u/1002461?v=4" width="100px;"/><br/><sub><b>montogeek</b></sub>](https://github.com/montogeek)<br/>|[<img src="https://avatars0.githubusercontent.com/u/3760840?v=4" width="100px;"/><br/><sub><b>rayshan</b></sub>](https://github.com/rayshan)<br/>|[<img src="https://avatars1.githubusercontent.com/u/29188938?v=4" width="100px;"/><br/><sub><b>catchonme</b></sub>](https://github.com/catchonme)<br/>
-| :---: | :---: | :---: | :---: | :---: | :---: |
-
-
-This project follows the git-contributor [spec](https://github.com/xudafeng/git-contributor), auto upated at `Sat Apr 21 2018 11:33:26 GMT+0800`.
-
-<!-- GITCONTRIBUTOR_END -->
 
 ## License
 
