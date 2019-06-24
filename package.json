@@ -69,6 +69,7 @@
     "react-logo": "^1.0.15",
     "style-loader": "^0.21.0",
     "webpack": "^4.10.0",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.0.1",
     "webpack-dev-server": "^3.1.4",
     "xutil": "1"

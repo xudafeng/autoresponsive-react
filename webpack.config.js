@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('path');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const pkg = require('./package');
 
@@ -40,7 +41,12 @@ const config = {
         ]
       }
     ]
-  }
+  },
+  plugins: [],
 };
+
+if (process.env.npm_config_report) {
+  config.plugins.push(new BundleAnalyzerPlugin());
+}
 
 module.exports = config;
