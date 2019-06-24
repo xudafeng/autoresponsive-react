@@ -9,7 +9,7 @@ const {
   BASE_URL
 } = webpackHelper;
 
-describe('test/example.test.js', () => {
+describe('./test/example.test.js', () => {
   describe('page func testing', () => {
     before(() => {
       return driver

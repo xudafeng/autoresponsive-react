@@ -21,6 +21,15 @@ Auto responsive grid layout library for [React](http://facebook.github.io/react/
 [download-image]: https://img.shields.io/npm/dm/autoresponsive-react.svg?style=flat-square
 [download-url]: https://npmjs.org/package/autoresponsive-react
 
+
+## Who are using
+
+- ⭐⭐⭐[alibaba/ice](//github.com/alibaba/ice)
+- ⭐⭐⭐[ice-lab/react-materials](//github.com/ice-lab/react-materials)
+- ⭐⭐⭐[xudafeng/autoresponsive-react-native](//github.com/xudafeng/autoresponsive-react-native)
+
+[For more](//github.com/xudafeng/autoresponsive-react/network/dependents)
+
 <!-- GITCONTRIBUTOR_START -->
 
 ## Contributors

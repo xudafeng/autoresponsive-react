@@ -11,7 +11,7 @@ const {
   BASE_URL
 } = webpackHelper;
 
-describe('test/homepage.test.js', () => {
+describe('./test/homepage.test.js', () => {
   describe('page func testing', () => {
     before(() => {
       return driver
