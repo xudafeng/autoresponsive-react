@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('path');
+const webpack = require('webpack');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const pkg = require('./package');
@@ -42,7 +43,12 @@ const config = {
       }
     ]
   },
-  plugins: [],
+  plugins: [
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require(path.join(__dirname, 'dll', 'manifest.json'))
+    })
+  ]
 };
 
 if (process.env.npm_config_report) {

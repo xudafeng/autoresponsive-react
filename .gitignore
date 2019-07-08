@@ -6,7 +6,7 @@ Thumbs.db
 coverage/
 reports/
 screenshots/
-build/
+dll/
 dist/
 *.sw*
 *.un~
