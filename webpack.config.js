@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('path');
+const { isExistedFile } = require('xutil');
 const webpack = require('webpack');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
@@ -44,12 +45,18 @@ const config = {
     ]
   },
   plugins: [
-    new webpack.DllReferencePlugin({
-      context: __dirname,
-      manifest: require(path.join(__dirname, 'dll', 'manifest.json'))
-    })
   ]
 };
+
+const manifestFile = path.join(__dirname, 'dll', 'manifest.json');
+
+if (isExistedFile(manifestFile)) {
+  const manifest = require(manifestFile);
+  config.plugins.push(new webpack.DllReferencePlugin({
+    context: __dirname,
+    manifest,
+  }));
+}
 
 if (process.env.npm_config_report) {
   config.plugins.push(new BundleAnalyzerPlugin());
