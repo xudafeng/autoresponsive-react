@@ -61,7 +61,7 @@
     "less": "^2.7.3",
     "less-loader": "^4.1.0",
     "macaca-cli": "2",
-    "macaca-electron": "2",
+    "macaca-electron": "7",
     "macaca-wd": "3",
     "marked": "^0.3.4",
     "react": "^16.2.0",
@@ -71,8 +71,7 @@
     "webpack": "^4.10.0",
     "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.0.1",
-    "webpack-dev-server": "^3.1.4",
-    "xutil": "1"
+    "webpack-dev-server": "^3.1.4"
   },
   "husky": {
     "hooks": {
