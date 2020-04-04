@@ -26,6 +26,7 @@ Auto responsive grid layout library for [React](http://facebook.github.io/react/
 
 - ⭐⭐⭐[alibaba/ice](//github.com/alibaba/ice)
 - ⭐⭐⭐[ice-lab/react-materials](//github.com/ice-lab/react-materials)
+- ⭐⭐⭐[ant-design/ant-design-landing](//github.com/ant-design/ant-design-landing)
 - ⭐⭐⭐[xudafeng/autoresponsive-react-native](//github.com/xudafeng/autoresponsive-react-native)
 
 [For more](//github.com/xudafeng/autoresponsive-react/network/dependents)
