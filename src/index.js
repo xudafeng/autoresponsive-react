@@ -15,7 +15,7 @@ class AutoResponsive extends React.Component {
     this.state = {};
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.sortManager = new GridSort({
       containerWidth: this.props.containerWidth,
       gridWidth: this.props.gridWidth
@@ -24,7 +24,7 @@ class AutoResponsive extends React.Component {
     this.animationManager = new AnimationManager();
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.containerWidth !== nextProps.containerWidth) {
       this.sortManager.changeProps({
         containerWidth: nextProps.containerWidth
@@ -46,7 +46,7 @@ class AutoResponsive extends React.Component {
     }
   }
 
-  componentWillUpdate() {
+  UNSAFE_componentWillUpdate() {
     this.sortManager.init();
   }
 
