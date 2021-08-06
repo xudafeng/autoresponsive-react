@@ -3,8 +3,6 @@
 const path = require('path');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
-const pkg = require('./package');
-
 const config = {
   entry: {
     homepage: path.resolve('homepage'),

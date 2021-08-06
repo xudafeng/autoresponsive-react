@@ -10,15 +10,15 @@ Auto responsive grid layout library for [React](http://facebook.github.io/react/
 [![node version][node-image]][node-url]
 [![npm download][download-image]][download-url]
 
-[npm-image]: http://img.shields.io/npm/v/autoresponsive-react.svg?style=flat-square
+[npm-image]: http://img.shields.io/npm/v/autoresponsive-react.svg
 [npm-url]: http://npmjs.org/package/autoresponsive-react
-[travis-image]: https://img.shields.io/travis/xudafeng/autoresponsive-react.svg?style=flat-square
+[travis-image]: https://img.shields.io/travis/xudafeng/autoresponsive-react.svg
 [travis-url]: https://travis-ci.org/xudafeng/autoresponsive-react
-[coveralls-image]: https://img.shields.io/coveralls/xudafeng/autoresponsive-react.svg?style=flat-square
+[coveralls-image]: https://img.shields.io/coveralls/xudafeng/autoresponsive-react.svg
 [coveralls-url]: https://coveralls.io/r/xudafeng/autoresponsive-react?branch=master
-[node-image]: https://img.shields.io/badge/node.js-%3E=8-green.svg?style=flat-square
+[node-image]: https://img.shields.io/badge/node.js-%3E=8-green.svg
 [node-url]: http://nodejs.org/download/
-[download-image]: https://img.shields.io/npm/dm/autoresponsive-react.svg?style=flat-square
+[download-image]: https://img.shields.io/npm/dm/autoresponsive-react.svg
 [download-url]: https://npmjs.org/package/autoresponsive-react
 
 
