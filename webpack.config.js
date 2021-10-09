@@ -25,7 +25,7 @@ const config = {
         type: 'javascript/auto',
         exclude: /node_modules/
       }, {
-        test:/\.less$/,
+        test: /\.less$/,
         use: [
           {
             loader: 'style-loader'
@@ -40,7 +40,7 @@ const config = {
       }
     ]
   },
-  plugins: [],
+  plugins: []
 };
 
 if (process.env.npm_config_report) {
