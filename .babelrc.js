@@ -2,9 +2,11 @@
 
 module.exports = {
   presets: [
-    'env',
-    'react',
-    'stage-2'
+    '@babel/react', 
+    '@babel/env', 
+  ],
+  plugins: [
+    '@babel/plugin-proposal-class-properties'
   ],
   comments: false,
   env: {
