@@ -35,11 +35,11 @@ Auto responsive grid layout library for [React](http://facebook.github.io/react/
 
 ## Contributors
 
-|[<img src="https://avatars1.githubusercontent.com/u/1011681?v=4" width="100px;"/><br/><sub><b>xudafeng</b></sub>](https://github.com/xudafeng)<br/>|[<img src="https://avatars2.githubusercontent.com/u/1877738?v=4" width="100px;"/><br/><sub><b>HillLiu</b></sub>](https://github.com/HillLiu)<br/>|[<img src="https://avatars2.githubusercontent.com/u/8263298?v=4" width="100px;"/><br/><sub><b>conorhastings</b></sub>](https://github.com/conorhastings)<br/>|[<img src="https://avatars0.githubusercontent.com/u/1002461?v=4" width="100px;"/><br/><sub><b>montogeek</b></sub>](https://github.com/montogeek)<br/>|[<img src="https://avatars0.githubusercontent.com/u/3760840?v=4" width="100px;"/><br/><sub><b>rayshan</b></sub>](https://github.com/rayshan)<br/>|[<img src="https://avatars1.githubusercontent.com/u/29188938?v=4" width="100px;"/><br/><sub><b>catchonme</b></sub>](https://github.com/catchonme)<br/>
+|[<img src="https://avatars.githubusercontent.com/u/1011681?v=4" width="100px;"/><br/><sub><b>xudafeng</b></sub>](https://github.com/xudafeng)<br/>|[<img src="https://avatars.githubusercontent.com/u/1877738?v=4" width="100px;"/><br/><sub><b>HillLiu</b></sub>](https://github.com/HillLiu)<br/>|[<img src="https://avatars.githubusercontent.com/u/8263298?v=4" width="100px;"/><br/><sub><b>conorhastings</b></sub>](https://github.com/conorhastings)<br/>|[<img src="https://avatars.githubusercontent.com/u/1002461?v=4" width="100px;"/><br/><sub><b>montogeek</b></sub>](https://github.com/montogeek)<br/>|[<img src="https://avatars.githubusercontent.com/u/3760840?v=4" width="100px;"/><br/><sub><b>rayshan</b></sub>](https://github.com/rayshan)<br/>|[<img src="https://avatars.githubusercontent.com/u/39849622?v=4" width="100px;"/><br/><sub><b>ywroh</b></sub>](https://github.com/ywroh)<br/>|
 | :---: | :---: | :---: | :---: | :---: | :---: |
+[<img src="https://avatars.githubusercontent.com/u/29188938?v=4" width="100px;"/><br/><sub><b>catchonme</b></sub>](https://github.com/catchonme)<br/>
 
-
-This project follows the git-contributor [spec](https://github.com/xudafeng/git-contributor), auto upated at `Sat Apr 21 2018 11:33:26 GMT+0800`.
+This project follows the git-contributor [spec](https://github.com/xudafeng/git-contributor), auto updated at `Sun Oct 10 2021 12:21:04 GMT+0800`.
 
 <!-- GITCONTRIBUTOR_END -->
 
