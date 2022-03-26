@@ -10,12 +10,17 @@
   <body>
     <div id="app">
       <script>
+        var head = document.getElementsByTagName('head')[0];
+        var chunkName = 'examples';
         var isOnline = !!~location.host.indexOf('github');
         var script = document.createElement('script');
         script.type = 'text/javascript';
-        script.src = (isOnline ? '//unpkg.com/autoresponsive-react@latest' : '') + '/dist/examples.js';
-        var head = document.getElementsByTagName('head')[0];
+        script.src = (isOnline ? '//unpkg.com/autoresponsive-react@latest' : '') + '/dist/' + chunkName + '.js';
         head.appendChild(script);
+        var style = document.createElement('link');
+        style.rel = 'stylesheet';
+        style.href = (isOnline ? '//unpkg.com/autoresponsive-react@latest' : '') + '/dist/' + chunkName + '.css';
+        head.appendChild(style);
       </script>
     </div>
   </body>

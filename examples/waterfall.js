@@ -94,4 +94,4 @@ class WaterfallExampleComponent extends React.Component {
   }
 }
 
-module.exports = WaterfallExampleComponent;
+export default WaterfallExampleComponent;
