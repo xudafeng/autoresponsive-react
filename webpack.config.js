@@ -1,50 +1,62 @@
 'use strict';
 
 const path = require('path');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   entry: {
     homepage: path.resolve('homepage'),
-    examples: path.resolve('examples')
+    examples: path.resolve('examples'),
   },
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: '/dist',
-    filename: '[name].js'
+    filename: '[name].js',
   },
   module: {
     rules: [
       {
         test: /\.js?/,
         use: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       }, {
         test: /\.json$/,
         use: 'json-loader',
         type: 'javascript/auto',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       }, {
         test: /\.less$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: MiniCssExtractPlugin.loader,
           },
           {
-            loader: 'css-loader'
+            loader: 'css-loader',
           },
           {
-            loader: 'less-loader'
-          }
-        ]
-      }
-    ]
+            loader: 'less-loader',
+            options: {
+              lessOptions: {
+                javascriptEnabled: true,
+              },
+            },
+          },
+        ],
+      },
+    ],
   },
-  plugins: []
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[name].css',
+    }),
+  ],
+  devServer: {
+    hot: true,
+    static: {
+      directory: __dirname,
+    },
+  },
 };
-
-if (process.env.npm_config_report) {
-  config.plugins.push(new BundleAnalyzerPlugin());
-}
 
 module.exports = config;

@@ -1,18 +1,18 @@
 const ExecutionEnvironment = require('exenv');
 
 function transitionEnd() {
-  let transitionEndEventNames = {
+  const transitionEndEventNames = {
     WebkitTransition: 'webkitTransitionEnd',
     MozTransition: 'transitionend',
     OTransition: 'oTransitionEnd otransitionend',
-    transition: 'transitionend'
+    transition: 'transitionend',
   };
   if (!ExecutionEnvironment.canUseDOM) {
     return transitionEndEventNames;
   }
-  let el = document.createElement('pin');
+  const el = document.createElement('pin');
 
-  for (let name in transitionEndEventNames) {
+  for (const name in transitionEndEventNames) {
     if (el.style[name] !== undefined) {
       return transitionEndEventNames[name];
     }
@@ -20,7 +20,7 @@ function transitionEnd() {
   return false;
 }
 
-let ifHasTransitionEnd = transitionEnd();
+const ifHasTransitionEnd = transitionEnd();
 
 const prefixes = ['Webkit', 'Moz', 'ms', 'O', ''];
 
@@ -35,7 +35,7 @@ class AnimationManager {
   }
 
   css2Animation() {
-    var style = {};
+    const style = {};
     style[this.horizontalDirection] = `${this.position[0]}px`;
     if (this.verticalDirection === 'bottom') {
       style[this.verticalDirection] = `${this.position[1] + this.itemMargin}px`;
@@ -48,9 +48,9 @@ class AnimationManager {
   }
 
   css3Animation() {
-    var style = {};
+    const style = {};
 
-    prefixes.map(prefix => {
+    prefixes.forEach(prefix => {
       let x, y;
 
       if (this.horizontalDirection === 'right') {
@@ -74,7 +74,7 @@ class AnimationManager {
 
   mixAnimation(style) {
     if (!this.closeAnimation) {
-      prefixes.map(prefix => {
+      prefixes.forEach(prefix => {
         style[`${prefix}TransitionDuration`] = `${this.transitionDuration}s`;
         style[`${prefix}TransitionTimingFunction`] = this.transitionTimingFunction;
       });

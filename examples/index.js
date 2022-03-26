@@ -1,6 +1,6 @@
-let React = require('react');
-let ReactDOM = require('react-dom');
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-let WaterfallExampleComponent = require('./waterfall');
+import WaterfallExampleComponent from './waterfall';
 
 ReactDOM.render(<WaterfallExampleComponent />, document.querySelector('#app'));

@@ -2,12 +2,12 @@ const React = require('react');
 const Core = require('autoresponsive-core');
 
 const {
-  GridSort
+  GridSort,
 } = Core;
 
-let AnimationManager = require('./animation');
+const AnimationManager = require('./animation');
 
-const noop = function() {};
+const noop = function () {};
 
 class AutoResponsive extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class AutoResponsive extends React.Component {
   UNSAFE_componentWillMount() {
     this.sortManager = new GridSort({
       containerWidth: this.props.containerWidth,
-      gridWidth: this.props.gridWidth
+      gridWidth: this.props.gridWidth,
     });
 
     this.animationManager = new AnimationManager();
@@ -27,7 +27,7 @@ class AutoResponsive extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.containerWidth !== nextProps.containerWidth) {
       this.sortManager.changeProps({
-        containerWidth: nextProps.containerWidth
+        containerWidth: nextProps.containerWidth,
       });
     }
   }
@@ -35,7 +35,7 @@ class AutoResponsive extends React.Component {
   setPrivateProps() {
     this.containerStyle = {
       position: 'relative',
-      height: this.containerHeight || 0
+      height: this.containerHeight || 0,
     };
 
     if (typeof this.props.containerHeight === 'number') {
@@ -52,16 +52,16 @@ class AutoResponsive extends React.Component {
 
   renderChildren() {
     return React.Children.map(this.props.children, (child, childIndex) => {
-      if (child.props.className &&
-        this.props.itemClassName &&
-        !~child.props.className.indexOf(this.props.itemClassName)) {
+      if (child.props.className
+        && this.props.itemClassName
+        && !~child.props.className.indexOf(this.props.itemClassName)) {
         return;
       }
 
-      let childWidth = parseInt(child.props.style.width, 10) + this.props.itemMargin;
-      let childHeight = parseInt(child.props.style.height, 10) + this.props.itemMargin;
+      const childWidth = parseInt(child.props.style.width, 10) + this.props.itemMargin;
+      const childHeight = parseInt(child.props.style.height, 10) + this.props.itemMargin;
 
-      let calculatedPosition = this.sortManager.getPosition(childWidth, childHeight);
+      const calculatedPosition = this.sortManager.getPosition(childWidth, childHeight);
 
       if (!this.fixedContainerHeight && this.props.containerWidth) {
         if (calculatedPosition[1] + childHeight > this.containerStyle.height) {
@@ -73,13 +73,13 @@ class AutoResponsive extends React.Component {
         position: calculatedPosition,
         size: {
           width: childWidth,
-          height: childHeight
+          height: childHeight,
         },
         containerHeight: this.containerStyle.height,
-        itemMargin: this.props.itemMargin
+        itemMargin: this.props.itemMargin,
       });
 
-      let calculatedStyle = this.animationManager.generate(options);
+      const calculatedStyle = this.animationManager.generate(options);
 
       this.mixItemInlineStyle(calculatedStyle);
 
@@ -90,22 +90,22 @@ class AutoResponsive extends React.Component {
       }
 
       return React.cloneElement(child, {
-        style: Object.assign({}, child.props.style, calculatedStyle)
+        style: Object.assign({}, child.props.style, calculatedStyle),
       });
     });
   }
 
   mixItemInlineStyle(s) {
-    let itemMargin = this.props.itemMargin;
+    const { itemMargin } = this.props;
     let style = {
       display: 'block',
       float: 'left',
-      margin: `0 ${itemMargin}px ${itemMargin}px 0`
+      margin: `0 ${itemMargin}px ${itemMargin}px 0`,
     };
 
     if (this.props.containerWidth) {
       style = {
-        position: 'absolute'
+        position: 'absolute',
       };
     }
     Object.assign(s, style);
@@ -119,7 +119,7 @@ class AutoResponsive extends React.Component {
     this.setPrivateProps();
 
     return (
-      <div ref="container" className={`${this.props.prefixClassName}-container`} style={this.getContainerStyle()}>
+      <div className={`${this.props.prefixClassName}-container`} style={this.getContainerStyle()}>
         {this.renderChildren()}
       </div>
     );
@@ -139,7 +139,7 @@ AutoResponsive.defaultProps = {
   verticalDirection: 'top',
   closeAnimation: false,
   onItemDidLayout: noop,
-  onContainerDidLayout: noop
+  onContainerDidLayout: noop,
 };
 
 module.exports = AutoResponsive;
