@@ -51,7 +51,7 @@
     "bluebird": "^3.5.1",
     "cross-env": "^5.1.1",
     "css-loader": "^6.7.1",
-    "eslint": "^7.32.0",
+    "eslint": "7",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-egg": "^7.0.0",
     "eslint-import-resolver-alias": "^1.1.1",

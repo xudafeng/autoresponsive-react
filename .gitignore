@@ -1,8 +1,7 @@
 node_modules
-coverage/
-reports/
-screenshots/
-build/
-dist/
+coverage
+reports
+screenshots
+dist
 *.sw*
 *.un~
