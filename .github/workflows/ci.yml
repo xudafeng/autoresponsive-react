@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - "**"
+
+jobs:
+  Runner:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout git source
+      uses: actions/checkout@v3
+
+    - name: Setup node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+    
+    - name: Setup macaca run headless mode env
+      run: |
+        sudo apt update
+        sudo apt install xvfb libgconf-2-4
+        export DISPLAY=':99.0'
+        Xvfb :99 -screen 0 1366x768x24 > /dev/null 2>&1 &
+
+    - name: Install dependencies
+      run: |
+        npm i cnpm -g
+        cnpm i babel-register macaca-reporter
+        cnpm i
+
+    - name: Continuous integration
+      run: npm run ci
+
+    - name: Code coverage
+      uses: codecov/codecov-action@v3.0.0
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
