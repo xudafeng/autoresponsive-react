@@ -80,7 +80,7 @@ describe('./test/homepage.test.js', () => {
         });
     });
 
-    it('i18n should be ok', () => {
+    it.skip('i18n should be ok', () => {
       return driver
         .elementByCss('div.i18n-buttons > div > button:nth-child(2)')
         .click()
