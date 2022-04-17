@@ -5,37 +5,35 @@ on:
 
   push:
     branches:
-      - "**"
+      - '**'
 
 jobs:
   Runner:
     timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout git source
-      uses: actions/checkout@v3
+      - name: Checkout git source
+        uses: actions/checkout@v3
+      
+      - name: Setup docker
+        uses: docker-practice/actions-setup-docker@1.0.9
 
-    - name: Setup node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16'
-    
-    - name: Setup macaca run headless mode env
-      run: |
-        sudo apt update
-        sudo apt install xvfb libgconf-2-4
-        export DISPLAY=':99.0'
-        Xvfb :99 -screen 0 1366x768x24 > /dev/null 2>&1 &
+      - name: Setup node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
 
-    - name: Install dependencies
-      run: |
-        npm i npm@6 -g
-        npm i
+      - name: Install dependencies
+        run: |
+          npm i npm@6 -g
+          npm i
 
-    - name: Continuous integration
-      run: npm run ci
+      - name: Continuous integration
+        run: |
+          npm run lint
+          docker run -i --entrypoint=bash -v `pwd`:/root/tmp --rm macacajs/macaca-electron-docker-ubuntu -c "cd /root/tmp && ./test/ci.sh"
 
-    - name: Code coverage
-      uses: codecov/codecov-action@v3.0.0
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
+      - name: Code coverage
+        uses: codecov/codecov-action@v3.0.0
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
