@@ -27,6 +27,7 @@ jobs:
         run: |
           npm i npm@6 -g
           npm i
+
       - name: Continuous integration
         run: |
           npm run lint
