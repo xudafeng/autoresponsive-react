@@ -4,4 +4,4 @@ export DISPLAY=:9.0
 
 sleep 3
 
-npm run ci
+npm run serve && npm run test

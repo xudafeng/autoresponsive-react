@@ -37,7 +37,7 @@ describe('./test/homepage.test.js', () => {
         .quit();
     });
 
-    it('panel should be ok', () => {
+    it.skip('panel should be ok', () => {
       const elementGroup = `#simplest .btn-group`;
       const elementButton = `${elementGroup} button`;
       const elementRect = `document.querySelector('${elementGroup}').getClientRects()`;
@@ -58,7 +58,7 @@ describe('./test/homepage.test.js', () => {
         });
     });
 
-    it('waterfall should be ok', () => {
+    it.skip('waterfall should be ok', () => {
       const element = `#waterfall .rc-autoresponsive-container`;
       const elementRect = `document.querySelector('${element}').getClientRects()`;
       const height = `${elementRect}[0].y || ${elementRect}[0].top`;
