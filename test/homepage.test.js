@@ -1,10 +1,8 @@
 'use strict';
 
-import Promise from 'bluebird';
+const Promise = require('bluebird');
 
-import {
-  webpackHelper
-} from 'macaca-wd';
+const { webpackHelper } = require('macaca-wd');
 
 const {
   driver,

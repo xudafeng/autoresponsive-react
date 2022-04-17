@@ -70,6 +70,7 @@
     "less-loader": "^6.2.0",
     "macaca-cli": "2",
     "macaca-electron": "13",
+    "macaca-reporter": "1",
     "macaca-wd": "3",
     "marked": "^0.3.4",
     "mini-css-extract-plugin": "^2.6.0",

@@ -1,8 +1,6 @@
 'use strict';
 
-import {
-  webpackHelper
-} from 'macaca-wd';
+const { webpackHelper } = require('macaca-wd');
 
 const {
   driver,
