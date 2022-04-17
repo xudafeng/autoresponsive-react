@@ -5,15 +5,15 @@
 Auto responsive grid layout library for [React](http://facebook.github.io/react/index.html).
 
 [![NPM version][npm-image]][npm-url]
-[![build status][travis-image]][travis-url]
+[![CI][CI-image]][CI-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 [![node version][node-image]][node-url]
 [![npm download][download-image]][download-url]
 
 [npm-image]: http://img.shields.io/npm/v/autoresponsive-react.svg
 [npm-url]: http://npmjs.org/package/autoresponsive-react
-[travis-image]: https://img.shields.io/travis/xudafeng/autoresponsive-react.svg
-[travis-url]: https://travis-ci.org/xudafeng/autoresponsive-react
+[CI-image]: https://github.com/xudafeng/autoresponsive-react/actions/workflows/ci.yml/badge.svg
+[CI-url]: https://github.com/xudafeng/autoresponsive-react/actions/workflows/ci.yml
 [coveralls-image]: https://img.shields.io/coveralls/xudafeng/autoresponsive-react.svg
 [coveralls-url]: https://coveralls.io/r/xudafeng/autoresponsive-react?branch=master
 [node-image]: https://img.shields.io/badge/node.js-%3E=8-green.svg
