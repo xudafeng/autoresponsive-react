@@ -17,7 +17,7 @@ describe('./test/example.test.js', () => {
           width: 375,
           height: 667,
           deviceScaleFactor: 2,
-          headless: false,
+          headless: process.env.CI,
         });
     });
 

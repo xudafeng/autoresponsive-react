@@ -19,7 +19,7 @@ describe('./test/homepage.test.js', () => {
           width: 375,
           height: 667,
           deviceScaleFactor: 2,
-          show: true,
+          headless: !!process.env.CI,
         });
     });
 
