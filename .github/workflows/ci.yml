@@ -14,9 +14,6 @@ jobs:
     steps:
       - name: Checkout git source
         uses: actions/checkout@v3
-      
-      - name: Setup docker
-        uses: docker-practice/actions-setup-docker@1.0.9
 
       - name: Setup node.js
         uses: actions/setup-node@v3
@@ -31,7 +28,8 @@ jobs:
       - name: Continuous integration
         run: |
           npm run lint
-          docker run -i --entrypoint=bash -v `pwd`:/root/tmp --rm macacajs/macaca-electron-docker-ubuntu -c "cd /root/tmp && ./test/ci.sh"
+          npm run dev:test &
+          sleep 20 && npm run test
 
       - name: Code coverage
         uses: codecov/codecov-action@v3.0.0

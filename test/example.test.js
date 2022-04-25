@@ -16,7 +16,7 @@ describe('./test/example.test.js', () => {
           browserName: 'chromium',
           width: 375,
           height: 667,
-          deviceScaleFactor: 2
+          deviceScaleFactor: 2,
         });
     });
 

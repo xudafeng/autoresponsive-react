@@ -6,7 +6,7 @@ module.exports = {
     '@babel/env', 
   ],
   plugins: [
-    '@babel/plugin-proposal-class-properties'
+    '@babel/plugin-proposal-class-properties',
   ],
   comments: false,
   env: {
