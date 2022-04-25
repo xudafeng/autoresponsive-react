@@ -29,7 +29,6 @@
     "compile": "babel src/ --out-dir dist/ -D",
     "build": "cross-env NODE_ENV=production webpack && npm run compile",
     "prepublish": "npm run build",
-    "serve": "npm run dev:test &",
     "test": "macaca run -d ./test",
     "contributor": "git-contributor"
   },
