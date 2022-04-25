@@ -29,6 +29,7 @@ jobs:
         run: |
           npm run lint
           npm run dev:test &
+          sleep 10
           npm run test
 
       - name: Code coverage

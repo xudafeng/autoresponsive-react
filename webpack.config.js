@@ -4,6 +4,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
+  mode: 'development',
   entry: {
     homepage: path.resolve('homepage'),
     examples: path.resolve('examples'),
