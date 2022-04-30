@@ -1,5 +1,6 @@
 'use strict';
 
+const path = require('path');
 const { webpackHelper } = require('macaca-wd');
 
 const {
@@ -17,6 +18,9 @@ describe('./test/example.test.js', () => {
           width: 375,
           height: 667,
           deviceScaleFactor: 2,
+          recordVideo: {
+            dir: path.resolve(__dirname, '..', 'reports', 'screenshots'),
+          },
         });
     });
 
@@ -28,6 +32,7 @@ describe('./test/example.test.js', () => {
     afterEach(function () {
       return driver
         .coverage()
+        .saveVideos(this)
         .saveScreenshots(this);
     });
 

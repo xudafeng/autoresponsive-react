@@ -1,7 +1,7 @@
 'use strict';
 
+const path = require('path');
 const Promise = require('bluebird');
-
 const { webpackHelper } = require('macaca-wd');
 
 const {
@@ -19,6 +19,9 @@ describe('./test/homepage.test.js', () => {
           width: 375,
           height: 667,
           deviceScaleFactor: 2,
+          recordVideo: {
+            dir: path.resolve(__dirname, '..', 'reports', 'screenshots'),
+          },
         });
     });
 
@@ -30,6 +33,7 @@ describe('./test/homepage.test.js', () => {
     afterEach(function () {
       return driver
         .coverage()
+        .saveVideos(this)
         .saveScreenshots(this);
     });
 
