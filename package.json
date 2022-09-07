@@ -1,6 +1,6 @@
 {
   "name": "autoresponsive-react",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "auto responsive grid layout library",
   "keywords": [
     "react",
@@ -28,7 +28,7 @@
     "lint": "eslint src --fix",
     "compile": "babel src/ --out-dir dist/ -D",
     "build": "cross-env NODE_ENV=production webpack && npm run compile",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "test": "macaca run -d ./test",
     "contributor": "git-contributor"
   },
