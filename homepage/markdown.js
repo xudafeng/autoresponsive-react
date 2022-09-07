@@ -1,6 +1,6 @@
-let React = require('react');
-let Markdown = require('marked');
-let Highlight = require('highlight.js');
+const React = require('react');
+const { parse: Markdown } = require('marked');
+const Highlight = require('highlight.js');
 
 const events = ['clickHandler'];
 
