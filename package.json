@@ -76,7 +76,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-logo": "^1.0.15",
-    "webpack": "^5.69.1",
+    "webpack": "5",
     "webpack-cli": "^4.9.0",
     "webpack-dev-server": "^4.7.4"
   },
