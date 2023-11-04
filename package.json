@@ -44,6 +44,7 @@
     "@babel/plugin-transform-runtime": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
     "@babel/preset-react": "^7.14.5",
+    "@typescript-eslint/parser": "^6.9.1",
     "babel-eslint": "^10.1.0",
     "babel-loader": "8",
     "babel-plugin-istanbul": "^6.1.1",
@@ -60,6 +61,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-no-only-tests": "^2.4.0",
     "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "forkmeon.github.io": "1.1.15",
     "git-contributor": "1",
     "highlight.js": "^11.2.0",
@@ -76,6 +78,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-logo": "^1.0.15",
+    "typescript": "^5.2.2",
     "webpack": "5",
     "webpack-cli": "^4.9.0",
     "webpack-dev-server": "^4.7.4"

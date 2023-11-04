@@ -7,8 +7,6 @@ const {
 
 const AnimationManager = require('./animation');
 
-const noop = function () {};
-
 class AutoResponsive extends React.Component {
   constructor(props) {
     super(props);
@@ -138,8 +136,8 @@ AutoResponsive.defaultProps = {
   transitionTimingFunction: 'linear',
   verticalDirection: 'top',
   closeAnimation: false,
-  onItemDidLayout: noop,
-  onContainerDidLayout: noop,
+  onItemDidLayout: () => {},
+  onContainerDidLayout: () => {},
 };
 
 module.exports = AutoResponsive;

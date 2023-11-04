@@ -22,7 +22,7 @@ function transitionEnd() {
 
 const ifHasTransitionEnd = transitionEnd();
 
-const prefixes = ['Webkit', 'Moz', 'ms', 'O', ''];
+const prefixes = [ 'Webkit', 'Moz', 'ms', 'O', '' ];
 
 class AnimationManager {
   constructor() {
@@ -51,7 +51,8 @@ class AnimationManager {
     const style = {};
 
     prefixes.forEach(prefix => {
-      let x, y;
+      let x;
+      let y;
 
       if (this.horizontalDirection === 'right') {
         x = this.containerWidth - this.size.width - this.position[0] + this.itemMargin;
