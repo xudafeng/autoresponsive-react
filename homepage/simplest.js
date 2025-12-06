@@ -34,6 +34,7 @@ class SimplestSampleComponent extends React.Component {
     };
     this.frame = 30;
     this.bindClickEventMap();
+    this.containerRef = React.createRef();
   }
 
   bindClickEventMap() {
@@ -44,8 +45,14 @@ class SimplestSampleComponent extends React.Component {
 
   componentDidMount() {
     window.addEventListener('resize', () => {
+      const containerNode = this.containerRef.current && ReactDOM.findDOMNode(this.containerRef.current);
+
+      if (!containerNode) {
+        return;
+      }
+
       this.setState({
-        containerWidth: ReactDOM.findDOMNode(this.refs.container).clientWidth
+        containerWidth: containerNode.clientWidth
       });
     }, false);
   }
@@ -92,7 +99,7 @@ class SimplestSampleComponent extends React.Component {
     if (this.state.verticalDirection === 'top') {
       this.setState({
         verticalDirection: 'bottom',
-        containerHeight: ReactDOM.findDOMNode(this.refs.container).clientHeight
+        containerHeight: ReactDOM.findDOMNode(this.containerRef.current).clientHeight
       });
     } else {
       this.setState({
@@ -137,7 +144,7 @@ class SimplestSampleComponent extends React.Component {
         <div className="btn-group">
           {this.renderButtons()}
         </div>
-        <AutoResponsive ref="container" {...this.getAutoResponsiveProps()}>
+        <AutoResponsive ref={this.containerRef} {...this.getAutoResponsiveProps()}>
           {this.renderItems()}
         </AutoResponsive>
       </div>

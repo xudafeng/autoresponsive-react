@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import './index.less';
 import Utils from './utils';
@@ -26,6 +26,8 @@ class HomePage extends React.Component {
       locale: this.props.locale
     };
     this.bindEventMapContext();
+    this.exampleRoots = {};
+    this.markdownRefs = {};
   }
 
   bindEventMapContext() {
@@ -34,14 +36,16 @@ class HomePage extends React.Component {
     });
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getDocumentsData();
+
+    this.mountExamples();
   }
 
   componentDidUpdate() {
     this.mountExamples();
 
-    if (Object.keys(this.refs).length === 3) {
+    if (Object.keys(this.markdownRefs).length === documentsList.length) {
       this.scrollToAnchor();
     }
 
@@ -103,8 +107,19 @@ class HomePage extends React.Component {
       containerWidth: Utils.width(simplestElem)
     };
 
-    ReactDOM.render(<SimplestSampleComponent {...commonProps} />, simplestElem);
-    ReactDOM.render(<WaterfallSampleComponent {...commonProps} />, waterfallElem);
+    if (!this.exampleRoots.simplest) {
+      this.exampleRoots.simplest = createRoot(simplestElem);
+    }
+
+    if (waterfallElem && !this.exampleRoots.waterfall) {
+      this.exampleRoots.waterfall = createRoot(waterfallElem);
+    }
+
+    this.exampleRoots.simplest.render(<SimplestSampleComponent {...commonProps} />);
+
+    if (this.exampleRoots.waterfall) {
+      this.exampleRoots.waterfall.render(<WaterfallSampleComponent {...commonProps} />);
+    }
   }
 
   getLoadingClass() {
@@ -125,9 +140,20 @@ class HomePage extends React.Component {
   }
 
   renderMarkdown() {
-    return this.state.documentsList.map(function(d, i) {
-      return <MarkdownComponent key={i} ref={d.name}>{d.data}</MarkdownComponent>;
-    });
+    return this.state.documentsList.map((d, i) => (
+      <MarkdownComponent
+        key={i}
+        ref={node => {
+          if (node) {
+            this.markdownRefs[d.name] = node;
+          } else {
+            delete this.markdownRefs[d.name];
+          }
+        }}
+      >
+        {d.data}
+      </MarkdownComponent>
+    ));
   }
 
   getI18nButtonStyle(locale) {
@@ -173,4 +199,6 @@ HomePage.defaultProps = {
   locale: Utils.getUrlParams('locale') || 'en'
 };
 
-ReactDOM.render(<HomePage />, document.querySelector('#app'));
+const container = document.querySelector('#app');
+const root = createRoot(container);
+root.render(<HomePage />);

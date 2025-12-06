@@ -37,6 +37,7 @@ class WaterfallSampleComponent extends React.Component {
     this.state = {
       styleList: styleList
     };
+    this.containerRef = React.createRef();
   }
 
   bindEventMapContext() {
@@ -47,8 +48,14 @@ class WaterfallSampleComponent extends React.Component {
 
   componentDidMount() {
     window.addEventListener('resize', () => {
+      const containerNode = this.containerRef.current && ReactDOM.findDOMNode(this.containerRef.current);
+
+      if (!containerNode) {
+        return;
+      }
+
       this.setState({
-        containerWidth: ReactDOM.findDOMNode(this.refs.container).clientWidth
+        containerWidth: containerNode.clientWidth
       });
     }, false);
   }
@@ -78,7 +85,7 @@ class WaterfallSampleComponent extends React.Component {
 
   render() {
     return (
-      <AutoResponsive ref="container" {...this.getAutoResponsiveProps()}>
+      <AutoResponsive ref={this.containerRef} {...this.getAutoResponsiveProps()}>
         {
           arrayList.map(i => {
             return <div key={i} onClick={this.clickItemHandle} className="item" style={this.state.styleList[i]}>{i}</div>;

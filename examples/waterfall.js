@@ -14,10 +14,22 @@ class WaterfallExampleComponent extends React.Component {
     super(props);
     this.state = {
     };
+    this.containerRef = React.createRef();
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getData();
+    window.addEventListener('resize', () => {
+      const containerNode = this.containerRef.current && ReactDOM.findDOMNode(this.containerRef.current);
+
+      if (!containerNode) {
+        return;
+      }
+
+      this.setState({
+        containerWidth: containerNode.clientWidth
+      });
+    }, false);
   }
 
   getData() {
@@ -40,14 +52,6 @@ class WaterfallExampleComponent extends React.Component {
     };
   }
 
-  componentDidMount() {
-    window.addEventListener('resize', () => {
-      this.setState({
-        containerWidth: ReactDOM.findDOMNode(this.refs.container).clientWidth
-      });
-    }, false);
-  }
-
   getAutoResponsiveProps() {
     return {
       itemMargin: 10,
@@ -65,7 +69,7 @@ class WaterfallExampleComponent extends React.Component {
 
     return (
       <div className="albumPanel">
-        <AutoResponsive ref="container" {...this.getAutoResponsiveProps()}>
+        <AutoResponsive ref={this.containerRef} {...this.getAutoResponsiveProps()}>
           {
             this.state.data.map((i, index) => {
               let style = {

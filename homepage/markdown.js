@@ -25,7 +25,7 @@ class MarkdownComponent extends React.Component {
     });
   }
 
-  componentWillMount() {
+  componentDidMount() {
     setTimeout(() => {
       this.setState({
         classNames: ['markdown', 'fadeIn']
