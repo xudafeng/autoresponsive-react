@@ -1,5 +1,4 @@
 let React = require('react');
-let ReactDOM = require('react-dom');
 
 let AutoResponsive = require('../src');
 
@@ -37,7 +36,8 @@ class WaterfallSampleComponent extends React.Component {
     this.state = {
       styleList: styleList
     };
-    this.containerRef = React.createRef();
+    this.containerNodeRef = React.createRef();
+    this.handleResize = this.handleResize.bind(this);
   }
 
   bindEventMapContext() {
@@ -47,17 +47,12 @@ class WaterfallSampleComponent extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('resize', () => {
-      const containerNode = this.containerRef.current && ReactDOM.findDOMNode(this.containerRef.current);
+    this.handleResize();
+    window.addEventListener('resize', this.handleResize, false);
+  }
 
-      if (!containerNode) {
-        return;
-      }
-
-      this.setState({
-        containerWidth: containerNode.clientWidth
-      });
-    }, false);
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize, false);
   }
 
   clickItemHandle(e) {
@@ -85,14 +80,28 @@ class WaterfallSampleComponent extends React.Component {
 
   render() {
     return (
-      <AutoResponsive ref={this.containerRef} {...this.getAutoResponsiveProps()}>
-        {
-          arrayList.map(i => {
-            return <div key={i} onClick={this.clickItemHandle} className="item" style={this.state.styleList[i]}>{i}</div>;
-          })
-        }
-      </AutoResponsive>
+      <div ref={this.containerNodeRef}>
+        <AutoResponsive {...this.getAutoResponsiveProps()}>
+          {
+            arrayList.map(i => {
+              return <div key={i} onClick={this.clickItemHandle} className="item" style={this.state.styleList[i]}>{i}</div>;
+            })
+          }
+        </AutoResponsive>
+      </div>
     );
+  }
+
+  handleResize() {
+    const containerNode = this.containerNodeRef.current;
+
+    if (!containerNode) {
+      return;
+    }
+
+    this.setState({
+      containerWidth: containerNode.clientWidth
+    });
   }
 }
 

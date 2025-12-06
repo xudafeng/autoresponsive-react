@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ForkmeonComponent from '../homepage/forkme';
 
 import './index.less';
@@ -14,22 +13,18 @@ class WaterfallExampleComponent extends React.Component {
     super(props);
     this.state = {
     };
-    this.containerRef = React.createRef();
+    this.containerNodeRef = React.createRef();
+    this.handleResize = this.handleResize.bind(this);
   }
 
   componentDidMount() {
     this.getData();
-    window.addEventListener('resize', () => {
-      const containerNode = this.containerRef.current && ReactDOM.findDOMNode(this.containerRef.current);
+    this.handleResize();
+    window.addEventListener('resize', this.handleResize, false);
+  }
 
-      if (!containerNode) {
-        return;
-      }
-
-      this.setState({
-        containerWidth: containerNode.clientWidth
-      });
-    }, false);
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize, false);
   }
 
   getData() {
@@ -68,8 +63,8 @@ class WaterfallExampleComponent extends React.Component {
     }
 
     return (
-      <div className="albumPanel">
-        <AutoResponsive ref={this.containerRef} {...this.getAutoResponsiveProps()}>
+      <div className="albumPanel" ref={this.containerNodeRef}>
+        <AutoResponsive {...this.getAutoResponsiveProps()}>
           {
             this.state.data.map((i, index) => {
               let style = {
@@ -95,6 +90,18 @@ class WaterfallExampleComponent extends React.Component {
         <ForkmeonComponent {...this.getForkmeonProps()}/>
       </div>
     );
+  }
+
+  handleResize() {
+    const containerNode = this.containerNodeRef.current;
+
+    if (!containerNode) {
+      return;
+    }
+
+    this.setState({
+      containerWidth: containerNode.clientWidth
+    });
   }
 }
 

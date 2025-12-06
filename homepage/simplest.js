@@ -1,6 +1,4 @@
 let React = require('react');
-let ReactDOM = require('react-dom');
-
 let AutoResponsive = require('../src');
 
 let style = {
@@ -34,7 +32,8 @@ class SimplestSampleComponent extends React.Component {
     };
     this.frame = 30;
     this.bindClickEventMap();
-    this.containerRef = React.createRef();
+    this.containerNodeRef = React.createRef();
+    this.handleResize = this.handleResize.bind(this);
   }
 
   bindClickEventMap() {
@@ -44,17 +43,12 @@ class SimplestSampleComponent extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('resize', () => {
-      const containerNode = this.containerRef.current && ReactDOM.findDOMNode(this.containerRef.current);
+    this.handleResize();
+    window.addEventListener('resize', this.handleResize, false);
+  }
 
-      if (!containerNode) {
-        return;
-      }
-
-      this.setState({
-        containerWidth: containerNode.clientWidth
-      });
-    }, false);
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize, false);
   }
 
   appendClickHandle(e) {
@@ -99,7 +93,7 @@ class SimplestSampleComponent extends React.Component {
     if (this.state.verticalDirection === 'top') {
       this.setState({
         verticalDirection: 'bottom',
-        containerHeight: ReactDOM.findDOMNode(this.containerRef.current).clientHeight
+        containerHeight: this.containerNodeRef.current ? this.containerNodeRef.current.clientHeight : null
       });
     } else {
       this.setState({
@@ -144,11 +138,25 @@ class SimplestSampleComponent extends React.Component {
         <div className="btn-group">
           {this.renderButtons()}
         </div>
-        <AutoResponsive ref={this.containerRef} {...this.getAutoResponsiveProps()}>
-          {this.renderItems()}
-        </AutoResponsive>
+        <div ref={this.containerNodeRef}>
+          <AutoResponsive {...this.getAutoResponsiveProps()}>
+            {this.renderItems()}
+          </AutoResponsive>
+        </div>
       </div>
     );
+  }
+
+  handleResize() {
+    const containerNode = this.containerNodeRef.current;
+
+    if (!containerNode) {
+      return;
+    }
+
+    this.setState({
+      containerWidth: containerNode.clientWidth
+    });
   }
 }
 
