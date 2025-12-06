@@ -182,12 +182,23 @@ class HomePage extends React.Component {
     );
   }
 
+  renderExamples() {
+    return (
+      <section className="examples">
+        <h2 id="examples">Examples</h2>
+        <div id="simplest" className="example" />
+        <div id="waterfall" className="example" />
+      </section>
+    );
+  }
+
   render() {
     return (
       <LayoutComponnet>
         <article className="container">
           {this.renderLoading()}
           {this.renderI18n()}
+          {this.renderExamples()}
           {this.renderMarkdown()}
         </article>
       </LayoutComponnet>
