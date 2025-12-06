@@ -56,34 +56,24 @@ class HomePage extends React.Component {
 
   getDocumentsData() {
     this.currentLocale = this.state.locale;
-    let counter = documentsList.length;
     this.setState({
       loading: true
     });
-
-    documentsList.forEach(name => {
+    const fetchDocs = documentsList.map(name => new Promise(resolve => {
       Utils.ajax(`./docs/${this.currentLocale}/${name}.md`, data => {
-        let item = this.state.documentsList.slice(0);
-
-        if (item.length === documentsList.length) {
-          item.shift();
-        }
-
-        item.push({
-          name: name,
-          data: data
+        resolve({
+          name,
+          data
         });
+      });
+    }));
 
-        this.setState({
-          documentsList: item
-        });
+    Promise.all(fetchDocs).then(items => {
+      const sortedDocs = documentsList.map(name => items.find(item => item.name === name));
 
-        if (counter === 1) {
-          this.setState({
-            loading: false
-          });
-        }
-        counter--;
+      this.setState({
+        documentsList: sortedDocs,
+        loading: false
       });
     });
   }
