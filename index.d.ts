@@ -2,7 +2,7 @@ import React from 'react';
 
 export interface AutoResponsiveProps {
   containerWidth?: null | number;
-  containerHeight?: null | number;
+  containerHeight?: null | number | string;
   gridWidth?: number;
   prefixClassName?: string;
   itemClassName?: string;
