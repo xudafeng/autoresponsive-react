@@ -157,4 +157,36 @@ describe('AutoResponsive', () => {
       expect(child.props.style.float).to.equal(undefined);
     });
   });
+
+  it('calls layout callbacks when a single, non-array child is provided', () => {
+    const onItemDidLayout = sinon.spy();
+    const onContainerDidLayout = sinon.spy();
+
+    const instance = new AutoResponsive(Object.assign({}, AutoResponsive.defaultProps, {
+      containerWidth: 150,
+      itemMargin: 0,
+      children: createChild('solo'),
+      onItemDidLayout,
+      onContainerDidLayout,
+    }));
+
+    instance.sortManager = {
+      changeProps: sinon.spy(),
+      init: sinon.spy(),
+      getPosition: sinon.stub().returns([0, 0]),
+    };
+
+    instance.animationManager = {
+      generate: sinon.stub().returns({ top: 0, left: 0 }),
+    };
+
+    const tree = instance.render();
+    const renderer = TestRenderer.create(tree);
+    const container = renderer.root.findByProps({ className: `${instance.props.prefixClassName}-container` });
+    const renderedChild = container.findByType('div');
+
+    expect(onItemDidLayout.calledOnce).to.equal(true);
+    expect(onContainerDidLayout.calledOnce).to.equal(true);
+    expect(renderedChild.props.style.position).to.equal('absolute');
+  });
 });
