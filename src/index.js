@@ -45,7 +45,7 @@ class AutoResponsive extends React.Component {
     return React.Children.map(this.props.children, (child, childIndex) => {
       if (child.props.className
         && this.props.itemClassName
-        && !~child.props.className.indexOf(this.props.itemClassName)) {
+        && child.props.className.indexOf(this.props.itemClassName) === -1) {
         return;
       }
 
