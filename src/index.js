@@ -26,7 +26,8 @@ class AutoResponsive extends React.Component {
       height: this.containerHeight || 0,
     };
 
-    if (typeof this.props.containerHeight === 'number') {
+    if (typeof this.props.containerHeight === 'number'
+      || typeof this.props.containerHeight === 'string') {
       this.fixedContainerHeight = true;
       this.containerStyle.height = this.props.containerHeight;
     } else {

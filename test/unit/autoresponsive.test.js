@@ -63,6 +63,46 @@ describe('AutoResponsive', () => {
     expect(renderedChild.props.style.left).to.equal(15);
   });
 
+  it('accepts string container heights and keeps layout height fixed', () => {
+    const onItemDidLayout = sinon.spy();
+    const onContainerDidLayout = sinon.spy();
+
+    const instance = new AutoResponsive(Object.assign({}, AutoResponsive.defaultProps, {
+      containerHeight: '150px',
+      itemMargin: 5,
+      children: [createChild('one')],
+      onItemDidLayout,
+      onContainerDidLayout,
+    }));
+
+    instance.sortManager = {
+      changeProps: sinon.spy(),
+      init: sinon.spy(),
+      getPosition: sinon.stub().returns([10, 20]),
+    };
+
+    instance.animationManager = {
+      generate: sinon.stub().callsFake(options => ({
+        top: options.position[1],
+        left: options.position[0],
+      })),
+    };
+
+    const tree = instance.render();
+    const renderer = TestRenderer.create(tree);
+    const container = renderer.root.findByProps({ className: `${instance.props.prefixClassName}-container` });
+    const renderedChild = container.findByType('div');
+
+    expect(instance.fixedContainerHeight).to.equal(true);
+    expect(instance.containerStyle.height).to.equal('150px');
+    expect(onItemDidLayout.calledOnce).to.equal(true);
+    expect(onContainerDidLayout.calledOnce).to.equal(true);
+
+    expect(renderedChild.props.style.float).to.equal('left');
+    expect(renderedChild.props.style.margin).to.equal('0 5px 5px 0');
+    expect(renderedChild.props.style.position).to.equal(undefined);
+  });
+
   it('calculates dynamic container height, filters items, and uses absolute positioning when width is provided', () => {
     const onItemDidLayout = sinon.spy();
     const onContainerDidLayout = sinon.spy();
