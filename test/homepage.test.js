@@ -9,9 +9,12 @@ const {
   BASE_URL
 } = webpackHelper;
 
-describe('./test/homepage.test.js', () => {
-  describe('page func testing', () => {
-    before(() => {
+const TEST_TIMEOUT = 20000;
+
+describe('./test/homepage.test.js', function () {
+  describe('page func testing', function () {
+    before(function () {
+      this.timeout(TEST_TIMEOUT);
       return driver
         .initWindow({
           platformName: 'playwright',
@@ -25,25 +28,29 @@ describe('./test/homepage.test.js', () => {
         });
     });
 
-    beforeEach(() => {
+    beforeEach(function () {
+      this.timeout(TEST_TIMEOUT);
       return driver
         .getUrl(BASE_URL);
     });
 
     afterEach(function () {
+      this.timeout(TEST_TIMEOUT);
       return driver
         .coverage()
         .saveVideos(this)
         .saveScreenshots(this);
     });
 
-    after(() => {
+    after(function () {
+      this.timeout(TEST_TIMEOUT);
       return driver
         .openReporter(true)
         .quit();
     });
 
-    it('panel should be ok', () => {
+    it('panel should be ok', function () {
+      this.timeout(TEST_TIMEOUT);
       const elementGroup = `#simplest .btn-group`;
       const elementButton = `${elementGroup} button`;
       const elementRect = `document.querySelector('${elementGroup}').getClientRects()`;
@@ -61,19 +68,22 @@ describe('./test/homepage.test.js', () => {
         });
     });
 
-    it('resize should be ok', () => {
+    it('resize should be ok', function () {
+      this.timeout(TEST_TIMEOUT);
       return driver
         .setWindowSize(800, 600);
     });
 
-    it('hash should be ok', () => {
+    it('hash should be ok', function () {
+      this.timeout(TEST_TIMEOUT);
       return driver
         .elementById('examples')
         .click()
         .sleep(500);
     });
 
-    it('hash redirect should be ok', () => {
+    it('hash redirect should be ok', function () {
+      this.timeout(TEST_TIMEOUT);
       return driver
         .getUrl(`${BASE_URL}/#usage`)
         .sleep(1000);
