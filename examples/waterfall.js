@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import ForkmeonComponent from 'forkmeon.github.io';
+import ForkmeonComponent from '../homepage/forkme';
 
 import './index.less';
 import pkg from '../package';
@@ -14,10 +13,18 @@ class WaterfallExampleComponent extends React.Component {
     super(props);
     this.state = {
     };
+    this.containerNodeRef = React.createRef();
+    this.handleResize = this.handleResize.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getData();
+    this.handleResize();
+    window.addEventListener('resize', this.handleResize, false);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize, false);
   }
 
   getData() {
@@ -40,14 +47,6 @@ class WaterfallExampleComponent extends React.Component {
     };
   }
 
-  componentDidMount() {
-    window.addEventListener('resize', () => {
-      this.setState({
-        containerWidth: ReactDOM.findDOMNode(this.refs.container).clientWidth
-      });
-    }, false);
-  }
-
   getAutoResponsiveProps() {
     return {
       itemMargin: 10,
@@ -64,8 +63,8 @@ class WaterfallExampleComponent extends React.Component {
     }
 
     return (
-      <div className="albumPanel">
-        <AutoResponsive ref="container" {...this.getAutoResponsiveProps()}>
+      <div className="albumPanel" ref={this.containerNodeRef}>
+        <AutoResponsive {...this.getAutoResponsiveProps()}>
           {
             this.state.data.map((i, index) => {
               let style = {
@@ -91,6 +90,18 @@ class WaterfallExampleComponent extends React.Component {
         <ForkmeonComponent {...this.getForkmeonProps()}/>
       </div>
     );
+  }
+
+  handleResize() {
+    const containerNode = this.containerNodeRef.current;
+
+    if (!containerNode) {
+      return;
+    }
+
+    this.setState({
+      containerWidth: containerNode.clientWidth
+    });
   }
 }
 

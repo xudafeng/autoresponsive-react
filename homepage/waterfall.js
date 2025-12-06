@@ -1,5 +1,4 @@
 let React = require('react');
-let ReactDOM = require('react-dom');
 
 let AutoResponsive = require('../src');
 
@@ -35,8 +34,11 @@ class WaterfallSampleComponent extends React.Component {
     super(props);
     this.bindEventMapContext();
     this.state = {
-      styleList: styleList
+      styleList: styleList,
+      containerWidth: props.containerWidth || null
     };
+    this.containerNodeRef = React.createRef();
+    this.handleResize = this.handleResize.bind(this);
   }
 
   bindEventMapContext() {
@@ -46,11 +48,12 @@ class WaterfallSampleComponent extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('resize', () => {
-      this.setState({
-        containerWidth: ReactDOM.findDOMNode(this.refs.container).clientWidth
-      });
-    }, false);
+    this.handleResize();
+    window.addEventListener('resize', this.handleResize, false);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize, false);
   }
 
   clickItemHandle(e) {
@@ -78,14 +81,34 @@ class WaterfallSampleComponent extends React.Component {
 
   render() {
     return (
-      <AutoResponsive ref="container" {...this.getAutoResponsiveProps()}>
-        {
-          arrayList.map(i => {
-            return <div key={i} onClick={this.clickItemHandle} className="item" style={this.state.styleList[i]}>{i}</div>;
-          })
-        }
-      </AutoResponsive>
+      <div ref={this.containerNodeRef}>
+        <AutoResponsive {...this.getAutoResponsiveProps()}>
+          {
+            arrayList.map(i => {
+              return <div key={i} onClick={this.clickItemHandle} className="item" style={this.state.styleList[i]}>{i}</div>;
+            })
+          }
+        </AutoResponsive>
+      </div>
     );
+  }
+
+  handleResize() {
+    const containerNode = this.containerNodeRef.current;
+
+    if (!containerNode) {
+      return;
+    }
+
+    const nextWidth = containerNode.clientWidth;
+
+    if (!nextWidth || nextWidth === this.state.containerWidth) {
+      return;
+    }
+
+    this.setState({
+      containerWidth: nextWidth
+    });
   }
 }
 

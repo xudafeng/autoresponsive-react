@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import './index.less';
 import Utils from './utils';
@@ -26,6 +26,8 @@ class HomePage extends React.Component {
       locale: this.props.locale
     };
     this.bindEventMapContext();
+    this.exampleRoots = {};
+    this.markdownRefs = {};
   }
 
   bindEventMapContext() {
@@ -34,14 +36,16 @@ class HomePage extends React.Component {
     });
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getDocumentsData();
+
+    this.mountExamples();
   }
 
   componentDidUpdate() {
     this.mountExamples();
 
-    if (Object.keys(this.refs).length === 3) {
+    if (Object.keys(this.markdownRefs).length === documentsList.length) {
       this.scrollToAnchor();
     }
 
@@ -52,34 +56,24 @@ class HomePage extends React.Component {
 
   getDocumentsData() {
     this.currentLocale = this.state.locale;
-    let counter = documentsList.length;
     this.setState({
       loading: true
     });
-
-    documentsList.forEach(name => {
+    const fetchDocs = documentsList.map(name => new Promise(resolve => {
       Utils.ajax(`./docs/${this.currentLocale}/${name}.md`, data => {
-        let item = this.state.documentsList.slice(0);
-
-        if (item.length === documentsList.length) {
-          item.shift();
-        }
-
-        item.push({
-          name: name,
-          data: data
+        resolve({
+          name,
+          data
         });
+      });
+    }));
 
-        this.setState({
-          documentsList: item
-        });
+    Promise.all(fetchDocs).then(items => {
+      const sortedDocs = documentsList.map(name => items.find(item => item.name === name));
 
-        if (counter === 1) {
-          this.setState({
-            loading: false
-          });
-        }
-        counter--;
+      this.setState({
+        documentsList: sortedDocs,
+        loading: false
       });
     });
   }
@@ -103,8 +97,19 @@ class HomePage extends React.Component {
       containerWidth: Utils.width(simplestElem)
     };
 
-    ReactDOM.render(<SimplestSampleComponent {...commonProps} />, simplestElem);
-    ReactDOM.render(<WaterfallSampleComponent {...commonProps} />, waterfallElem);
+    if (!this.exampleRoots.simplest) {
+      this.exampleRoots.simplest = createRoot(simplestElem);
+    }
+
+    if (waterfallElem && !this.exampleRoots.waterfall) {
+      this.exampleRoots.waterfall = createRoot(waterfallElem);
+    }
+
+    this.exampleRoots.simplest.render(<SimplestSampleComponent {...commonProps} />);
+
+    if (this.exampleRoots.waterfall) {
+      this.exampleRoots.waterfall.render(<WaterfallSampleComponent {...commonProps} />);
+    }
   }
 
   getLoadingClass() {
@@ -125,9 +130,20 @@ class HomePage extends React.Component {
   }
 
   renderMarkdown() {
-    return this.state.documentsList.map(function(d, i) {
-      return <MarkdownComponent key={i} ref={d.name}>{d.data}</MarkdownComponent>;
-    });
+    return this.state.documentsList.map((d, i) => (
+      <MarkdownComponent
+        key={i}
+        ref={node => {
+          if (node) {
+            this.markdownRefs[d.name] = node;
+          } else {
+            delete this.markdownRefs[d.name];
+          }
+        }}
+      >
+        {d.data}
+      </MarkdownComponent>
+    ));
   }
 
   getI18nButtonStyle(locale) {
@@ -156,12 +172,23 @@ class HomePage extends React.Component {
     );
   }
 
+  renderExamples() {
+    return (
+      <section className="examples">
+        <h2 id="examples">Examples</h2>
+        <div id="simplest" className="example" />
+        <div id="waterfall" className="example" />
+      </section>
+    );
+  }
+
   render() {
     return (
       <LayoutComponnet>
         <article className="container">
           {this.renderLoading()}
           {this.renderI18n()}
+          {this.renderExamples()}
           {this.renderMarkdown()}
         </article>
       </LayoutComponnet>
@@ -173,4 +200,6 @@ HomePage.defaultProps = {
   locale: Utils.getUrlParams('locale') || 'en'
 };
 
-ReactDOM.render(<HomePage />, document.querySelector('#app'));
+const container = document.querySelector('#app');
+const root = createRoot(container);
+root.render(<HomePage />);
