@@ -11,23 +11,13 @@ class AutoResponsive extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-  }
 
-  UNSAFE_componentWillMount() {
     this.sortManager = new GridSort({
-      containerWidth: this.props.containerWidth,
-      gridWidth: this.props.gridWidth,
+      containerWidth: props.containerWidth,
+      gridWidth: props.gridWidth,
     });
 
     this.animationManager = new AnimationManager();
-  }
-
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.containerWidth !== nextProps.containerWidth) {
-      this.sortManager.changeProps({
-        containerWidth: nextProps.containerWidth,
-      });
-    }
   }
 
   setPrivateProps() {
@@ -44,15 +34,18 @@ class AutoResponsive extends React.Component {
     }
   }
 
-  UNSAFE_componentWillUpdate() {
-    this.sortManager.init();
+  updateSortManagerProps() {
+    this.sortManager.changeProps({
+      containerWidth: this.props.containerWidth,
+      gridWidth: this.props.gridWidth,
+    });
   }
 
   renderChildren() {
     return React.Children.map(this.props.children, (child, childIndex) => {
       if (child.props.className
         && this.props.itemClassName
-        && !~child.props.className.indexOf(this.props.itemClassName)) {
+        && child.props.className.indexOf(this.props.itemClassName) === -1) {
         return;
       }
 
@@ -114,6 +107,8 @@ class AutoResponsive extends React.Component {
   }
 
   render() {
+    this.updateSortManagerProps();
+    this.sortManager.init();
     this.setPrivateProps();
 
     return (
