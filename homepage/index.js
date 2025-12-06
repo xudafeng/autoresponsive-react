@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import './index.less';
 import Utils from './utils';
@@ -26,6 +26,7 @@ class HomePage extends React.Component {
       locale: this.props.locale
     };
     this.bindEventMapContext();
+    this.exampleRoots = {};
   }
 
   bindEventMapContext() {
@@ -103,8 +104,19 @@ class HomePage extends React.Component {
       containerWidth: Utils.width(simplestElem)
     };
 
-    ReactDOM.render(<SimplestSampleComponent {...commonProps} />, simplestElem);
-    ReactDOM.render(<WaterfallSampleComponent {...commonProps} />, waterfallElem);
+    if (!this.exampleRoots.simplest) {
+      this.exampleRoots.simplest = createRoot(simplestElem);
+    }
+
+    if (waterfallElem && !this.exampleRoots.waterfall) {
+      this.exampleRoots.waterfall = createRoot(waterfallElem);
+    }
+
+    this.exampleRoots.simplest.render(<SimplestSampleComponent {...commonProps} />);
+
+    if (this.exampleRoots.waterfall) {
+      this.exampleRoots.waterfall.render(<WaterfallSampleComponent {...commonProps} />);
+    }
   }
 
   getLoadingClass() {
@@ -173,4 +185,6 @@ HomePage.defaultProps = {
   locale: Utils.getUrlParams('locale') || 'en'
 };
 
-ReactDOM.render(<HomePage />, document.querySelector('#app'));
+const container = document.querySelector('#app');
+const root = createRoot(container);
+root.render(<HomePage />);

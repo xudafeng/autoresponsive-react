@@ -1,6 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import WaterfallExampleComponent from './waterfall';
 
-ReactDOM.render(<WaterfallExampleComponent />, document.querySelector('#app'));
+const root = createRoot(document.querySelector('#app'));
+root.render(<WaterfallExampleComponent />);
