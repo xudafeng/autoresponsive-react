@@ -34,7 +34,8 @@ class WaterfallSampleComponent extends React.Component {
     super(props);
     this.bindEventMapContext();
     this.state = {
-      styleList: styleList
+      styleList: styleList,
+      containerWidth: props.containerWidth || null
     };
     this.containerNodeRef = React.createRef();
     this.handleResize = this.handleResize.bind(this);
@@ -99,8 +100,14 @@ class WaterfallSampleComponent extends React.Component {
       return;
     }
 
+    const nextWidth = containerNode.clientWidth;
+
+    if (!nextWidth || nextWidth === this.state.containerWidth) {
+      return;
+    }
+
     this.setState({
-      containerWidth: containerNode.clientWidth
+      containerWidth: nextWidth
     });
   }
 }
