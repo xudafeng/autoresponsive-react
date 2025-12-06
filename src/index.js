@@ -42,13 +42,22 @@ class AutoResponsive extends React.Component {
   }
 
   renderChildren() {
-    return React.Children.map(this.props.children, (child, childIndex) => {
-      if (child.props.className
-        && this.props.itemClassName
-        && child.props.className.indexOf(this.props.itemClassName) === -1) {
-        return;
-      }
+    const renderableChildren = React.Children.toArray(this.props.children)
+      .filter(child => {
+        if (!React.isValidElement(child)) {
+          return false;
+        }
 
+        if (child.props.className
+          && this.props.itemClassName
+          && child.props.className.indexOf(this.props.itemClassName) === -1) {
+          return false;
+        }
+
+        return true;
+      });
+
+    return renderableChildren.map((child, childIndex) => {
       const childWidth = parseInt(child.props.style.width, 10) + this.props.itemMargin;
       const childHeight = parseInt(child.props.style.height, 10) + this.props.itemMargin;
 
@@ -76,7 +85,7 @@ class AutoResponsive extends React.Component {
 
       this.props.onItemDidLayout.call(this, child);
 
-      if (childIndex + 1 === this.props.children.length) {
+      if (childIndex + 1 === renderableChildren.length) {
         this.props.onContainerDidLayout.call(this);
       }
 
