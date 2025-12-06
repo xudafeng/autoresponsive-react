@@ -1,8 +1,7 @@
 let React = require('react');
-let LogoComponent = require('react-logo');
-let ForkmeonComponent = require('forkmeon.github.io');
 
 let pkg = require('../package');
+let ForkmeonComponent = require('./forkme');
 
 const noop = function() {};
 
@@ -22,9 +21,7 @@ class HeaderComponent extends React.Component {
     return (
       <header>
         <div className="container header">
-          <div className="logo">
-            <LogoComponent pathStrokeColor='#fff' bigCircleFillColor='#8e4a3a'/>
-          </div>
+          <div className="logo">AR</div>
           <div className="title">
             <h1>Auto<em>R</em>esponsive <em>R</em>eact</h1>
           </div>

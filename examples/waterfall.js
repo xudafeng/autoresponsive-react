@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ForkmeonComponent from 'forkmeon.github.io';
+import ForkmeonComponent from '../homepage/forkme';
 
 import './index.less';
 import pkg from '../package';
