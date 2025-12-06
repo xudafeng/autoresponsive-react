@@ -111,4 +111,50 @@ describe('AutoResponsive', () => {
     expect(renderedChild.props.style.translateX).to.equal(5);
     expect(renderedChild.props.style.translateY).to.equal(5);
   });
+
+  it('retains existing container height when items fit within bounds', () => {
+    const onItemDidLayout = sinon.spy();
+    const onContainerDidLayout = sinon.spy();
+
+    const instance = new AutoResponsive(Object.assign({}, AutoResponsive.defaultProps, {
+      containerWidth: 150,
+      itemMargin: 0,
+      children: [createChild('one'), createChild('two')],
+      onItemDidLayout,
+      onContainerDidLayout,
+    }));
+
+    const positionStub = sinon.stub();
+    positionStub.onCall(0).returns([0, 0]);
+    positionStub.onCall(1).returns([60, 70]);
+
+    instance.containerHeight = 200;
+
+    instance.sortManager = {
+      changeProps: sinon.spy(),
+      init: sinon.spy(),
+      getPosition: positionStub,
+    };
+
+    instance.animationManager = {
+      generate: sinon.stub().returns({}),
+    };
+
+    const tree = instance.render();
+    const renderer = TestRenderer.create(tree);
+    const container = renderer.root.findByProps({ className: `${instance.props.prefixClassName}-container` });
+    const renderedChildren = container.findAllByType('div');
+
+    expect(instance.containerStyle.height).to.equal(200);
+    expect(instance.sortManager.changeProps.calledOnce).to.equal(true);
+    expect(instance.sortManager.init.calledOnce).to.equal(true);
+    expect(onItemDidLayout.callCount).to.equal(2);
+    expect(onContainerDidLayout.calledOnce).to.equal(true);
+
+    expect(renderedChildren.length).to.equal(2);
+    renderedChildren.forEach(child => {
+      expect(child.props.style.position).to.equal('absolute');
+      expect(child.props.style.float).to.equal(undefined);
+    });
+  });
 });
